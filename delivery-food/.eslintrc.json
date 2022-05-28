@@ -19,5 +19,14 @@
         "react"
     ],
     "rules": {
+        "no-unused-vars": "warn",
+        "react/prop-types": "off",
+        "space-before-function-paren": "error",
+        "space-in-parens": "error",
+        "no-spaced-func": "error",
+        "camelcase": "off",
+        "no-empty-function": "error",
+        "switch-colon-spacing": "error",
+        "comma-spacing": "error"  
     }
 }

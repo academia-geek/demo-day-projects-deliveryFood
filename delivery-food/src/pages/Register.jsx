@@ -32,7 +32,7 @@ export default function Register() {
             clipRule="evenodd"
           />
         </svg>
-        <h1 className="m-auto text-white text-lg">Delivery Food</h1>
+        <h1 className="m-auto text-white text-2xl">Delivery Food</h1>
       </header>
 
       <main className="py-5 px-10 bg-gray-100">

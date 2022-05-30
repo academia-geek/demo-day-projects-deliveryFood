@@ -1,5 +1,6 @@
-import { useFormik } from "formik";
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from 'yup';
 
 export default function Login() {
   const formik = useFormik({
@@ -9,7 +10,11 @@ export default function Login() {
     },
     onSubmit: value => {
       console.log(value);
-    }
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('email invalido').required('Campo Obligatorio'),  
+      password: Yup.string().required('Campo Obligatorio'),
+    }),
   })
   return (
     <div className="">
@@ -24,7 +29,7 @@ export default function Login() {
         <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
           <form onSubmit={formik.handleSubmit}action="" className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20  border-r-2 border-gray-300">
             <h3 className="text-blue-600 text-3xl">Iniciar sesión</h3>
-            <div className=" flex flex-col">
+            <div className=" flex flex-col relative">
               <label htmlFor="">Correo Electrónico:</label>
               <input 
               type="email" 
@@ -33,8 +38,13 @@ export default function Login() {
               onChange={formik.handleChange}
               value={formik.values.email}
               />
+              <span>
+                {
+                  formik.errors.email && <span className="absolute top-0 left-full bg-red-600 p-2 rounded-3xl rounded-bl-none w-40">{formik.errors.email}</span>    
+                }
+              </span>
             </div>
-            <div className=" flex flex-col">
+            <div className=" flex flex-col relative">
               <label htmlFor="">Contaseña:</label>
               <input 
               type="password" 
@@ -43,6 +53,11 @@ export default function Login() {
               onChange={formik.handleChange}
               value={formik.values.password}
               />
+              <span>
+                {
+                  formik.errors.password && <span className="absolute top-0 left-full bg-red-600 p-2 rounded-3xl rounded-bl-none w-40">{formik.errors.password}</span>    
+                }
+              </span>
             </div>
             <button type='submit' className="px-10 py-5 rounded text-blue-600 text-3xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white">
               Ingresar

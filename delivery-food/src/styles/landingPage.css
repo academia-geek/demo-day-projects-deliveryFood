@@ -1,0 +1,26 @@
+header {
+  background: linear-gradient(to right, var(--primary) 30%, var(--soft-blue));
+  border-bottom-left-radius: 50px;
+}
+
+main div .categories {
+  border: 1px solid;
+}
+
+main div .categories img {
+  position: relative;
+}
+
+main div .categories img:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #000;
+}
+
+main div .categories:nth-child(even) {
+  align-self: flex-end;
+}

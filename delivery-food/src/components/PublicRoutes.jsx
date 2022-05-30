@@ -1,7 +1,5 @@
-export const PublicRoutes = () => {
-  return (
-    <div>
-      <h1>PublicRoutes</h1>
-    </div>
-  );
+const PublicRoutes = ({ children }) => {
+  return <div>{children}</div>;
 };
+
+export default PublicRoutes;

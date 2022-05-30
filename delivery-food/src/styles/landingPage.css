@@ -1,0 +1,8 @@
+header {
+  background: linear-gradient(to right, var(--primary) 30%, var(--soft-blue));
+  border-bottom-left-radius: 50px;
+}
+
+main div .categories {
+  border: 1px solid;
+}

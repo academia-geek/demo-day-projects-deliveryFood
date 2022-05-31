@@ -1,9 +1,29 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import React from "react";
+import { useAuth } from "../auth/AuthContent";
 
 export default function Register() {
   const navigate = useNavigate();
+  const { createUser, loginWithGoogle } = useAuth();
+
+  const createUserWithEmailAndPassword = async (email, password) => {
+    try {
+      await createUser(email, password);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loginGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -13,7 +33,8 @@ export default function Register() {
       repeatPassword: "",
     },
     onSubmit: (value) => {
-      console.log(value);
+      const { email, password } = value;
+      createUserWithEmailAndPassword(email, password);
     },
   });
   return (
@@ -93,7 +114,10 @@ export default function Register() {
 
           <div className="flex flex-col items-center justify-center w-full gap-10">
             <p>O ingresa con:</p>
-            <button className="flex shadow-xl px-10 py-2 rounded w-40 h-15">
+            <button
+              className="flex shadow-xl px-10 py-2 rounded w-40 h-15"
+              onClick={loginGoogle}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

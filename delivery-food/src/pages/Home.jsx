@@ -3,6 +3,7 @@ import AOS from "aos";
 
 import "../styles/landingPage.css";
 import { Link } from "react-router-dom";
+import { ServicesSection } from "../components/landingPage/ServicesSection";
 
 AOS.init({
   duration: 1000,
@@ -81,6 +82,7 @@ export default function Home() {
           </Link>
         </div>
       </main>
+      <ServicesSection />
     </>
   );
 }

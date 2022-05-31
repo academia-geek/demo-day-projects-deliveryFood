@@ -1,17 +1,38 @@
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useAuth } from "../auth/AuthContent";
 
 export default function Login() {
-  const mavigaete = useNavigate();
+  const navigate = useNavigate();
+  const { loginWithEmailandPassword, loginWithGoogle } = useAuth();
+
+  const login = async (email, password) => {
+    try {
+      await loginWithEmailandPassword(email, password);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loginGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      // name: "",
       password: "",
     },
     onSubmit: (value) => {
-      console.log(value);
+      const { password, email } = value;
+      login(email, password);
     },
     validationSchema: Yup.object({
       email: Yup.string().email("email invalido").required("Campo Obligatorio"),
@@ -26,7 +47,7 @@ export default function Login() {
           className="h-10 w-10 cursor-pointer text-[color:var(--white)]"
           viewBox="0 0 20 20"
           fill="currentColor"
-          onClick={() => mavigaete("/")}
+          onClick={() => navigate("/")}
         >
           <path
             fillRule="evenodd"
@@ -91,7 +112,10 @@ export default function Login() {
 
           <div className="flex flex-col items-center justify-center w-full gap-10 text-center">
             <p>O ingresa con:</p>
-            <button className="flex shadow-xl px-10 py-2 rounded w-40 h-15">
+            <button
+              className="flex shadow-xl px-10 py-2 rounded w-40 h-15"
+              onClick={loginGoogle}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

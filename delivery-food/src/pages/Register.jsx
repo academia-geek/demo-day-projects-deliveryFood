@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useAuth } from "../auth/AuthContent";
+import Swal from "sweetalert2";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -10,9 +11,37 @@ export default function Register() {
   const createUserWithEmailAndPassword = async (email, password) => {
     try {
       await createUser(email, password);
-      navigate("/");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Usuario creado exitosamente",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => navigate("/"));
     } catch (error) {
-      console.log(error);
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "El correo ya está en uso!",
+          });
+          break;
+        case "auth/weak-password":
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "La contraseña debe ser minimo de 6 carácteres",
+          });
+          break;
+        default:
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salió mal!",
+          });
+          break;
+      }
     }
   };
 

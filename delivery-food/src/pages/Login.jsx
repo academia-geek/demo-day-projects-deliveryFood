@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "../auth/AuthContent";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,7 +13,29 @@ export default function Login() {
       await loginWithEmailandPassword(email, password);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      switch (error.code) {
+        case "auth/user-not-found":
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "El usuario no existe!",
+          });
+          break;
+        case "auth/wrong-password":
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "La contraseña es incorrecta!",
+          });
+          break;
+        default:
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salió mal!",
+          });
+          break;
+      }
     }
   };
 

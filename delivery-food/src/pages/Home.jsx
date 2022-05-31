@@ -4,6 +4,7 @@ import AOS from "aos";
 import "../styles/landingPage.css";
 import { Link } from "react-router-dom";
 import { ServicesSection } from "../components/landingPage/ServicesSection";
+import { Footer } from "../components/Footer";
 
 AOS.init({
   duration: 1000,
@@ -83,6 +84,7 @@ export default function Home() {
         </div>
       </main>
       <ServicesSection />
+      <Footer />
     </>
   );
 }

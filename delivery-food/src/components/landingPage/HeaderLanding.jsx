@@ -4,7 +4,7 @@ import "../../styles/landingPage.css";
 
 const HeaderLanding = () => {
   return (
-    <header className="p-5">
+    <header className="header-landing-page p-5">
       <div className="flex items-center justify-between">
         <h1
           className="text-3xl text-[color:var(--white)] ml-10

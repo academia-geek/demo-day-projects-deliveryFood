@@ -3,6 +3,10 @@ header {
   border-bottom-left-radius: 50px;
 }
 
+header.header-landing-page {
+  border-radius: 0px;
+}
+
 main {
   padding: 0 50px;
   overflow-x: hidden;

@@ -37,7 +37,7 @@ const HeaderLanding = () => {
       <div className="flex justify-center">
         <Link
           to=""
-          className="text-center bg-[color:var(--primary)] w-2/12 p-2 
+          className="btn-ver-productos text-center bg-[color:var(--primary)] w-2/12 p-2 
           text-lg uppercase text-[color:var(--white)] rounded-md shadow-2xl"
         >
           ver productos

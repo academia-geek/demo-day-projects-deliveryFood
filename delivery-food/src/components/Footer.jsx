@@ -5,7 +5,7 @@ import "../styles/footer.css";
 export const Footer = () => {
   return (
     <footer className="mt-20 px-20 py-5 grid grid-cols-2">
-      <div className="">
+      <div className="sobre-nosotros">
         <h2 className="text-center text-[color:var(--primary)] font-bold capitalize text-2xl">
           sobre delivery food
         </h2>
@@ -15,7 +15,7 @@ export const Footer = () => {
           <li>Politica y privacidad</li>
         </ul>
       </div>
-      <div className="">
+      <div className="quieres-ser-nuestro-equipo">
         <h2 className="text-center text-[color:var(--primary)] font-bold capitalize text-2xl">
           ¿Quieres ser parte de nuestro equipo?
         </h2>
@@ -24,7 +24,7 @@ export const Footer = () => {
             Si quieres ser parte de nuestro equipo
             <span> haz click en el siguiente botón</span>
           </p>
-          <div className="">
+          <div className="btn-unete-aqui">
             <Link
               to="/"
               className="btn-unete-aqui bg-[color:var(--soft-blue)] text-white font-semibold
@@ -34,14 +34,16 @@ export const Footer = () => {
               unete aquí
             </Link>
           </div>
-          <img
-            src="https://res.cloudinary.com/dp9zv16le/image/upload/v1654025725/delivery-food/repartidor-removebg-preview_n1m4ry.png"
-            alt=""
-            className="w-60"
-          />
+          <div className="image-footer">
+            <img
+              src="https://res.cloudinary.com/dp9zv16le/image/upload/v1654025725/delivery-food/repartidor-removebg-preview_n1m4ry.png"
+              alt=""
+              className="w-60"
+            />
+          </div>
         </div>
       </div>
-      <div className="flex justify-center col-span-2">
+      <div className="redes-sociales flex justify-center">
         <h2>Siguenos en nuestras redes sociales</h2>
       </div>
     </footer>

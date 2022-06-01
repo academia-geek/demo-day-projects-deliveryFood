@@ -14,13 +14,14 @@ export default function Home() {
   return (
     <>
       <HeaderLanding />
-      <main className="mx-20 my-20">
-        <h1 className="uppercase text-2xl text-center">
+      <main className="py-20">
+        <h1 className="h1-landing-page uppercase text-2xl text-center">
           nuestros mejores productos
         </h1>
-        <div className="mt-10 flex flex-col gap-10">
+        <div className="container-mejores-productos-landing-page mt-10 flex flex-col gap-10">
           <div
-            className="category-1 categories p-4 flex items-center gap-10 w-7/12 rounded-sm shadow-xl"
+            className="category-1 categories p-4 flex items-center gap-10 w-7/12 rounded-sm 
+            shadow-xl"
             data-aos="fade-right"
           >
             <img

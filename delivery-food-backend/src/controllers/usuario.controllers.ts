@@ -15,9 +15,9 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
 };
 
 export const createUser = async (req: Request, res: Response) => {
-    const {email,infoPago,tipo,apellido,telefono,nombre} = req.body;
+    const {email,infoDePago,tipo,apellido,telefono,nombre} = req.body;
     try {
-        const response: QueryResult = await pool.query('INSERT INTO users (email,infoPago,tipo,apellido,telefono,nombre) VALUES ($1, $2, $3, $4)', [email,infoPago,tipo,apellido,telefono,nombre]);
+        const response: QueryResult = await pool.query('INSERT INTO usuario (nombre,apellido,telefono,tipo,email,infoDePago) VALUES ($1, $2, $3, $4,$5,$6)', [nombre,apellido,telefono,tipo,email,infoDePago]);
         return res.json(response.rows);
     } catch (error) {
         console.log(error);
@@ -28,8 +28,8 @@ export const createUser = async (req: Request, res: Response) => {
 export const updateUser = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     try {
-        const {email,infoPago,tipo,apellido,telefono,nombre} = req.body;
-        const response: QueryResult = await pool.query('UPDATE users SET  "email" = $1, "infoPago" = $2, "tipo" = $3, "apellido" = $4, "telefono" = $5, "nombre" = $6 WHERE id = $7', [email,infoPago,tipo,apellido,telefono,nombre,id])
+        const {email,infoDePago,tipo,apellido,telefono,nombre} = req.body;
+        const response: QueryResult = await pool.query('UPDATE usuario SET  "nombre" = $1, "apellido" = $2, "telefono" = $3, "tipo" = $4, "email" = $5, "infoDePago" = $6 WHERE id = $7', [nombre,apellido,telefono,tipo,email,infoDePago,id])
         return res.json(response.rows);
     }catch (error) {
         console.log(error);
@@ -40,7 +40,7 @@ export const updateUser = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     try {
-        const response: QueryResult = await pool.query('DELETE FROM users WHERE id = $1', [id]);
+        const response: QueryResult = await pool.query('DELETE FROM usuario WHERE id = $1', [id]);
         return res.json(response.rows);
     }catch (error) {
         console.log(error);

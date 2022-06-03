@@ -17,6 +17,8 @@ DROP TYPE IF EXISTS tipo;
 
 --Creacion de enumeraciones
 CREATE TYPE enum_tipo AS ENUM('Administrador','Usuario');
+CREATE TYPE enum_estadoPedido AS ENUM('Preparado','Revisando','Recibido');
+
 
 ---Creacion de Tablas-----
 
@@ -27,7 +29,7 @@ CREATE TABLE usuario(
     telefono VARCHAR(255) NOT NULL,
     tipo enum_tipo NOT NULL,
     email VARCHAR(255) NOT NULL,
-    infoDePago VARCHAR(255) NOT NULL,
+    infoDePago VARCHAR(255) NOT NULL
 );
 
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email,infoDePago) VALUES ('Juan','Hoyos','3138134783','Usuario','juanhoyos@gmail.com','efectivo');
@@ -36,7 +38,7 @@ CREATE TABLE pago(
     id SERIAL PRIMARY KEY,
     metodoPago VARCHAR(100) NOT NULL,
     fecha DATE NOT NULL,
-    cantidad VARCHAR(255) NOT NULL,
+    cantidad VARCHAR(255) NOT NULL
 );
 
 INSERT INTO pago (metodoPago,fecha,cantidad) VALUES ('debito','20/01/2022','50000');
@@ -47,7 +49,7 @@ CREATE TABLE pedido(
     impuestos VARCHAR(100) NOT NULL,
     tipoEntrega VARCHAR(100) NOT NULL,
     valorDomicilio VARCHAR(255) NOT NULL,
-    estadoDelPedido , ---QUE TIPO DE DATO ES estadoDelPedido
+    estadoDelPedido enum_estadoPedido  NOT NULL,
     codigoDescuento VARCHAR(255) NOT NULL,
     hora TIME NOT NULL,
     fecha DATE NOT NULL,
@@ -58,7 +60,7 @@ CREATE TABLE pedido(
     CONSTRAINT fk_usuario
         FOREIGN KEY (usuario) REFERENCES usuario (id)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
     CONSTRAINT fk_pago
         FOREIGN KEY (pago) REFERENCES PAGO (id)
         ON DELETE RESTRICT
@@ -68,7 +70,7 @@ CREATE TABLE pedido(
 --ALTER TABLE direccion ADD CONSTRAINT fk_usuario FOREIGN KEY (usuario) 
 --    REFERENCES usuario (id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
-INSERT INTO pedido (impuestos,tipoEntrega,valorDomicilo,estadoDelpedido,codigoDescuento,hora,fecha,valorTotal,descuento,usuario) VALUES ('19','Domicilo','5000','ENTREGA','HYTG','13:00:59','31/12/2022','60000','21',1,1);
+INSERT INTO pedido (impuestos,tipoEntrega,valorDomicilio,estadoDelpedido,codigoDescuento,hora,fecha,valorTotal,descuento,usuario) VALUES ('19','Domicilo','5000','Recibido','HYTG','13:00:59','31/12/2022','60000','21',1);
 
 
 CREATE TABLE direccion(

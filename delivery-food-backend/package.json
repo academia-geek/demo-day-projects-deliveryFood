@@ -1,7 +1,7 @@
 {
-    "name": "mongodb-typescript-example",
+    "name": "deliveryfood-api",
     "version": "1.0.0",
-    "description": "Welcome to this MongoDB and TypeScript sample project.  The aim of this project is to give you a working example of how you can use the power of MongoDB Atlas with TypeScript and Express to create modern web applications.",
+    "description": "Welcome to this delivery API project",
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
@@ -11,21 +11,24 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mongodb-developer/mongodb-typescript-example.git"
+        "url": "https://github.com/academia-geek/demo-day-projects-deliveryFood.git"
     },
     "keywords": [
         "mongodb",
         "typescript",
         "express",
-        "atlas"
+        "atlas",
+        "api",
+        "joi",
+        "swagger",
+        "GCP",
+        "firebase"
     ],
-    "author": "Luce Carter",
-    "license": "Apache 2.0",
-    "bugs": {
-        "url": "https://github.com/mongodb-developer/mongodb-typescript-example/issues"
-    },
-    "homepage": "https://github.com/mongodb-developer/mongodb-typescript-example#readme",
+    "author": "Ingrid Argote, Juan Hoyos, Marco Pineda",
+    "license": "MIT",
+    "homepage": "https://github.com/academia-geek/demo-day-projects-deliveryFood/blob/main/README.md",
     "dependencies": {
+        "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "express-joi-validation": "^5.0.1",
@@ -36,6 +39,7 @@
         "swagger-ui-express": "^4.4.0"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.12",
         "@types/express": "^4.17.13",
         "@types/node": "^16.4.7",
         "@types/swagger-jsdoc": "^6.0.1",

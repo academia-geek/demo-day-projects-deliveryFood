@@ -1,35 +1,37 @@
-{
-    
-    tipo_menu: "Típico",
-    categorias: [{
-      nombre: "Entradas",
-      items: [{
-        nombre: "Porción patacones",
-        descripcion: "Gran porcion de patacones fritos con ahogao o guacamole",
-        foto:"https://ibb.co/X2SF4ym",
-        valor: 5000,
-        comentarios: "no poner sal a los patacones por favor",
-        opcion: [{
-          nombre: "Escoge tú salsa",
-          tipo: "Obligatorio",
-          opciones: ["Guacamole","Ahogao"]
-        }]
-        }]
-      },
-      {
-      nombre: "Platos Fuertes",
-      items: [{
-        nombre: "Sancocho de Gallina",
-        descripcion: "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
-        foto:"https://ibb.co/RD6LR5T",
-        valor: 26000,
-        comentarios: "",
-        opcion: [{}]
-        }]
-      }
-      ]
-    }
-  }
+db.DeliveryFood.insert(
+  
+{ tipo_menu: "Típico",
+  items:[ {
+            nombre: "Porción patacones",
+            categoria: "Entrada",
+            descripcion: "Gran porcion de patacones fritos con ahogao o guacamole",
+            foto:"https://ibb.co/X2SF4ym",
+            valor: 5000,
+            comentarios: "no poner sal a los patacones por favor",
+            opcion: [{
+                      nombre: "Escoge tú salsa",
+                      tipo: "Obligatorio",
+                      opciones: ["Guacamole","Ahogao"]
+                    }]
+          },
+          {
+            nombre: "Sancocho de Gallina",
+            categoria: "Plato Fuerte",
+            descripcion: "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
+            foto:"https://ibb.co/RD6LR5T",
+            valor: 26000,
+            comentarios: "",
+            opcion: [{}]
+          },    
+        ]
+}
+)
 
 
-  mongo "mongodb+srv://cluster0.tvi1h.mongodb.net/DeliveryFood" --username test1 --password 123456
+ mongo "mongodb+srv://cluster0.tvi1h.mongodb.net/DeliveryFood" --username test1 --password 12345
+
+
+ db.DeliveryFood.find(
+  { _id : ObjectId('629bd27f5a869c709b43a514') },
+  { items : { $elemMatch : { id_plato : ObjectId('629bd91998e2857d04a05eab')} } }
+).pretty();

@@ -1,17 +1,15 @@
 import { ObjectId } from "mongodb";
 
 export default interface DeliveryFood {
-    tipo_menu: string;
-    categorias: Array<categorias>;
+    tipo_menu: string;  
+    items: Array<items>;
     id?: ObjectId;
 };
-interface categorias {
-    nombre: string;
-    items: Array<items>;  
-};
+
 interface items {    
     nombre: string;            
     descripcion: string;
+    categoria: string;
     foto: string;
     valor: number;    
     opcion: Array<opcion>;

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
+import InputForm from "../components/InputForm";
+
+const expresiones = {
+  name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+  password: /^.{4,12}$/, // 4 a 12 digitos.
+  email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+}
 
 export default function Register() {
   const navigate = useNavigate();
@@ -54,18 +61,15 @@ export default function Register() {
     }
   };
 
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-      repeatPassword: "",
-    },
-    onSubmit: (value) => {
-      const { email, password } = value;
-      createUserWithEmailAndPassword(email, password);
-    },
-  });
+  const [ name, setName ] = useState({campo: '', error: false});
+  const [ email, setEmail ] = useState({campo: '', error: false});
+  const [ password, setPassword ] = useState({campo: '', error: false});
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(email, password);
+  }
+
   return (
     <div className="">
       <header className="h-20 flex shadow items-center px-6 w-full bg-white">
@@ -88,51 +92,38 @@ export default function Register() {
       <main className="py-5 px-10 bg-gray-100">
         <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
           <form
-            onSubmit={formik.handleSubmit}
+            onSubmit={(e)=>handleSubmit(e)}
             action=""
             className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20  border-r-2 border-gray-300"
           >
             <h3 className="text-blue-600 text-3xl">Registrate</h3>
-            <div className="flex flex-col ">
-              <label htmlFor="">Nombre completo:</label>
-              <input
-                type="text"
-                name="name"
-                className="p-3 rounded border-2 border-gray-400"
-                onChange={formik.handleChange}
-                value={formik.values.name}
-              />
-            </div>
-            <div className=" flex flex-col">
-              <label htmlFor="">Correo Electrónico:</label>
-              <input
-                type="email"
-                name="email"
-                className="p-3 rounded border-2 border-gray-400"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-            </div>
-            <div className=" flex flex-col">
-              <label htmlFor="">Contaseña:</label>
-              <input
-                type="password"
-                name="password"
-                className="p-3 rounded border-2 border-gray-400"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-            </div>
-            <div className=" flex flex-col">
-              <label htmlFor="">Repite la Contaseña:</label>
-              <input
-                type="password"
-                name="repeatPassword"
-                className="p-3 rounded border-2 border-gray-400"
-                onChange={formik.handleChange}
-                value={formik.values.repeatPassword}
-              />
-            </div>
+            <InputForm 
+              type='name'
+              name='name'
+              label='Nombre completo :'
+              state={name}
+              setState={setName}
+              expresion={expresiones.name}
+              error='Campo requerido'
+            />
+            <InputForm 
+              type='email'
+              name='email'
+              label='Correo Electrónico :'
+              state={email}
+              setState={setEmail}
+              expresion={expresiones.email} 
+              error='El email es obligatorio y tiene que ser un email valido'
+            />
+            <InputForm 
+              type='password'
+              name='password'
+              label='Contraseña :'
+              state={password}
+              setState={setPassword}
+              expresion={expresiones.password}
+              error='la contraseña debe tener mas de 4 caracteres y menos de 12 caracteres'
+            />
             <button
               type="submit"
               className="px-10 py-5 rounded text-blue-600 text-3xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white"

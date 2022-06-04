@@ -1,12 +1,22 @@
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
+import InputForm from '../components/InputForm';
+
+const expresiones = {
+  password: /^.{4,12}$/, // 4 a 12 digitos.
+  email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+}
 
 export default function Login() {
   const navigate = useNavigate();
   const { loginWithEmailandPassword, loginWithGoogle } = useAuth();
+
+  const [ email, setEmail ] = useState({campo: '', error: false});
+  const [ password, setPassword ] = useState({campo: '', error: false});
 
   const login = async (email, password) => {
     try {
@@ -48,20 +58,11 @@ export default function Login() {
     }
   };
 
-  const formik = useFormik({
-    initialValues: {
-      // name: "",
-      password: "",
-    },
-    onSubmit: (value) => {
-      const { password, email } = value;
-      login(email, password);
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email("email invalido").required("Campo Obligatorio"),
-      password: Yup.string().required("Campo Obligatorio"),
-    }),
-  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(email, password);
+  }
+
   return (
     <div className="">
       <header className="h-20 flex shadow items-center px-6 w-full">
@@ -86,45 +87,30 @@ export default function Login() {
       <main className="py-5 px-10 bg-gray-100">
         <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
           <form
-            onSubmit={formik.handleSubmit}
+            onSubmit={(e)=>handleSubmit(e)}
             action=""
             className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20  border-r-2 border-gray-300"
           >
             <h3 className="text-blue-600 text-3xl">Iniciar sesión</h3>
-            <div className=" flex flex-col relative">
-              <label htmlFor="">Correo Electrónico:</label>
-              <input
-                type="email"
-                name="email"
-                className="p-3 rounded border-2 border-gray-400"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-              <span>
-                {formik.errors.email && (
-                  <span className="absolute top-0 left-full bg-red-600 p-2 rounded-3xl rounded-bl-none w-40">
-                    {formik.errors.email}
-                  </span>
-                )}
-              </span>
-            </div>
-            <div className=" flex flex-col relative">
-              <label htmlFor="">Contaseña:</label>
-              <input
-                type="password"
-                name="password"
-                className="p-3 rounded border-2 border-gray-400"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-              <span>
-                {formik.errors.password && (
-                  <span className="absolute top-0 left-full bg-red-600 p-2 rounded-3xl rounded-bl-none w-40">
-                    {formik.errors.password}
-                  </span>
-                )}
-              </span>
-            </div>
+            <InputForm 
+              type='email'
+              name='email'
+              label='Correo Electrónico :'
+              state={email}
+              setState={setEmail}
+              expresion={expresiones.email} 
+              error='El email es obligatorio y tiene que ser un email valido'
+            />
+            <InputForm 
+              type='password'
+              name='password'
+              label='Contraseña :'
+              state={password}
+              setState={setPassword}
+              expresion={expresiones.password}
+              error='la contraseña debe tener mas de 4 caracteres y menos de 12 caracteres'
+            />
+            
             <button
               type="submit"
               className="px-10 py-5 rounded text-blue-600 text-3xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white"

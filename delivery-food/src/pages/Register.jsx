@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
 
 const expresiones = {
   name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-  password: /^.{4,12}$/, // 4 a 12 digitos.
+  password: /^.{6,30}$/, // 4 a 30 digitos.
   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-}
+};
 
 export default function Register() {
   const navigate = useNavigate();
@@ -34,20 +33,8 @@ export default function Register() {
             text: "El correo ya está en uso!",
           });
           break;
-        case "auth/weak-password":
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "La contraseña debe ser minimo de 6 carácteres",
-          });
-          break;
         default:
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Algo salió mal!",
-          });
-          break;
+          return null;
       }
     }
   };
@@ -61,14 +48,14 @@ export default function Register() {
     }
   };
 
-  const [ name, setName ] = useState({campo: '', error: false});
-  const [ email, setEmail ] = useState({campo: '', error: false});
-  const [ password, setPassword ] = useState({campo: '', error: false});
+  const [name, setName] = useState({ campo: "", error: false });
+  const [email, setEmail] = useState({ campo: "", error: false });
+  const [password, setPassword] = useState({ campo: "", error: false });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(email, password);
-  }
+    createUserWithEmailAndPassword(email.campo, password.campo);
+  };
 
   return (
     <div className="">
@@ -92,37 +79,37 @@ export default function Register() {
       <main className="py-5 px-10 bg-gray-100">
         <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
           <form
-            onSubmit={(e)=>handleSubmit(e)}
+            onSubmit={(e) => handleSubmit(e)}
             action=""
             className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20  border-r-2 border-gray-300"
           >
             <h3 className="text-blue-600 text-3xl">Registrate</h3>
-            <InputForm 
-              type='name'
-              name='name'
-              label='Nombre completo :'
+            <InputForm
+              type="name"
+              name="name"
+              label="Nombre completo :"
               state={name}
               setState={setName}
               expresion={expresiones.name}
-              error='Campo requerido'
+              error="El nombre requerido"
             />
-            <InputForm 
-              type='email'
-              name='email'
-              label='Correo Electrónico :'
+            <InputForm
+              type="email"
+              name="email"
+              label="Correo Electrónico :"
               state={email}
               setState={setEmail}
-              expresion={expresiones.email} 
-              error='El email es obligatorio y tiene que ser un email valido'
+              expresion={expresiones.email}
+              error="El email es obligatorio y tiene que ser un email valido"
             />
-            <InputForm 
-              type='password'
-              name='password'
-              label='Contraseña :'
+            <InputForm
+              type="password"
+              name="password"
+              label="Contraseña :"
               state={password}
               setState={setPassword}
               expresion={expresiones.password}
-              error='la contraseña debe tener mas de 4 caracteres y menos de 12 caracteres'
+              error="la contraseña debe tener mas de 6 caracteres y menos de 30 caracteres"
             />
             <button
               type="submit"

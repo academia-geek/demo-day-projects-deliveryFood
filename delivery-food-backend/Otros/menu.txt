@@ -1,0 +1,35 @@
+{
+    
+    tipo_menu: "Típico",
+    categorias: [{
+      nombre: "Entradas",
+      items: [{
+        nombre: "Porción patacones",
+        descripcion: "Gran porcion de patacones fritos con ahogao o guacamole",
+        foto:"https://ibb.co/X2SF4ym",
+        valor: 5000,
+        comentarios: "no poner sal a los patacones por favor",
+        opcion: [{
+          nombre: "Escoge tú salsa",
+          tipo: "Obligatorio",
+          opciones: ["Guacamole","Ahogao"]
+        }]
+        }]
+      },
+      {
+      nombre: "Platos Fuertes",
+      items: [{
+        nombre: "Sancocho de Gallina",
+        descripcion: "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
+        foto:"https://ibb.co/RD6LR5T",
+        valor: 26000,
+        comentarios: "",
+        opcion: [{}]
+        }]
+      }
+      ]
+    }
+  }
+
+
+  mongo "mongodb+srv://cluster0.tvi1h.mongodb.net/DeliveryFood" --username test1 --password 123456

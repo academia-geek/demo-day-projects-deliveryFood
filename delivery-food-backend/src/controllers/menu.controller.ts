@@ -1,9 +1,10 @@
 import express, { Request, Response} from "express";
-import { ObjectId } from "mongodb";
 import { collections } from "../services/database.service.mongo";
+
 
 export const menuRouter = express.Router();
 menuRouter.use(express.json());
+
 
 menuRouter.get("/menu",async (req: Request, res: Response) => {
     try {
@@ -13,3 +14,14 @@ menuRouter.get("/menu",async (req: Request, res: Response) => {
       res.status(500).send(error.message);
     }
   });
+
+ menuRouter.post( "/addMenu", async (req: Request, res: Response) => {
+    try {
+      let data = req.body;      
+      const books = await collections.DeliveryFood.insertOne(data);
+      res.status(200).send(books);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  }
+);

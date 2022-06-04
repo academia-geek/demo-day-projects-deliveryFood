@@ -19,6 +19,6 @@ export async function connectToDatabase() {
     }).catch(async (error: mongoDB.MongoServerError) =>{
         if(error.codeName === 'NamespaceNotFound'){
             await db.createCollection(process.env.DELIVERY_COLLECTION_NAME);
-        }
+                }
     });
 }

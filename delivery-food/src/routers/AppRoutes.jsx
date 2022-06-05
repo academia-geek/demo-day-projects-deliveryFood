@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PerfilUsuario from "../pages/usuario/PerfilUsuario";
 import PublicRoutes from "../components/PublicRoutes";
 import PrivateRoutes from "../components/PrivateRoutes";
 
@@ -14,11 +15,19 @@ export default function AppRoutes() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+            path="/usuario/:username"
             element={
               <PrivateRoutes>
-                <Home />
+                <PerfilUsuario />
               </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <PublicRoutes>
+                <Home />
+              </PublicRoutes>
             }
           />
           <Route

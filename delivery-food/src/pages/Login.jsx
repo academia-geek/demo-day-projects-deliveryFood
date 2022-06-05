@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
@@ -10,18 +10,17 @@ const expresiones = {
 };
 
 export default function Login() {
-  const navigate = useNavigate();
-  const { loginWithEmailandPassword, loginWithGoogle } = useAuth();
-
   const [email, setEmail] = useState({ campo: "", error: false });
   const [password, setPassword] = useState({ campo: "", error: false });
 
+  const navigate = useNavigate();
+  const { loginWithEmailandPassword, loginWithGoogle } = useAuth();
+
   const login = async (email, password) => {
     try {
-      await loginWithEmailandPassword(email, password);
-      navigate("/");
+      const { user } = await loginWithEmailandPassword(email, password);
+      window.location.href = `/usuario/${user.email.split("@")[0]}`;
     } catch (error) {
-      console.log(error.code);
       switch (error.code) {
         case "auth/invalid-email":
           Swal.fire({
@@ -52,8 +51,8 @@ export default function Login() {
 
   const loginGoogle = async () => {
     try {
-      await loginWithGoogle();
-      navigate("/");
+      const { user } = await loginWithGoogle();
+      window.location.href = `/usuario/${user.email.split("@")[0]}`;
     } catch (error) {
       console.log(error);
     }
@@ -142,9 +141,9 @@ export default function Login() {
             </button>
             <div>
               <p className="text-3lg">¿no tienes cuenta?</p>
-              <a href="" className="text-blue-600 font-bold text-3lg">
+              <Link to="/register" className="text-blue-600 font-bold text-3lg">
                 Registrate aquí
-              </a>
+              </Link>
             </div>
           </div>
         </div>

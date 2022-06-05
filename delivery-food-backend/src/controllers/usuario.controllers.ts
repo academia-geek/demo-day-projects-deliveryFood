@@ -15,9 +15,9 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
 };
 
 export const createUser = async (req: Request, res: Response) => {
-    const {email,infoDePago,tipo,apellido,telefono,nombre} = req.body;
+    const {email,tipo,apellido,telefono,nombre} = req.body;
     try {
-        const response: QueryResult = await pool.query('INSERT INTO usuario (nombre,apellido,telefono,tipo,email,infoDePago) VALUES ($1, $2, $3, $4,$5,$6)', [nombre,apellido,telefono,tipo,email,infoDePago]);
+        const response: QueryResult = await pool.query('INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ($1, $2, $3, $4,$5)', [nombre,apellido,telefono,tipo,email]);
         return res.json(response.rows);
     } catch (error) {
         console.log(error);
@@ -29,7 +29,7 @@ export const updateUser = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     try {
         const {email,infoDePago,tipo,apellido,telefono,nombre} = req.body;
-        const response: QueryResult = await pool.query('UPDATE usuario SET  "nombre" = $1, "apellido" = $2, "telefono" = $3, "tipo" = $4, "email" = $5, "infoDePago" = $6 WHERE id = $7', [nombre,apellido,telefono,tipo,email,infoDePago,id])
+        const response: QueryResult = await pool.query('UPDATE usuario SET  "nombre" = $1, "apellido" = $2, "telefono" = $3, "tipo" = $4, "email" = $5  WHERE id = $', [nombre,apellido,telefono,tipo,email,id])
         return res.json(response.rows);
     }catch (error) {
         console.log(error);

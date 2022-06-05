@@ -1,12 +1,11 @@
 import Joi from "joi";
 
 const usuarioSchema = Joi.object({
-    nombre: Joi.string().required(),
-    apellido: Joi.string().required(),
-    telefono: Joi.string().required(),
-    tipo: Joi.string().valid('Administrador','Usuario').required(),
+    nombre: Joi.string().max(100).required(),
+    apellido: Joi.string().max(100).required(),
+    telefono: Joi.number().required(),
+    tipo: Joi.string().valid('Administrador','Usuario','Repartidor','Establecimiento').required(),
     email:Joi.string().email().required(),
-    infoPago: Joi.string().required(),
 })
 
 export default usuarioSchema;

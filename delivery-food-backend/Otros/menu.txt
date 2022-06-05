@@ -134,3 +134,6 @@ db.DeliveryFood.insert(
 )
 
 
+{ $and: [ { _id : new ObjectId('629bd27f5a869c709b43a514') },
+                { items : { $elemMatch : { id_plato : new ObjectId('629bd92398e2857d04a05eac')}}}
+              ] }

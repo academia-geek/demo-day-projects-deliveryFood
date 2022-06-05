@@ -23,7 +23,7 @@ CREATE TABLE usuario(
     apellido VARCHAR(100) NOT NULL,
     telefono INTEGER NOT NULL,
     tipo enum_tipo NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (id_usuario));
 
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Ingrid','ARgote','5454646','Usuario','ingrid@gmail.com');
@@ -44,7 +44,7 @@ CREATE TABLE establecimiento(
     id_establecimiento INTEGER NOT NULL DEFAULT NEXTVAL('establecimiento_id_seq'),
     estado enum_estadoE NOT NULL,  
     operacional enum_operacional NOT NULL,
-    nombre VARCHAR(255) NOT NULL, 
+    nombre VARCHAR(255) NOT NULL UNIQUE, 
     id_menu VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_establecimiento)
 );

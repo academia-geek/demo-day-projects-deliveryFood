@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import { any } from "joi";
 import { ObjectId } from "mongodb";
 import { collections } from "../services/database.service.mongo";
 
@@ -26,11 +27,7 @@ menuRouter.post("/addMenu", async (req: Request, res: Response) => {
 
 menuRouter.get("/generarPedido", async (req: Request, res: Response) => {
     try {
-        const menu = await collections.DeliveryFood.findOne(  
-            { $and: [ { _id : new ObjectId('629bd27f5a869c709b43a514') },
-                { items : { $elemMatch : { id_plato : new ObjectId('629bd92398e2857d04a05eac')}}}
-              ] }
-                        );
+        const menu = await collections.DeliveryFood.find({}).toArray();
         console.log(menu)        
         res.status(200).send(menu);
     } catch (error) {

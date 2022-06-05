@@ -1,7 +1,7 @@
 {
-    "name": "mongodb-typescript-example",
-    "version": "1.0.0",
-    "description": "Welcome to this MongoDB and TypeScript sample project.  The aim of this project is to give you a working example of how you can use the power of MongoDB Atlas with TypeScript and Express to create modern web applications.",
+    "name": "API REST delivery food",
+    "version": "0.1.0",
+    "description": "API for consumption of the aplication delivery food",
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
@@ -11,7 +11,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mongodb-developer/mongodb-typescript-example.git"
+        "url": "git+https://github.com/academia-geek/demo-day-projects-deliveryFood.git"
     },
     "keywords": [
         "mongodb",
@@ -19,12 +19,7 @@
         "express",
         "atlas"
     ],
-    "author": "Luce Carter",
-    "license": "Apache 2.0",
-    "bugs": {
-        "url": "https://github.com/mongodb-developer/mongodb-typescript-example/issues"
-    },
-    "homepage": "https://github.com/mongodb-developer/mongodb-typescript-example#readme",
+    "license": "MIT licence",
     "dependencies": {
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",

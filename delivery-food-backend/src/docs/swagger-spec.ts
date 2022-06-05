@@ -1,12 +1,13 @@
 import swaggerJSDoc from "swagger-jsdoc";
+import * as packageInfo from "../../package.json";
 
 // Swagger definition
 const swaggerDefinition = {
     openapi: "3.0.3",
     info: {
-        title: "API REST delivery food",
-        version: "0.1.0",
-        description: "API REST para consumo de la aplicacion delivery food",
+        title: packageInfo.name,
+        version: packageInfo.version,
+        description: packageInfo.description,
     },
     servers: [
         {

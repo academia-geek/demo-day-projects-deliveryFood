@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
@@ -11,21 +11,29 @@ const expresiones = {
 };
 
 export default function Register() {
-  const navigate = useNavigate();
-  const { createUser, loginWithGoogle } = useAuth();
+  const [name, setName] = useState({ campo: "", error: false });
+  const [email, setEmail] = useState({ campo: "", error: false });
+  const [password, setPassword] = useState({ campo: "", error: false });
 
-  const createUserWithEmailAndPassword = async (email, password) => {
+  const navigate = useNavigate();
+  const { createUser, loginWithGoogle, addUsernameWhenUserIsRegistered } =
+    useAuth();
+
+  const createUserWithEmailAndPassword = async (name, email, password) => {
     try {
-      await createUser(email, password);
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Usuario creado exitosamente",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(() => navigate("/"));
+      createUser(email, password).then(({ user }) => {
+        addUsernameWhenUserIsRegistered(user, name);
+        window.location.href = `/usuario/${user.email.split("@")[0]}`;
+      });
     } catch (error) {
       switch (error.code) {
+        case "auth/invalid-email":
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Correo no valido",
+          });
+          break;
         case "auth/email-already-in-use":
           Swal.fire({
             icon: "error",
@@ -41,20 +49,16 @@ export default function Register() {
 
   const loginGoogle = async () => {
     try {
-      await loginWithGoogle();
-      navigate("/");
+      const { user } = await loginWithGoogle();
+      window.location.href = `/usuario/${user.email.split("@")[0]}`;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const [name, setName] = useState({ campo: "", error: false });
-  const [email, setEmail] = useState({ campo: "", error: false });
-  const [password, setPassword] = useState({ campo: "", error: false });
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(email.campo, password.campo);
+    createUserWithEmailAndPassword(name.campo, email.campo, password.campo);
   };
 
   return (
@@ -139,9 +143,9 @@ export default function Register() {
               </svg>
               <p>Google</p>
             </button>
-            <p className="text-blue-600 font-bold text-3xl">
+            <Link to="/login" className="text-blue-600 font-bold text-3xl">
               ¿Ya tienes cuenta?
-            </p>
+            </Link>
           </div>
         </div>
       </main>

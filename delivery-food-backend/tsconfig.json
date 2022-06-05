@@ -10,9 +10,15 @@
         "baseUrl": ".",
         "allowJs": true,
         "paths": {
-            "*": ["node_modules/*"]
+            "*": [
+                "node_modules/*"
+            ]
         },
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
-    "include": ["src/**/*"]
+    "include": [
+        "src/**/*"
+    ]
 }

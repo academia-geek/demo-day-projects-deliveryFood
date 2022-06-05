@@ -6,7 +6,7 @@ import { QueryResult } from 'pg';
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try {
         const response: QueryResult = await
-            pool.query('SELECT * FROM usuario ORDER BY id ASC');
+            pool.query('SELECT * FROM usuario');
         return res.status(200).json(response.rows);
     } catch (e) {
         console.log(e);

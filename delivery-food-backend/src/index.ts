@@ -1,14 +1,31 @@
 import express from 'express';
-import  swaggerUi from 'swagger-ui-express';
-import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import cors from 'cors';
 const app = express();
-import router from './routes/establecimiento.routers';
+dotenv.config();
+
+import router from './routes/establecimiento.router';
 import routerUsuario from './routes/usuarios.router';
-const port = 8070;
+import swaggerSpec from './docs/swagger-spec';
 
-app.use('/establecimiento',router);
-app.use('/usuario',routerUsuario);
+const port = process.env.PORT || 3000;
 
-app.listen(port,()=>{
+// Middlewares
+app.use(morgan('dev'));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.use('/api/establecimientos', router);
+app.use('/api/usuarios', routerUsuario);
+
+// Initialize swagger-jsdoc
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Start server
+app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
 })

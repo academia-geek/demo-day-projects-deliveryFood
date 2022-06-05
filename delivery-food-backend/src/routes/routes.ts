@@ -9,6 +9,6 @@ import {
     menuRouter
   } from "../controllers/menu.controller";
 
-router.get("/menu",validator.body(menuSchema) ,menuRouter);
+router.post("/addMenu",menuRouter);
 
 export default router;

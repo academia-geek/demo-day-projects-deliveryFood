@@ -15,6 +15,7 @@ interface items {
     opcion: Array<opcion>;
     adicionales: Array<adicionales>;
     comentarios: string;
+    id_plato: ObjectId;
 };
 interface opcion {            
     nombre: string;

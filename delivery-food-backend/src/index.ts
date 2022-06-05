@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from "morgan";
 import  swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import { connectToDatabase } from "./services/database.service.mongo";
@@ -13,7 +14,8 @@ app.use(express.json());
 
 
 connectToDatabase()
-    .then(() => {        
+    .then(() => {   
+        app.use(morgan("dev"));     
         app.use("/", router);
         //app.use("/user", userRouter)
         app.listen(port, () => {

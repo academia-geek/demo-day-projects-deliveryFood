@@ -238,3 +238,4 @@ routerUsuario.delete('/:id', deleteUser);
  */
 
 export default routerUsuario;
+module.exports = routerUsuario;

@@ -15,6 +15,8 @@ export default function Register() {
   const [email, setEmail] = useState({ campo: "", error: false });
   const [password, setPassword] = useState({ campo: "", error: false });
 
+  const [linkEmail, setLinkEmail] = useState({ campo: "", error: false })
+
   const navigate = useNavigate();
   const { createUser, loginWithGoogle, addUsernameWhenUserIsRegistered } =
     useAuth();
@@ -55,6 +57,20 @@ export default function Register() {
       console.log(error);
     }
   };
+
+  // const linkEmailFn = () => {
+  //   const email = linkEmail.campo;
+  //   sendLinkEmail(email).then(() => {
+  //     // The link was successfully sent. Inform the user.
+  //     // Save the email locally so you don't need to ask the user for it again
+  //     // if they open the link on the same device.
+  //     window.localStorage.setItem('emailForSignIn', email);
+  //     alert('mensaje enviado')
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -124,6 +140,18 @@ export default function Register() {
           </form>
 
           <div className="flex flex-col items-center justify-center w-full gap-10">
+            {/* <div>
+              <InputForm
+                type="email"
+                name="link-email"
+                label="Ingresar con link de correo :"
+                state={linkEmail}
+                setState={setLinkEmail}
+                expresion={expresiones.email}
+                error="El email tiene que ser valido"
+              />
+              <button onClick={linkEmailFn} className="px-5 py-2 rounded text-blue-600 text-xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white">Enviar</button>
+            </div> */}
             <p>O ingresa con:</p>
             <button
               className="flex shadow-xl px-10 py-2 rounded w-40 h-15"

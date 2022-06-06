@@ -15,63 +15,55 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
 /**
  * @swagger
  * components:
- *  schemas:
- *    Usuarios:
- *      type: object
- *      properties:
- *         id_usuario:
- *           type: integer
- *           example: 1
- *         nombre:
- *           type: string
- *           description: Nombre del usuario
- *           example: "Juan"
- *         apellido:
- *           type: string
- *           description: "Apellido del usuario"
- *           example: "Perez"
- *         telefono:
- *           type: number
- *           description: "Telefono de contacto"
- *           example: "123456789"
- *         tipo:
- *           type: string
- *           enum:
- *             - "Administrador"
- *             - "Usuario"
- *             - "Repartidor"
- *             - "establecimiento"
- *           description: "Tipo de usuario"
- *           example: "cliente"
- *         email:
- *           type: string
- *           unique: true
- *           description: "Email del usuario"
- *           example: "email@example.com"
- *      required:
- *         - documento
- *         - nombre
- *         - apellido
- *         - telefono
- *         - tipo
- *         - email
- *      example:
- *         id_usuario: 1
- *         documento: 123456789
- *         nombre: Juan
- *         apellido: Perez
- *         telefono: 123456789
- *         tipo: cliente
- *         email: mail@example.com
+ *   schemas:
+ *      Usuarios:
+ *        type: object
+ *        properties:
+ *          id_usuario:
+ *            type: integer
+ *            example: 1
+ *          nombre:
+ *            type: string
+ *            description: Nombre del usuario
+ *            example: "Juan"
+ *          apellido:
+ *            type: string
+ *            description: "Apellido del usuario"
+ *            example: "Perez"
+ *          telefono:
+ *            type: number
+ *            description: "Telefono de contacto"
+ *            example: "123456789"
+ *          tipo:
+ *            type: string
+ *            enum:
+ *              - "Administrador"
+ *              - "Usuario"
+ *              - "Repartidor"
+ *              - "establecimiento"
+ *            description: "Tipo de usuario"
+ *            example: "cliente"
+ *          email:
+ *            type: string
+ *            unique: true
+ *            description: "Email del usuario"
+ *            example: "email@example.com"
+ *        required:
+ *          - documento
+ *          - nombre
+ *          - apellido
+ *          - telefono
+ *          - tipo
+ *          - email
+ *        example:
+ *          id_usuario: 1
+ *          documento: 123456789
+ *          nombre: Juan
+ *          apellido: Perez
+ *          telefono: 123456789
+ *          tipo: cliente
+ *          email: mail@example.com
  * 
- * 
- * tags:
- *   - name: Establecimientos
- *     description: "Operaciones sobre establecimientos"
- *   - name: Usuarios
- *     description: "Operaciones sobre usuarios"
- *   - name: Pedidos
- *     description: "Operaciones sobre pedidos"
  * /api/usuarios:
  *   post:
  *     tags:
@@ -138,6 +130,7 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *             message:
  *               type: string
  *             example: "Internal Server error"
+ * 
  * /api/usuarios/{documento}:
  *   get:
  *     tags:
@@ -243,4 +236,3 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  */
 
 export default routerUsuario;
-module.exports = routerUsuario;

@@ -11,7 +11,6 @@ import routerUsuario from './routes/usuarios.router';
 import swaggerSpec from './docs/swagger-spec';
 
 const port = process.env.PORT || 3000;
-
 // Middlewares
 app.use(morgan('dev'));
 app.use(cors());

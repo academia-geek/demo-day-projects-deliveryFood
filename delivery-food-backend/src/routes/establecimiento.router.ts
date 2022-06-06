@@ -1,11 +1,13 @@
 import {Router} from 'express';
-const router = Router();
+const routerEstablecimiento = Router();
 
-import {getEstablecimiento,createEstablecimiento} from '../controllers/establecimiento.controller';
+import {getEstablecimiento,createEstablecimiento,updateEstablecimiento,deleteEstablecimiento} from '../controllers/establecimiento.controller';
+routerEstablecimiento.get('/',getEstablecimiento);
+routerEstablecimiento.post('/',createEstablecimiento);
+routerEstablecimiento.put('/:id',updateEstablecimiento);
+routerEstablecimiento.delete('/:id',deleteEstablecimiento);
 
-router.get('/',getEstablecimiento);
-router.post('/',createEstablecimiento)
-
+export default routerEstablecimiento;
 /**
  * @swagger
  * components:
@@ -205,5 +207,3 @@ router.post('/',createEstablecimiento)
  *                   type: string
  *                   example: "Internal Server error"
  */
-
-export default router;

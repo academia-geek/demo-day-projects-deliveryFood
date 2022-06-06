@@ -3,9 +3,9 @@ import {pool} from '../db/db';
 import { QueryResult } from 'pg';
 
 //Get
-export const getEstablecimiento = async (req: Request, res: Response):Promise<Response> =>{
+export const getPedido = async (req: Request, res: Response):Promise<Response> =>{
     try{
-        const response:QueryResult = await pool.query('SELECT * FROM establecimiento ORDER BY id_establecimiento ASC');
+        const response:QueryResult = await pool.query('SELECT * FROM pedido ORDER BY codigoOrden ASC');
         return res.status(200).json(response.rows);
     }catch(e){
         console.log(e);         
@@ -14,11 +14,11 @@ export const getEstablecimiento = async (req: Request, res: Response):Promise<Re
 };
 
 //POST
-export const createEstablecimiento = async (req: Request, res:Response):Promise<Response> =>{
+export const createPedido = async (req: Request, res:Response):Promise<Response> =>{
     /*TODO:Servicio de crear menu de mongo */
-    const {estado,operacional,nombre,id_menu} = req.body;
+    const {id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento} = req.body;
     try{
-        const response:QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu) VALUES ($1,$2,$3,$4)',[estado,operacional,nombre,id_menu]);
+        const response:QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu) VALUES ($1,$2,$3,$4)',[]);
         return res.status(200).json({
             message:"Establecimiento creado con éxito"
         });

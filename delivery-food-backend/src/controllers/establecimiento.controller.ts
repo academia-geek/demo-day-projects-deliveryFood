@@ -5,7 +5,7 @@ import { QueryResult } from 'pg';
 //Get
 export const getEstablecimiento = async (req: Request, res: Response):Promise<Response> =>{
     try{
-        const response:QueryResult = await pool.query('SELECT * FROM establecimiento ORDER BY id ASC');
+        const response:QueryResult = await pool.query('SELECT * FROM establecimiento ORDER BY id_establecimiento ASC');
         return res.status(200).json(response.rows);
     }catch(e){
         console.log(e);         
@@ -15,12 +15,43 @@ export const getEstablecimiento = async (req: Request, res: Response):Promise<Re
 
 //POST
 export const createEstablecimiento = async (req: Request, res:Response):Promise<Response> =>{
-    const {descripcion,numeroCasa,nomenclatura,barrio,latitud,longitud,nombreUnidad,ciudad,tipo} = req.body;
+    /*TODO:Servicio de crear menu de mongo */
+    const {estado,operacional,nombre,id_menu} = req.body;
     try{
-        const response:QueryResult = await pool.query('INSERT INTO establecimiento (descripcion,numeroCasa,nomenclatura,barrio,latitud,longitud,nombreUnidad,ciudad,tipo) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',[descripcion,numeroCasa,nomenclatura,barrio,latitud,longitud,nombreUnidad,ciudad,tipo]);
-        return res.status(200).json(response.rows);
+        const response:QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu) VALUES ($1,$2,$3,$4)',[estado,operacional,nombre,id_menu]);
+        return res.status(200).json({
+            message:"Establecimiento creado con éxito"
+        });
     }catch(e){
         console.log(e);
         return res.status(500).json('Internal server error');
     }
 }
+
+
+export const updateEstablecimiento = async (req: Request, res: Response) => {
+    const id_establecimiento = parseInt(req.params.id);
+    /*TODO:Servicio de actualizar menu de mongo */
+    try {
+        const {estado,operacional,nombre,id_menu} = req.body;
+        const response: QueryResult = await pool.query('UPDATE usuario SET  "estado" = $1, "operacional" = $2, "nombre" = $3, "id_menu" = $4 WHERE id_establecimiento = $5', [estado,operacional,nombre,id_menu,id_establecimiento])
+        return res.json({
+            message:"Establecimiento actualizado con éxito"
+        });
+    }catch (error) {
+        console.log(error);
+        return res.status(500).json('Internal Server error');
+    }
+};
+
+export const deleteEstablecimiento = async (req: Request, res: Response) => {
+    const id_establecimiento = parseInt(req.params.id);
+    /*TODO:Servicio de eliminar menu de mongo */
+    try {
+        const response: QueryResult = await pool.query('DELETE FROM establecimiento WHERE id_establecimiento = $1', [id_establecimiento]);
+        return res.json(response.rows);
+    }catch (error) {
+        console.log(error);
+        return res.status(500).json('Internal Server error');
+    }
+};

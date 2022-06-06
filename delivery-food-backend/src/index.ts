@@ -9,6 +9,7 @@ dotenv.config();
 import router from './routes/establecimiento.router';
 import routerUsuario from './routes/usuarios.router';
 import swaggerSpec from './docs/swagger-spec';
+import routerPago from './routes/pago.router'
 
 const port = process.env.PORT || 3000;
 // Middlewares
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/establecimientos', router);
 app.use('/api/usuarios', routerUsuario);
+app.use('/api/pagos',routerPago);
 
 // Initialize swagger-jsdoc
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

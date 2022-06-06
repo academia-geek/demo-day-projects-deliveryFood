@@ -16,5 +16,4 @@ module.exports = {
       xl: { max: "1279" },
     },
   },
-  plugins: [],
 };

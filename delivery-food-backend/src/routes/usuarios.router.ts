@@ -13,15 +13,15 @@ routerUsuario.delete('/:id',validator.params(usuarioParamSchema),deleteUser);
 routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
 
 /**
- *  @swagger
- *  components:
- *   schemas:
- *     Usuarios:
- *       type: object
- *       properties:
- *         documento:
- *           type: number
- *           example: 123456789
+ * @swagger
+ * components:
+ *  schemas:
+ *    Usuarios:
+ *      type: object
+ *      properties:
+ *         id_usuario:
+ *           type: integer
+ *           example: 1
  *         nombre:
  *           type: string
  *           description: Nombre del usuario
@@ -31,50 +31,64 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           description: "Apellido del usuario"
  *           example: "Perez"
  *         telefono:
- *           type: string
+ *           type: number
  *           description: "Telefono de contacto"
  *           example: "123456789"
  *         tipo:
  *           type: string
  *           enum:
- *             - "cliente"
- *             - "empleado"
- *             - "admin"
+ *             - "Administrador"
+ *             - "Usuario"
+ *             - "Repartidor"
+ *             - "establecimiento"
  *           description: "Tipo de usuario"
  *           example: "cliente"
  *         email:
  *           type: string
+ *           unique: true
  *           description: "Email del usuario"
  *           example: "email@example.com"
- *       required:
+ *      required:
  *         - documento
  *         - nombre
  *         - apellido
  *         - telefono
  *         - tipo
  *         - email
- *       example:
+ *      example:
+ *         id_usuario: 1
  *         documento: 123456789
  *         nombre: Juan
  *         apellido: Perez
  *         telefono: 123456789
  *         tipo: cliente
  *         email: mail@example.com
- */
-
-/**
- * @swagger
+ * 
+ * 
+ * tags:
+ *   - name: Establecimientos
+ *     description: "Operaciones sobre establecimientos"
+ *   - name: Usuarios
+ *     description: "Operaciones sobre usuarios"
+ *   - name: Pedidos
+ *     description: "Operaciones sobre pedidos"
  * /api/usuarios:
  *   post:
  *     tags:
  *       - Usuarios
+ *     summary: Crea un nuevo usuario
  *     description: Crea un nuevo usuario
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Usuarios'
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         name: body
+ *         description: Datos del usuario
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/Usuarios'
  *     responses:
  *       '200':
  *         description: Usuario creado
@@ -85,7 +99,7 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *             properties:
  *             message:
  *               type: string
- *             example: "usuario creado"
+ *             example: "Usuario registrado con éxito"
  *       '500':
  *         description: Error interno
  *         content:
@@ -99,7 +113,12 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *   get:
  *     tags:
  *       - Usuarios
+ *     summary: Obtiene todos los usuarios
  *     description: Obtiene todos los usuarios
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
  *     responses:
  *       '200':
  *         description: Lista de usuarios
@@ -119,14 +138,11 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *             message:
  *               type: string
  *             example: "Internal Server error"
- */
-
-/**
- * @swagger
- *   /api/usuarios/{documento}:
+ * /api/usuarios/{documento}:
  *   get:
  *     tags:
  *       - Usuarios
+ *     summary: Obtiene un usuario
  *     description: Obtiene un usuario
  *     parameters:
  *       - in: path
@@ -142,16 +158,6 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Usuarios'
- *       '404':
- *         description: Usuario no encontrado
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Usuario no encontrado"
  *       '500':
  *         description: Error interno
  *         content:
@@ -165,6 +171,7 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *   put:
  *     tags:
  *       - Usuarios
+ *     summary: Actualiza un usuario
  *     description: Actualiza un usuario
  *     parameters:
  *       - in: path
@@ -173,20 +180,15 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           type: number
  *         required: true
  *         description: documento del usuario
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Usuarios'
+ *       - in: body
+ *         name: body
+ *         description: Datos del usuario
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/Usuarios'
  *     responses:
  *       '200':
  *         description: Usuario actualizado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Usuarios'
- *       '404':
- *         description: Usuario no encontrado
  *         content:
  *           application/json:
  *             schema:
@@ -194,7 +196,7 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *             properties:
  *             message:
  *               type: string
- *             example: "Usuario no encontrado"
+ *             example: "Usuario actualizado con éxito"
  *       '500':
  *         description: Error interno
  *         content:
@@ -208,6 +210,7 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *   delete:
  *     tags:
  *       - Usuarios
+ *     summary: Elimina un usuario
  *     description: Elimina un usuario
  *     parameters:
  *       - in: path
@@ -226,7 +229,7 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *             properties:
  *             message:
  *               type: string
- *             example: "Usuario eliminado"
+ *             example: "Usuario eliminado con éxito"
  *       '500':
  *         description: Error interno
  *         content:

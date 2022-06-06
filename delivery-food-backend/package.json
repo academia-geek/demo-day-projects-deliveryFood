@@ -1,6 +1,6 @@
 {
-    "name": "API-REST-delivery-food",
-    "version": "0.1.0",
+    "name": "delivery-food",
+    "version": "0.1.2",
     "description": "API for consumption of the aplication delivery food",
     "main": "dist/index.js",
     "scripts": {
@@ -14,7 +14,6 @@
         "type": "git",
         "url": "git+https://github.com/academia-geek/demo-day-projects-deliveryFood.git"
     },
-    "type": "module",
     "keywords": [
         "mongodb",
         "typescript",

@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   onAuthStateChanged,
   updateProfile,
+  sendEmailVerification,
   signOut,
   // sendSignInLinkToEmail
 } from "firebase/auth";
@@ -29,6 +30,14 @@ export const AuthProvider = ({ children }) => {
 
   const addUsernameWhenUserIsRegistered = (userData, username) => {
     return updateProfile(userData, { displayName: username });
+  };
+
+  const addImageAfterUserIsRegistered = async (userData, image) => {
+    return await updateProfile(userData, { photoURL: image });
+  };
+
+  const sendEmailVerificationAfterUserIsRegistered = async () => {
+    return await sendEmailVerification(auth.currentUser);
   };
 
   const loginWithGoogle = () => {
@@ -66,6 +75,8 @@ export const AuthProvider = ({ children }) => {
         loginWithGoogle,
         user,
         addUsernameWhenUserIsRegistered,
+        addImageAfterUserIsRegistered,
+        sendEmailVerificationAfterUserIsRegistered,
         logout,
         loading,
         // sendLinkEmail,

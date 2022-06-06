@@ -1,0 +1,52 @@
+.sidebar-profile-user {
+  background: #023047;
+}
+
+.active-menu-profile {
+  background: #8ecae6;
+  border-radius: 30px;
+  padding: 5px 10px;
+  color: #023047;
+}
+
+.btn-verify-account {
+  margin-top: 10px;
+  padding: 15px;
+  background: #ffb703;
+  color: #023047;
+  border-radius: 5px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 1px -1px rgba(30, 30, 60, 0.5),
+    0px 10px 17px -1px rgba(30, 30, 60, 0.4);
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-verify-account:hover {
+  background: #ffb803d7;
+  transform: translateY(-4px);
+}
+
+input[type="file"].btn-upload-img-user-profile {
+  margin-top: 10px;
+  padding: 15px;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.btn-upload-img-user-profile-icon {
+  background: #ffb703;
+  color: #023047;
+  border-radius: 50%;
+  box-shadow: 0px 2px 1px -1px rgba(30, 30, 60, 0.5),
+    0px 10px 17px -1px rgba(30, 30, 60, 0.4);
+  transition: transform 0.3s ease-in-out;
+  z-index: -4;
+}
+
+input[type="file"].btn-upload-img-user-profile:hover
+  + .btn-upload-img-user-profile-icon {
+  background: #ffb803d7;
+  transform: translateY(-4px);
+  cursor: pointer;
+}

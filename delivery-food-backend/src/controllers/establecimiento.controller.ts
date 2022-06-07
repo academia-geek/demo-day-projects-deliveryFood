@@ -34,7 +34,7 @@ export const updateEstablecimiento = async (req: Request, res: Response) => {
     /*TODO:Servicio de actualizar menu de mongo */
     try {
         const {estado,operacional,nombre,id_menu} = req.body;
-        const response: QueryResult = await pool.query('UPDATE usuario SET  "estado" = $1, "operacional" = $2, "nombre" = $3, "id_menu" = $4 WHERE id_establecimiento = $5', [estado,operacional,nombre,id_menu,id_establecimiento])
+        const response: QueryResult = await pool.query('UPDATE establecimiento SET  "estado" = $1, "operacional" = $2, "nombre" = $3, "id_menu" = $4 WHERE id_establecimiento = $5', [estado,operacional,nombre,id_menu,id_establecimiento])
         return res.json({
             message:"Establecimiento actualizado con éxito"
         });
@@ -53,5 +53,17 @@ export const deleteEstablecimiento = async (req: Request, res: Response) => {
     }catch (error) {
         console.log(error);
         return res.status(500).json('Internal Server error');
+    }
+};
+
+//Get for ID
+export const getEstablecimientoById = async (req: Request, res: Response): Promise<Response> => {
+    const id_usuario = parseInt(req.params.id);
+    try {
+        const response: QueryResult = await pool.query('SELECT * FROM establecimiento WHERE id_establecimiento = $1', [id_usuario]);
+        return res.json(response.rows);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json('Internal Server error');   
     }
 };

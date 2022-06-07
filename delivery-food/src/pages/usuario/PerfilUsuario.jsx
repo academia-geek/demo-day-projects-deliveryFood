@@ -15,7 +15,7 @@ const PerfilUsuario = () => {
   } = useAuth();
 
   useEffect(() => {
-    document.title = `Delivery Food | ${user.displayName}`;
+    document.title = `${user.displayName} | Delivery Food`;
   }, [user]);
 
   const handleImage = async ({ target }) => {
@@ -52,7 +52,7 @@ const PerfilUsuario = () => {
         <img
           src={user.photoURL}
           alt={user.displayName}
-          className=" w-44 mt-5"
+          className=" w-52 h-52 mt-5"
           style={{ borderRadius: "50%" }}
         />
         <div className="w-full flex justify-evenly mt-10 ">

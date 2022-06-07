@@ -15,7 +15,7 @@ export default function Register() {
   const [email, setEmail] = useState({ campo: "", error: false });
   const [password, setPassword] = useState({ campo: "", error: false });
 
-  const [linkEmail, setLinkEmail] = useState({ campo: "", error: false })
+  // const [linkEmail, setLinkEmail] = useState({ campo: "", error: false })
 
   const navigate = useNavigate();
   const { createUser, loginWithGoogle, addUsernameWhenUserIsRegistered } =

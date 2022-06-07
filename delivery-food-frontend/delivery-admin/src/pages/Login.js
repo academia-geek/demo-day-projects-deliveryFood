@@ -69,9 +69,9 @@ export default function Login() {
 
           {smUp && (
             <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-              Don’t have an account? {''}
+              ¿No tienes una cuenta? {''}
               <Link variant="subtitle2" component={RouterLink} to="/register">
-                Get started
+                Registrate aquí
               </Link>
             </Typography>
           )}

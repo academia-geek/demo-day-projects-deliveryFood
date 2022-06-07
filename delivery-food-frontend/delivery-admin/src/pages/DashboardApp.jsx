@@ -27,7 +27,7 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Hola, bienvenido de nuevo 
         </Typography>
 
         <Grid container spacing={3}>
@@ -49,7 +49,7 @@ export default function DashboardApp() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
-              title="Website Visits"
+              title="Ventas por Categoria"
               subheader="(+43%) than last year"
               chartLabels={[
                 '01/01/2003',
@@ -66,19 +66,19 @@ export default function DashboardApp() {
               ]}
               chartData={[
                 {
-                  name: 'Team A',
+                  name: 'Comidas Rapidas',
                   type: 'column',
                   fill: 'solid',
                   data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
                 },
                 {
-                  name: 'Team B',
+                  name: 'Mercado',
                   type: 'area',
                   fill: 'gradient',
                   data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
                 },
                 {
-                  name: 'Team C',
+                  name: 'Bebidas',
                   type: 'line',
                   fill: 'solid',
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
@@ -108,7 +108,7 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates
               title="Conversion Rates"
-              subheader="(+43%) than last year"
+              subheader="(+43%) than last ye"
               chartData={[
                 { label: 'Italy', value: 400 },
                 { label: 'Japan', value: 430 },

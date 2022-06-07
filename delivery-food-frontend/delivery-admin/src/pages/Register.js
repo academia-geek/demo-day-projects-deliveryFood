@@ -68,9 +68,9 @@ export default function Register() {
           <Logo />
           {smUp && (
             <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-              Already have an account? {''}
+              Ya tienes cuenta? {''}
               <Link variant="subtitle2" component={RouterLink} to="/login">
-                Login
+                Inicia sesión aquí
               </Link>
             </Typography>
           )}
@@ -79,7 +79,7 @@ export default function Register() {
         {mdUp && (
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Manage the job more effectively with Minimal
+              Ventas, administracion del personal, estadisticas y muchos benficios más
             </Typography>
             <img alt="register" src="/static/illustrations/illustration_register.png" />
           </SectionStyle>
@@ -88,23 +88,23 @@ export default function Register() {
         <Container>
           <ContentStyle>
             <Typography variant="h4" gutterBottom>
-              Get started absolutely free.
+              Registrate como administrador 
             </Typography>
 
-            <Typography sx={{ color: 'text.secondary', mb: 5 }}>Free forever. No credit card needed.</Typography>
-
-            <AuthSocial />
+            <Typography sx={{ color: 'text.secondary', mb: 5 }}>Tendrás acceso a toda la información y estadisticas de tu restaurante</Typography>
 
             <RegisterForm />
 
+            <AuthSocial />
+
             <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
-              By registering, I agree to Minimal&nbsp;
+              Al registrarse, aceptas los&nbsp;
               <Link underline="always" color="text.primary" href="#">
-                Terms of Service
+                Terminos de servicio
               </Link>
-              {''}and{''}
+              {' '}y{' '}
               <Link underline="always" color="text.primary" href="#">
-                Privacy Policy
+                la politica de privacidad
               </Link>
               .
             </Typography>
@@ -113,7 +113,7 @@ export default function Register() {
               <Typography variant="body2" sx={{ mt: 3, textAlign: 'center' }}>
                 Already have an account?{' '}
                 <Link variant="subtitle2" to="/login" component={RouterLink}>
-                  Login
+                  Inicia sesión 
                 </Link>
               </Typography>
             )}

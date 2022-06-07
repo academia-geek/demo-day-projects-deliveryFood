@@ -21,12 +21,6 @@ export default function AuthSocial() {
           <Iconify icon="eva:twitter-fill" color="#1C9CEA" width={22} height={22} />
         </Button>
       </Stack>
-
-      <Divider sx={{ my: 3 }}>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          OR
-        </Typography>
-      </Divider>
     </>
   );
 }

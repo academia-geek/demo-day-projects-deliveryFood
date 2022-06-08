@@ -56,9 +56,9 @@ export const deletePago = async (req: Request, res: Response) => {
 
 //Get for ID
 export const getPagoById = async (req: Request, res: Response): Promise<Response> => {
-    const id_usuario = parseInt(req.params.id);
+    const id_pago = parseInt(req.params.id);
     try {
-        const response: QueryResult = await pool.query('SELECT * FROM usuario WHERE id_pago= $1', [id_usuario]);
+        const response: QueryResult = await pool.query('SELECT * FROM pago WHERE id_pago= $1', [id_pago]);
         return res.json(response.rows);
     } catch (error) {
         console.log(error);

@@ -61,6 +61,8 @@ export default function Register() {
 
   const mdUp = useResponsive('up', 'md');
 
+
+
   return (
     <Page title="Register">
       <RootStyle>
@@ -106,14 +108,13 @@ export default function Register() {
               <Link underline="always" color="text.primary" href="#">
                 la politica de privacidad
               </Link>
-              .
             </Typography>
 
             {!smUp && (
               <Typography variant="body2" sx={{ mt: 3, textAlign: 'center' }}>
                 Already have an account?{' '}
                 <Link variant="subtitle2" to="/login" component={RouterLink}>
-                  Inicia sesión 
+                  Iniciar sesión 
                 </Link>
               </Typography>
             )}

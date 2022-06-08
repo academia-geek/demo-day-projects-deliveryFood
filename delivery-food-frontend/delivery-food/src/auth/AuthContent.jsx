@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const sendEmailVerificationAfterUserIsRegistered = async () => {
-    await sendEmailVerification(auth.currentUser);
+    return await sendEmailVerification(auth.currentUser);
   };
 
   const loginWithGoogle = () => {

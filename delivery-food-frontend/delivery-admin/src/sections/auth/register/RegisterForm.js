@@ -7,6 +7,7 @@ import { Stack, TextField, IconButton, InputAdornment, Divider, Typography } fro
 import { LoadingButton } from '@mui/lab';
 // component
 import Iconify from '../../../components/Iconify';
+import { useAuth } from '../AuthPeticiones';
 
 // ----------------------------------------------------------------------
 
@@ -15,24 +16,36 @@ export default function RegisterForm() {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const { createUser, loginWithGoogle, addUsernameWhenUserIsRegistered } = useAuth();
+
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('First name required'),
-    lastName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Last name required'),
+    name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('First name required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
   });
 
+  const createUserWithEmailAndPassword = async (name, email, password) => {
+    try {
+      createUser(email, password).then(({ user }) => {
+        addUsernameWhenUserIsRegistered(user, name);
+        window.location.href = `/dashboard/app`;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
       password: '',
     },
     validationSchema: RegisterSchema,
-    onSubmit: () => {
-      
-      navigate('/dashboard', { replace: true });
+    onSubmit: (values) => {
+      console.log(values);
+      createUserWithEmailAndPassword(values.name, values.email, values.password)
+      // navigate('/dashboard', { replace: true });
     },
   });
 
@@ -43,23 +56,23 @@ export default function RegisterForm() {
       <FormikProvider value={formik}>
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <Stack spacing={3}>
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            {/* <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}> */}
               <TextField
                 fullWidth
-                label="Nombres"
-                {...getFieldProps('firstName')}
-                error={Boolean(touched.firstName && errors.firstName)}
-                helperText={touched.firstName && errors.firstName}
+                label="Nombre Completo"
+                {...getFieldProps('name')}
+                error={Boolean(touched.name && errors.name)}
+                helperText={touched.name && errors.name}
                 />
 
-              <TextField
+              {/* <TextField
                 fullWidth
                 label="Apellidos"
                 {...getFieldProps('lastName')}
                 error={Boolean(touched.lastName && errors.lastName)}
                 helperText={touched.lastName && errors.lastName}
-                />
-            </Stack>
+                /> */}
+            {/* </Stack> */}
 
             <TextField
               fullWidth

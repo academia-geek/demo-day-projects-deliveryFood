@@ -64,6 +64,8 @@ export default routerEstablecimiento;
  *     description: "Operaciones sobre pedidos"
  *   - name: Pagos
  *     description: "Operaciones sobre pagos"
+ *   - name: Direcciones
+ *     description: "Operaciones sobre direcciones"
  * /api/establecimientos:
  *   post:
  *     tags:
@@ -85,7 +87,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Establecimiento creado"
  *       '500':
@@ -95,7 +97,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  *   get:
@@ -119,7 +121,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  * 
@@ -144,7 +146,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Establecimiento encontrado"
  *       '500':
@@ -154,7 +156,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  *   put:
@@ -183,7 +185,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Establecimiento actualizado"
  *       '500':
@@ -193,7 +195,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  *   delete:
@@ -216,7 +218,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Establecimiento eliminado"
  *       '500':
@@ -226,7 +228,7 @@ export default routerEstablecimiento;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
 */

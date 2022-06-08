@@ -88,20 +88,20 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Usuario registrado con éxito"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario registrado con éxito"
  *       '500':
  *         description: Error interno
  *         content:
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Internal Server error"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Internal Server error"
  *   get:
  *     tags:
  *       - Usuarios
@@ -119,17 +119,17 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *             schema:
  *               type: array
  *               items:
- *                $ref: '#/components/schemas/Usuarios'
+ *                 $ref: '#/components/schemas/Usuarios'
  *       '500':
  *         description: Error interno
  *         content:
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Internal Server error"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Internal Server error"
  * 
  * /api/usuarios/{documento}:
  *   get:
@@ -157,10 +157,10 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Internal Server error"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Internal Server error"
  *   put:
  *     tags:
  *       - Usuarios
@@ -186,20 +186,20 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Usuario actualizado con éxito"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario actualizado con éxito"
  *       '500':
  *         description: Error interno
  *         content:
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Internal Server error"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Internal Server error"
  *   delete:
  *     tags:
  *       - Usuarios
@@ -219,20 +219,20 @@ routerUsuario.get('/:id',validator.params(usuarioParamSchema),getUserById);
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Usuario eliminado con éxito"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario eliminado con éxito"
  *       '500':
  *         description: Error interno
  *         content:
  *           application/json:
  *             schema:
  *               type: object
- *             properties:
- *             message:
- *               type: string
- *             example: "Internal Server error"
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Internal Server error"
  */
 
 export default routerUsuario;

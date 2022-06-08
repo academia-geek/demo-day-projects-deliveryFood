@@ -83,7 +83,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Pago registrado con éxito"
  *       '500':
@@ -93,7 +93,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  *   get:
@@ -117,7 +117,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  * /api/pagos/{id_pago}:
@@ -148,7 +148,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  *   put:
@@ -177,7 +177,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Pago actualizado con éxito"
  *       '500':
@@ -187,7 +187,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  *   delete:
@@ -210,7 +210,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Pago eliminado con éxito"
  *       '500':
@@ -220,7 +220,7 @@ export default routerPago;
  *             schema:
  *               type: object
  *               properties:
- *                 mensaje:
+ *                 message:
  *                   type: string
  *                   example: "Internal Server error"
  */

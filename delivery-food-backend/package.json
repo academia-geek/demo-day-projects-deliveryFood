@@ -1,6 +1,6 @@
 {
     "name": "delivery-food",
-    "version": "0.1.3",
+    "version": "0.1.5",
     "description": "API for consumption of the aplication delivery food",
     "main": "dist/index.js",
     "scripts": {

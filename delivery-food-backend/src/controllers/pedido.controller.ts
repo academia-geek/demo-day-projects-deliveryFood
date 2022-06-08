@@ -49,7 +49,9 @@ export const deletePedido = async (req: Request, res: Response) => {
     /*TODO:Servicio de eliminar menu de mongo */
     try {
         const response: QueryResult = await pool.query('DELETE FROM pedido WHERE codigoOrden = $1', [id_pedido]);
-        return res.json(response.rows);
+        return res.json({
+            message:"Pedido eliminado con éxito"
+        });
     }catch (error) {
         console.log(error);
         return res.status(500).json('Internal Server error');

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../auth/AuthContent";
 import { SideBar } from "../../components/SideBar";
 import { CloudUploadIcon, CheckIcon } from "@heroicons/react/solid";
@@ -6,23 +6,16 @@ import { fileUpload } from "../../services/fileUpload";
 import Swal from "sweetalert2";
 
 import "../../styles/perfilUsuario.css";
-import { ModalEditUser } from "../../components/ModalEditUser";
 
 const PerfilUsuario = () => {
-  const [modalState, setModalState] = useState(false);
-
   const {
     user,
     addImageAfterUserIsRegistered,
     sendEmailVerificationAfterUserIsRegistered,
   } = useAuth();
 
-  const showModal = () => {
-    setModalState(true);
-  };
-
   useEffect(() => {
-    document.title = `${user.displayName} | Delivery Food`;
+    document.title = `Delivery Food | ${user.displayName}`;
   }, [user]);
 
   const handleImage = async ({ target }) => {
@@ -53,73 +46,47 @@ const PerfilUsuario = () => {
 
   return (
     <div className="flex">
-      <SideBar username={user.email.split("@")[0]} modalState={modalState} />
-      <div
-        className="container-user-profile w-10/12 flex flex-col items-center p-10 bg-slate-100 h-screen
-       relative overflow-y-scroll"
-      >
-        {!user.emailVerified && (
-          <h1 className="w-full text-center bg-yellow-400 text-xl p-2">
-            Si ya verificaste tu cuenta recarga la pagina
-          </h1>
-        )}
-        <div className="flex flex-col items-center">
-          <img
-            src={user.photoURL}
-            alt={user.displayName}
-            className="img-user-profile w-52 h-52 mt-5 border-4"
-            style={{ borderRadius: "50%" }}
-          />
-          <h1 className="text-2xl mt-2">{user.displayName}</h1>
-          <div className="w-full flex justify-evenly mt-10 ">
-            {!user.emailVerified && (
-              <div className="flex flex-col justify-center items-center p-5 rounded-md">
-                <h2 className="">No has verificado tu correo</h2>
-                <div>
-                  <button
-                    className="btn-verify-account self-start flex items-center gap-2"
-                    onClick={handleEmailVerification}
-                  >
-                    <CheckIcon className="h-7 w-7" />
-                  </button>
-                </div>
+      <SideBar username={user.email.split("@")[0]} />
+      <div className="w-10/12 flex flex-col items-center pt-10">
+        <h1 className="text-2xl">Bienvenid@ {user.displayName}</h1>
+        <img
+          src={user.photoURL}
+          alt={user.displayName}
+          className=" w-44 mt-5"
+          style={{ borderRadius: "50%" }}
+        />
+        <div className="w-full flex justify-evenly mt-10 ">
+          {!user.emailVerified && (
+            <div className="flex flex-col justify-center items-center p-5 rounded-md">
+              <h2 className="">No has verificado tu correo</h2>
+              <div>
+                <button
+                  className="btn-verify-account self-start flex items-center gap-2"
+                  onClick={handleEmailVerification}
+                >
+                  <CheckIcon className="h-7 w-7" />
+                </button>
               </div>
-            )}
-            {!user.photoURL && (
-              <div className="flex flex-col justify-center items-center  p-5 rounded-md gap-2">
-                <h2 className="">No has subido una foto de perfil</h2>
-                <div className="relative">
-                  <input
-                    type="file"
-                    className="btn-upload-img-user-profile self-start flex 
+            </div>
+          )}
+          {!user.photoURL && (
+            <div className="flex flex-col justify-center items-center  p-5 rounded-md gap-2">
+              <h2 className="">No has subido una foto de perfil</h2>
+              <div className="relative">
+                <input
+                  type="file"
+                  className="btn-upload-img-user-profile self-start flex 
                 items-center gap-2 w-14"
-                    onChange={handleImage}
-                  />
-                  <CloudUploadIcon
-                    className="btn-upload-img-user-profile-icon h-16 p-3 w-16
+                  onChange={handleImage}
+                />
+                <CloudUploadIcon
+                  className="btn-upload-img-user-profile-icon h-16 p-3 w-16
                  absolute top-0 left-0"
-                  />
-                </div>
+                />
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-        {user.photoURL && user.emailVerified && (
-          <div
-            className="container-btns-ubication-edit-profile-user w-full flex 
-          justify-around mt-5"
-          >
-            <button>Añadir ubicacion</button>
-            <button onClick={showModal}>Editar Perfil</button>
-          </div>
-        )}
-        {modalState ? (
-          <ModalEditUser
-            user={user}
-            modalState={modalState}
-            setModalState={setModalState}
-          />
-        ) : null}
       </div>
     </div>
   );

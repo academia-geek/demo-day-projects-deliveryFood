@@ -1,11 +1,10 @@
 import { ObjectId } from "mongodb";
 
-export default interface DeliveryFood {
+export default interface Menu {
     tipo_menu: string;  
     items: Array<items>;
     id?: ObjectId;
 };
-
 interface items {    
     nombre: string;            
     descripcion: string;
@@ -15,7 +14,7 @@ interface items {
     opcion: Array<opcion>;
     adicionales: Array<adicionales>;
     comentarios: string;
-    id_plato: ObjectId;
+    id_plato?: ObjectId;
 };
 interface opcion {            
     nombre: string;

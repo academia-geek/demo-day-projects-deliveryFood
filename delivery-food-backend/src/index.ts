@@ -5,13 +5,14 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import { connectToDatabase } from "./services/database.service.mongo";
 import cors   from 'cors';
 import router from './routes/routes';
-
+import { ObjectId } from 'mongodb';
+var bodyParser=require('body-parser')
 
 const app = express();
 const port = 8070;
 app.use(cors());
 app.use(express.json());
-
+app.use(bodyParser.json())
 
 connectToDatabase()
     .then(() => {   

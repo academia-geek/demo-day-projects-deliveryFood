@@ -16,11 +16,11 @@ import {
 } from "../controllers/mongo/menu.controller";
 
 router.get("/getmenu/:id", getmenuID);
-router.post("/createMenu",validator.body(menuSchema), postMenu);
-router.post("/createItems/:id",validator.body(itemsSchema), postItems);
+router.post("/createMenu", validator.body(menuSchema), postMenu);
+router.post("/createItems/:id", validator.body(itemsSchema), postItems);
 router.delete("/deletemenu/:id", deletemenuID);
-router.patch("/editMenu/:id",validator.body(menuSchema), patchmenuID);
-router.patch("/editItems/:id",validator.body(itemsSchema), editItemsMenuId);
+router.patch("/editMenu/:id", validator.body(menuSchema), patchmenuID);
+router.patch("/editItems/:id", validator.body(itemsSchema), editItemsMenuId);
 router.delete("/deleteItems/:id", deleteItemsMenuId);
 
 export default router;

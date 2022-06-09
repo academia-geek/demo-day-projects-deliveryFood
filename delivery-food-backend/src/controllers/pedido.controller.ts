@@ -1,28 +1,28 @@
-import {Request,Response} from 'express';
-import {pool} from '../db/db';
+import { Request, Response } from 'express';
+import { pool } from '../db/db';
 import { QueryResult } from 'pg';
 
 //Get
-export const getPedido = async (req: Request, res: Response):Promise<Response> =>{
-    try{
-        const response:QueryResult = await pool.query('SELECT * FROM pedido ORDER BY codigoOrden ASC');
+export const getPedido = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const response: QueryResult = await pool.query('SELECT * FROM pedido ORDER BY codigoOrden ASC');
         return res.status(200).json(response.rows);
-    }catch(e){
-        console.log(e);         
+    } catch (e) {
+        console.log(e);
         return res.status(500).json('Internal server error');
     }
 };
 
 //POST
-export const createPedido = async (req: Request, res:Response):Promise<Response> =>{
+export const createPedido = async (req: Request, res: Response): Promise<Response> => {
     /*TODO:Servicio de crear menu de mongo */
-    const {id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento} = req.body;
-    try{
-        const response:QueryResult = await pool.query('INSERT INTO establecimiento (id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento) VALUES ($1,$2,$3,$4)',[id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento]);
+    const { id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento } = req.body;
+    try {
+        const response: QueryResult = await pool.query('INSERT INTO establecimiento (id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento) VALUES ($1,$2,$3,$4)', [id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento]);
         return res.status(200).json({
-            message:"Pedido creado con éxito"
+            message: "Pedido creado con éxito"
         });
-    }catch(e){
+    } catch (e) {
         console.log(e);
         return res.status(500).json('Internal server error');
     }
@@ -33,12 +33,12 @@ export const updatePedido = async (req: Request, res: Response) => {
     const id_pedido = parseInt(req.params.id);
     /*TODO:Servicio de actualizar menu de mongo */
     try {
-        const {id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento} = req.body;
-        const response: QueryResult = await pool.query('UPDATE usuario SET  "id_usuario" = $1, "id_itempedido" = $2, "impuestos" = $3, "tipoEntrega" = $4, "valorDomicilio" = $5 , "estadoDelPedido" = $6, "hora" = $7, "fecha" = $8, "valorTotal" = $9, "descuento" = $10 WHERE codigoOrden = $5', [id_usuario,id_itempedido,impuestos,tipoEntrega,valorDomicilio,estadoDelPedido,hora,fecha,valorTotal,descuento,id_pedido])
+        const { id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento } = req.body;
+        const response: QueryResult = await pool.query('UPDATE usuario SET  "id_usuario" = $1, "id_itempedido" = $2, "impuestos" = $3, "tipoEntrega" = $4, "valorDomicilio" = $5 , "estadoDelPedido" = $6, "hora" = $7, "fecha" = $8, "valorTotal" = $9, "descuento" = $10 WHERE codigoOrden = $5', [id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento, id_pedido])
         return res.json({
-            message:"Pedido actualizado con éxito"
+            message: "Pedido actualizado con éxito"
         });
-    }catch (error) {
+    } catch (error) {
         console.log(error);
         return res.status(500).json('Internal Server error');
     }
@@ -50,9 +50,9 @@ export const deletePedido = async (req: Request, res: Response) => {
     try {
         const response: QueryResult = await pool.query('DELETE FROM pedido WHERE codigoOrden = $1', [id_pedido]);
         return res.json({
-            message:"Pedido eliminado con éxito"
+            message: "Pedido eliminado con éxito"
         });
-    }catch (error) {
+    } catch (error) {
         console.log(error);
         return res.status(500).json('Internal Server error');
     }
@@ -67,6 +67,6 @@ export const getPedidoById = async (req: Request, res: Response): Promise<Respon
         return res.json(response.rows);
     } catch (error) {
         console.log(error);
-        return res.status(500).json('Internal Server error');   
+        return res.status(500).json('Internal Server error');
     }
 };

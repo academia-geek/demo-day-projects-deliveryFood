@@ -1,4 +1,4 @@
-REATE DATABASE deliveryfood WITH
+CREATE DATABASE deliveryfood WITH
 OWNER = 'postgres'
 ENCODING = 'UTF8';
 
@@ -29,7 +29,7 @@ CREATE TABLE usuario(
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Ingrid','ARgote','5454646','Usuario','ingrid@gmail.com');
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Armando','Perez','5454646','Establecimiento','tipicos@gmail.com');
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Gerardo','Pinzon','5454646','Repartidor','domicilios@gmail.com');
---INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Catalina','Sanchez','5454646','Administrador','cata@deliveryfood.com');
+INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Catalina','Sanchez','5454646','Administrador','cata@deliveryfood.com');
 
 
 CREATE TYPE enum_estadoE AS ENUM('ACTIVO','INACTIVO');
@@ -44,7 +44,7 @@ CREATE TABLE establecimiento(
     id_establecimiento INTEGER NOT NULL DEFAULT NEXTVAL('establecimiento_id_seq'),
     estado enum_estadoE NOT NULL,  
     operacional enum_operacional NOT NULL,
-    nombre VARCHAR(255) NOT NULL, 
+    nombre VARCHAR(255) NOT NULL UNIQUE, 
     id_menu VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_establecimiento)
 );
@@ -108,29 +108,29 @@ CREATE TABLE pago(
 
 
 CREATE SEQUENCE direccion_id_seq
-        START WITH 1
-        INCREMENT BY 1
-        NO MINVALUE
-        NO MAXVALUE;
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE;
 
-    CREATE TABLE direccion(
-        id_direccion  INTEGER NOT NULL DEFAULT NEXTVAL('direccion_id_seq'),
-        id_establecimiento INTEGER,
-        descripcion VARCHAR(20) NOT NULL,
-        direccion VARCHAR(100) NOT NULL,    
-        nombreBarrio VARCHAR(255),
-        latitud   FLOAT(7) NOT NULL,
-        longitud  FLOAT(7) NOT NULL, 
-        unidad VARCHAR(100),
-        ciudad VARCHAR(100) NOT NULL,
-        id_usuario INTEGER,
-        PRIMARY KEY (id_direccion),
-        CONSTRAINT fk_usuario
-            FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
-            ON DELETE RESTRICT
-            ON UPDATE CASCADE,
-        CONSTRAINT fk_establecimiento
-            FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
-            ON DELETE RESTRICT
-            ON UPDATE CASCADE
-    );
+CREATE TABLE direccion(
+    id_direccion  INTEGER NOT NULL DEFAULT NEXTVAL('direccion_id_seq'),
+    id_establecimiento INTEGER,
+    descripcion VARCHAR(20) NOT NULL,
+    direccion VARCHAR(100) NOT NULL,    
+    nombreBarrio VARCHAR(255),
+    latitud   FLOAT(7) NOT NULL,
+    longitud  FLOAT(7) NOT NULL, 
+    unidad VARCHAR(100),
+    ciudad VARCHAR(100) NOT NULL,
+    id_usuario INTEGER,
+    PRIMARY KEY (id_direccion),
+    CONSTRAINT fk_usuario
+        FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_establecimiento
+        FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);

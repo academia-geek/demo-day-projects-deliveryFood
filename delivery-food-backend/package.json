@@ -1,7 +1,7 @@
 {
-    "name": "delivery-food",
-    "version": "0.1.5",
-    "description": "API for consumption of the aplication delivery food",
+    "name": "deliveryfood-api",
+    "version": "0.2.0",
+    "description": "Welcome to this delivery food API project",
     "main": "dist/index.js",
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
@@ -18,10 +18,18 @@
         "mongodb",
         "typescript",
         "express",
-        "atlas"
+        "atlas",
+        "api",
+        "joi",
+        "swagger",
+        "GCP",
+        "firebase"
     ],
+    "author": "Ingrid Argote, Juan Hoyos, Marco Pineda",
     "license": "MIT licence",
+    "homepage": "https://github.com/academia-geek/demo-day-projects-deliveryFood/blob/main/README.md",
     "dependencies": {
+        "@types/pg": "^8.6.5",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",

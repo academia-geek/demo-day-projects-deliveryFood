@@ -1,26 +1,31 @@
 import { faker } from '@faker-js/faker';
 import { sample } from 'lodash';
+import {getApi} from '../helpers/api';
 
 // ----------------------------------------------------------------------
-
+const getUsers = async() => {
+  const respond = await getApi('get', 'usuarios');
+  return respond;
+}
+// const users = getUsers()?.map((_, index) => ({
 const users = [...Array(24)].map((_, index) => ({
   id: faker.datatype.uuid(),
   avatarUrl: `/static/mock-images/avatars/avatar_${index + 1}.jpg`,
   name: faker.name.findName(),
-  company: faker.company.companyName(),
-  isVerified: faker.datatype.boolean(),
+  email: faker.company.companyName(),
+  isVerified:'hola:v',
   status: sample(['active', 'banned']),
-  role: sample([
-    'Leader',
-    'Hr Manager',
-    'UI Designer',
-    'UX Designer',
-    'UI/UX Designer',
-    'Project Manager',
-    'Backend Developer',
-    'Full Stack Designer',
-    'Front End Developer',
-    'Full Stack Developer',
+  document: sample([
+    5,
+    1,
+    7,
+    2,
+    9,
+    3,
+    6,
+    8,
+    0,
+    4,
   ]),
 }));
 

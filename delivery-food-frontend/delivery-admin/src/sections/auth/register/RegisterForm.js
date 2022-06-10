@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { Stack, TextField, IconButton, InputAdornment, Divider, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // component
+import {postApi} from '../../../helpers/api';
 import Iconify from '../../../components/Iconify';
+import { useAuth } from '../AuthPeticiones';
 
 // ----------------------------------------------------------------------
 
@@ -15,10 +17,13 @@ export default function RegisterForm() {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const { createUser, addUsernameWhenUserIsRegistered } = useAuth();
+
   const RegisterSchema = Yup.object().shape({
     firstName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('First name required'),
     lastName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Last name required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
+    number: Yup.string(),
     password: Yup.string().required('Password is required'),
   });
 
@@ -27,12 +32,27 @@ export default function RegisterForm() {
       firstName: '',
       lastName: '',
       email: '',
+      number: '',
       password: '',
     },
     validationSchema: RegisterSchema,
-    onSubmit: () => {
-      
-      navigate('/dashboard', { replace: true });
+    onSubmit: async(value) => {
+      const objUser = {
+        nombre: value.firstName,
+        apellido: value.lastName,
+        email: value.email,
+        number: value.number,
+        password: value.password,
+      }
+      console.log(objUser);
+      try {
+        const user = createUser(value.email, value.password);
+        addUsernameWhenUserIsRegistered(user, `${value.firstName} ${value.lastName}`);
+        postApi('post', 'usuarios', objUser)
+        navigate(`/dashboard/app`);
+      } catch (error) {
+      console.log(error);
+      }
     },
   });
 
@@ -63,13 +83,21 @@ export default function RegisterForm() {
 
             <TextField
               fullWidth
-              autoComplete="username"
               type="email"
               label="Email"
               {...getFieldProps('email')}
               error={Boolean(touched.email && errors.email)}
               helperText={touched.email && errors.email}
               />
+
+            <TextField
+              fullWidth
+              type="number"
+              label="Número de teléfono"
+              {...getFieldProps('number')}
+              error={Boolean(touched.number && errors.number)}
+              helperText={touched.number && errors.number}
+            />
 
             <TextField
               fullWidth

@@ -10,6 +10,7 @@ import Logo from '../components/Logo';
 // sections
 import { RegisterForm } from '../sections/auth/register';
 import AuthSocial from '../sections/auth/AuthSocial';
+import {postApi} from '../helpers/api';
 
 // ----------------------------------------------------------------------
 
@@ -61,7 +62,9 @@ export default function Register() {
 
   const mdUp = useResponsive('up', 'md');
 
-
+  const methodApi = async(objUser) => {
+    await postApi('post', 'usuarios', objUser);
+  }
 
   return (
     <Page title="Register">
@@ -97,7 +100,7 @@ export default function Register() {
 
             <RegisterForm />
 
-            <AuthSocial />
+            <AuthSocial methodApi={methodApi}/>
 
             <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
               Al registrarse, aceptas los&nbsp;

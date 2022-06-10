@@ -2,6 +2,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
   onAuthStateChanged,
@@ -10,7 +11,7 @@ import {
   signOut,
   // sendSignInLinkToEmail
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 
 const contextAuth = createContext();
 
@@ -31,13 +32,13 @@ export const AuthProvider = ({ children }) => {
   const addUsernameWhenUserIsRegistered = (userData, username) => {
     return updateProfile(userData, { displayName: username });
   };
-
+// Await 
   const addImageAfterUserIsRegistered = async (userData, image) => {
-    return await updateProfile(userData, { photoURL: image });
+    return updateProfile(userData, { photoURL: image });
   };
-
+// Await 
   const sendEmailVerificationAfterUserIsRegistered = async () => {
-    return await sendEmailVerification(auth.currentUser);
+    return sendEmailVerification(auth.currentUser);
   };
 
   const loginWithGoogle = () => {
@@ -45,8 +46,14 @@ export const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const loginWithFacebook = () => {
+    const facebookProvider = new FacebookAuthProvider();
+    return signInWithPopup(auth, facebookProvider);
+  };
+
+// Await 
   const logout = async () => {
-    return await signOut(auth);
+    return signOut(auth);
   };
 
   // const sendLinkEmail = (email) => {
@@ -73,6 +80,7 @@ export const AuthProvider = ({ children }) => {
         createUser,
         loginWithEmailandPassword,
         loginWithGoogle,
+        loginWithFacebook,
         user,
         addUsernameWhenUserIsRegistered,
         addImageAfterUserIsRegistered,

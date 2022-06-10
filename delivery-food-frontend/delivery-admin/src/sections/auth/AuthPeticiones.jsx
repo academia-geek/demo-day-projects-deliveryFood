@@ -49,9 +49,10 @@ export const AuthProvider = ({ children }) => {
     const facebookProvider = new FacebookAuthProvider();
     return signInWithPopup(auth, facebookProvider);
   };
+
 // Await 
   const logout = async () => {
-    return  signOut(auth);
+    return signOut(auth);
   };
 
   // const sendLinkEmail = (email) => {

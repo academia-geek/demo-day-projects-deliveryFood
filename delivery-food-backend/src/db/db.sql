@@ -21,7 +21,7 @@ CREATE TABLE usuario(
     id_usuario INTEGER NOT NULL DEFAULT NEXTVAL('usuario_id_seq'),
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
-    telefono INTEGER NOT NULL,
+    telefono BIGINT NOT NULL,
     tipo enum_tipo NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (id_usuario));
@@ -124,13 +124,5 @@ CREATE TABLE direccion(
     unidad VARCHAR(100),
     ciudad VARCHAR(100) NOT NULL,
     id_usuario INTEGER,
-    PRIMARY KEY (id_direccion),
-    CONSTRAINT fk_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE,
-    CONSTRAINT fk_establecimiento
-        FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
+    PRIMARY KEY (id_direccion)    
 );

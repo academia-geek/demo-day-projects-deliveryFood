@@ -4,11 +4,11 @@ ENCODING = 'UTF8';
 
 
 --Eliminacion de tablas---
-DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS pago;
 DROP TABLE IF EXISTS direccion;
 DROP TABLE IF EXISTS pedido;
 DROP TABLE IF EXISTS establecimiento;
+DROP TABLE IF EXISTS usuario;
 
 
 CREATE TYPE enum_tipo AS ENUM('Administrador','Usuario','Repartidor','Establecimiento');
@@ -21,7 +21,7 @@ CREATE TABLE usuario(
     id_usuario INTEGER NOT NULL DEFAULT NEXTVAL('usuario_id_seq'),
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
-    telefono INTEGER NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
     tipo enum_tipo NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (id_usuario));
@@ -29,7 +29,7 @@ CREATE TABLE usuario(
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Ingrid','ARgote','5454646','Usuario','ingrid@gmail.com');
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Armando','Perez','5454646','Establecimiento','tipicos@gmail.com');
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Gerardo','Pinzon','5454646','Repartidor','domicilios@gmail.com');
-INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Catalina','Sanchez','5454646','Administrador','cata@deliveryfood.com');
+-- INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Catalina','Sanchez','5454646','Administrador','cata@deliveryfood.com');
 
 
 CREATE TYPE enum_estadoE AS ENUM('ACTIVO','INACTIVO');

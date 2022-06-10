@@ -57,7 +57,6 @@ routerUsuario.get('/:id', validator.params(usuarioParamSchema), getUserById);
  *          - email
  *        example:
  *          id_usuario: 1
- *          documento: 123456789
  *          nombre: Juan
  *          apellido: Perez
  *          telefono: 123456789

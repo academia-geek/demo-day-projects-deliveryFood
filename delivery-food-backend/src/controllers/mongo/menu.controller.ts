@@ -32,7 +32,7 @@ export const postMenu = async (req: Request, res: Response) => {
     try {
         let data = req.body;
         let { insertedId } = await collections.Menu.insertOne(data);
-        res.status(200).send(insertedId);
+        res.status(200).json({ message: "Menu creado correctamente", id: insertedId });
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -45,7 +45,7 @@ export const postItems = async (req: Request, res: Response) => {
         data.id_plato = new ObjectId(data.id_plato);
         let id = new ObjectId(req.params.id);
         await collections.Menu.updateOne({ _id: id }, { $push: { items: data } });
-        res.status(200).send({ message: "Items agregados" });
+        res.status(200).json({ message: "Items agregados" });
     } catch (error) {
         res.status(500).send(error.message);
     }

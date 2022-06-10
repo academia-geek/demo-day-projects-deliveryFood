@@ -5,7 +5,7 @@ import morgan from "morgan";
 import swaggerUi from 'swagger-ui-express';
 import { connectToDatabase } from "./services/database.service.mongo";
 import cors from 'cors';
-import router from './routes/routes';
+import router from './routes/mongo.router';
 import { ObjectId } from 'mongodb';
 var bodyParser = require('body-parser')
 dotenv.config();

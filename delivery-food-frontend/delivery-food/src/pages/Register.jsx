@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
+import { registerUser } from "../services/registerUser";
 
 const expresiones = {
   name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -11,7 +12,9 @@ const expresiones = {
 };
 
 export default function Register() {
+  const [document, setDocument] = useState({ campo: "", error: false });
   const [name, setName] = useState({ campo: "", error: false });
+  const [lastName, setLastName] = useState({ campo: "", error: false });
   const [email, setEmail] = useState({ campo: "", error: false });
   const [password, setPassword] = useState({ campo: "", error: false });
 
@@ -74,7 +77,26 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(name.campo, email.campo, password.campo);
+
+    // usando el nombre y el apellido para crear el nombre de usuario
+    const arrUserName = [name.campo, lastName.campo];
+
+    if (Array.isArray(arrUserName)) {
+      // registrando con firebase
+      const userName = arrUserName.join(" ");
+      createUserWithEmailAndPassword(userName, email.campo, password.campo);
+    } else {
+      throw new Error("Debe ser un array");
+    }
+
+    // enviando datos al servidor backend
+    registerUser({
+      docuement: document.campo,
+      name: name.campo,
+      lastName: lastName.campo,
+      email: email.campo,
+      password: password.campo,
+    });
   };
 
   return (
@@ -101,17 +123,33 @@ export default function Register() {
           <form
             onSubmit={(e) => handleSubmit(e)}
             action=""
-            className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20  border-r-2 border-gray-300"
+            className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20 
+            border-r-2 border-gray-300 animate__animated animate__bounceInDown"
           >
             <h3 className="text-blue-600 text-3xl">Registrate</h3>
             <InputForm
-              type="name"
+              type="number"
+              name="document"
+              label="Numero de documento :"
+              state={document}
+              setState={setDocument}
+              error="El documento es requerido"
+            />
+            <InputForm
+              type="text"
               name="name"
-              label="Nombre completo :"
+              label="Nombre :"
               state={name}
               setState={setName}
-              expresion={expresiones.name}
-              error="El nombre requerido"
+              error="El nombre es requerido"
+            />
+            <InputForm
+              type="text"
+              name="lastname"
+              label="Apellido :"
+              state={lastName}
+              setState={setLastName}
+              error="El apellido es requerido"
             />
             <InputForm
               type="email"
@@ -139,7 +177,10 @@ export default function Register() {
             </button>
           </form>
 
-          <div className="flex flex-col items-center justify-center w-full gap-10">
+          <div
+            className="flex flex-col items-center justify-center w-full gap-10
+          animate__animated animate__bounceInDown"
+          >
             {/* <div>
               <InputForm
                 type="email"

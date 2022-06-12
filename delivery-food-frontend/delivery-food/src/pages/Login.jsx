@@ -89,7 +89,8 @@ export default function Login() {
           <form
             onSubmit={(e) => handleSubmit(e)}
             action=""
-            className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20  border-r-2 border-gray-300"
+            className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20 
+            border-r-2 border-gray-300 animate__animated animate__bounceInDown"
           >
             <h3 className="text-blue-600 text-3xl">Iniciar sesión</h3>
             <InputForm
@@ -119,7 +120,7 @@ export default function Login() {
             </button>
           </form>
 
-          <div className="flex flex-col items-center justify-center w-full gap-10 text-center">
+          <div className="flex flex-col items-center justify-center w-full gap-10 text-center animate__animated animate__animated animate__bounceInDown">
             <p>O ingresa con:</p>
             <button
               className="flex shadow-xl px-10 py-2 rounded w-40 h-15"

@@ -39,7 +39,8 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="categories p-4 flex items-center gap-10 w-7/12 rounded-sm shadow-xl"
+            className="categories p-4 flex items-center gap-10 w-7/12 rounded-sm 
+            shadow-xl overflow-hidden"
             data-aos="fade-left"
           >
             <img
@@ -78,7 +79,7 @@ export default function Home() {
         <div className="flex justify-center items-center">
           <Link
             to="/"
-            className="mt-20 w-60 p-2 bg-[color:var(--primary)] text-white text-center text-xl shadow-2xl"
+            className="mt-20 w-60 p-2 bg-[color:var(--yellow)] text-[color:var(--dark-blue)] text-center text-xl shadow-2xl rounded-md"
           >
             Ver más
           </Link>

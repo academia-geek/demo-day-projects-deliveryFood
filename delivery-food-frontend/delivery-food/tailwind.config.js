@@ -3,10 +3,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primarys: "var(--primary)",
+        lightBlue: "var(--light-blue)",
         softBlue: "var(--soft-blue)",
+        darkBlue: "var(--dark-blue)",
+        yellow: "var(--yellow)",
+        orange: "var(--orange)",
         white: "var(--white)",
-        black: "var(--black)",
       },
     },
     screens: {

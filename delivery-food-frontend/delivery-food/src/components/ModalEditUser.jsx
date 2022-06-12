@@ -97,7 +97,7 @@ export const ModalEditUser = ({ user, setModalState, modalState }) => {
                 <input
                   type="file"
                   name="file"
-                  className="edit-user-img w-full absolute h-12 z-21"
+                  className="edit-user-img w-full h-12 z-21"
                   id="file"
                   onChange={handleImg}
                 />

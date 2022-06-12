@@ -1,6 +1,38 @@
 header {
-  background: linear-gradient(to right, var(--primary) 30%, var(--soft-blue));
+  background: linear-gradient(to left, var(--soft-blue) 30%, var(--dark-blue));
   border-bottom-left-radius: 50px;
+}
+
+header .heading-1 {
+  color: var(--yellow);
+  animation: colors 1.5s infinite ease-in-out;
+}
+header .heading-2 {
+  color: var(--white);
+  animation: colors2 1.5s infinite ease-in-out;
+}
+
+@keyframes colors {
+  0% {
+    color: var(--yellow);
+  }
+  50% {
+    color: var(--orange);
+  }
+  100% {
+    color: var(--white);
+  }
+}
+@keyframes colors2 {
+  0% {
+    color: var(--white);
+  }
+  50% {
+    color: var(--yellow);
+  }
+  100% {
+    color: var(--orange);
+  }
 }
 
 header.header-landing-page {
@@ -84,6 +116,12 @@ main div .categories:nth-child(even) {
 }
 
 @media (max-width: 480px) {
+  header > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   main {
     overflow-x: hidden;
   }

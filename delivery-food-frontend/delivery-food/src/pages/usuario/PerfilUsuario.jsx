@@ -59,17 +59,19 @@ const PerfilUsuario = () => {
        relative overflow-y-scroll"
       >
         {!user.emailVerified && (
-          <h1 className="w-full text-center bg-yellow-400 text-xl p-2">
+          <h1 className="w-full absolute text-center bg-yellow text-xl pb-2 top-0">
             Si ya verificaste tu cuenta recarga la pagina
           </h1>
         )}
         <div className="flex flex-col items-center">
-          <img
-            src={user.photoURL}
-            alt={user.displayName}
-            className="img-user-profile w-52 h-52 mt-5 border-4"
-            style={{ borderRadius: "50%" }}
-          />
+          {user.photoURL && (
+            <img
+              src={user.photoURL}
+              alt={user.displayName}
+              className="img-user-profile w-52 h-52 mt-5"
+              style={{ borderRadius: "50%" }}
+            />
+          )}
           <h1 className="text-2xl mt-2">{user.displayName}</h1>
           <div className="w-full flex justify-evenly mt-10 ">
             {!user.emailVerified && (
@@ -88,16 +90,16 @@ const PerfilUsuario = () => {
             {!user.photoURL && (
               <div className="flex flex-col justify-center items-center  p-5 rounded-md gap-2">
                 <h2 className="">No has subido una foto de perfil</h2>
-                <div className="relative">
+                <div className="relative flex justify-center">
                   <input
                     type="file"
                     className="btn-upload-img-user-profile self-start flex 
-                items-center gap-2 w-14"
+                items-center gap-2"
                     onChange={handleImage}
                   />
                   <CloudUploadIcon
                     className="btn-upload-img-user-profile-icon h-16 p-3 w-16
-                 absolute top-0 left-0"
+                 top-0 left-50 absolute"
                   />
                 </div>
               </div>

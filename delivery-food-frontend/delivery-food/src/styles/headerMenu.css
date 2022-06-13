@@ -1,0 +1,32 @@
+header.menu {
+  background: linear-gradient(to left, var(--soft-blue) 30%, var(--dark-blue));
+}
+
+.search-food {
+  border: 1px solid;
+  padding: 5px;
+  text-align: left;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-image: linear-gradient(to right, var(--soft-blue), var(--white)) 1;
+  animation: border 2s infinite linear;
+}
+
+@keyframes border {
+  0% {
+    border-image: linear-gradient(to right, var(--soft-blue), var(--white)) 1;
+  }
+  25% {
+    border-image: linear-gradient(to top, var(--soft-blue), var(--white)) 1;
+  }
+  50% {
+    border-image: linear-gradient(to left, var(--soft-blue), var(--white)) 1;
+  }
+
+  75% {
+    border-image: linear-gradient(to bottom, var(--soft-blue), var(--white)) 1;
+  }
+  100% {
+    border-image: linear-gradient(to right, var(--soft-blue), var(--white)) 1;
+  }
+}

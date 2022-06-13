@@ -1,13 +1,13 @@
-header {
+header.header-landing-page {
   background: linear-gradient(to left, var(--soft-blue) 30%, var(--dark-blue));
   border-bottom-left-radius: 50px;
 }
 
-header .heading-1 {
+header.header-landing-page .heading-1 {
   color: var(--yellow);
   animation: colors 1.5s infinite ease-in-out;
 }
-header .heading-2 {
+header.header-landing-page .heading-2 {
   color: var(--white);
   animation: colors2 1.5s infinite ease-in-out;
 }

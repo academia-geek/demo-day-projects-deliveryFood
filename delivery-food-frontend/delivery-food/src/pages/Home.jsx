@@ -78,7 +78,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center items-center">
           <Link
-            to="/"
+            to="/menu"
             className="mt-20 w-60 p-2 bg-[color:var(--yellow)] text-[color:var(--dark-blue)] text-center text-xl shadow-2xl rounded-md"
           >
             Ver más

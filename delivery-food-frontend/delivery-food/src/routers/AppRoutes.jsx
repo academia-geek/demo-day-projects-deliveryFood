@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
+import Menu from "../pages/Menu";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PerfilUsuario from "../pages/usuario/PerfilUsuario";
@@ -30,6 +31,7 @@ export default function AppRoutes() {
               </PublicRoutes>
             }
           />
+          <Route path="/menu" element={<Menu />} />
           <Route
             path="/login"
             element={

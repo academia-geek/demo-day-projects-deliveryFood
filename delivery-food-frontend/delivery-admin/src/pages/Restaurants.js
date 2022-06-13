@@ -6,7 +6,7 @@ import Page from '../components/Page';
 import Iconify from '../components/Iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
-import POSTS from '../_mock/blog';
+import POSTS from '../_mock/restaurants';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ const SORT_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-export default function Blog() {
+export default function Restaurants() {
   return (
     <Page title="Dashboard: Blog">
       <Container>

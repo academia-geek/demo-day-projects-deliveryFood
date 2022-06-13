@@ -31,7 +31,7 @@ routerUsuario.get('/:id', validator.params(usuarioParamSchema), getUserById);
  *            description: "Apellido del usuario"
  *            example: "Perez"
  *          telefono:
- *            type: number
+ *            type: string
  *            description: "Telefono de contacto"
  *            example: "123456789"
  *          tipo:
@@ -42,7 +42,7 @@ routerUsuario.get('/:id', validator.params(usuarioParamSchema), getUserById);
  *              - "Repartidor"
  *              - "establecimiento"
  *            description: "Tipo de usuario"
- *            example: "cliente"
+ *            example: "Usuario"
  *          email:
  *            type: string
  *            unique: true
@@ -60,7 +60,7 @@ routerUsuario.get('/:id', validator.params(usuarioParamSchema), getUserById);
  *          nombre: Juan
  *          apellido: Perez
  *          telefono: 123456789
- *          tipo: cliente
+ *          tipo: Usuario
  *          email: mail@example.com
  * 
  * /api/usuarios:

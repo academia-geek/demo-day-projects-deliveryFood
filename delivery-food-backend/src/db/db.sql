@@ -3,7 +3,23 @@ OWNER = 'postgres'
 ENCODING = 'UTF8';
 
 
---Eliminacion de tablas---
+--Eliminacion de sequencias--
+DROP SEQUENCE IF EXISTS usuario_id_seq;
+DROP SEQUENCE IF EXISTS establecimiento_id_seq;
+DROP SEQUENCE IF EXISTS direccion_id_seq;
+DROP SEQUENCE IF EXISTS pedido_id_seq;
+DROP SEQUENCE IF EXISTS pago_id_seq;
+
+--Eliminacion de ENUMS--
+DROP TYPE IF EXISTS enum_tipo;
+DROP TYPE IF EXISTS enum_estado;
+DROP TYPE IF EXISTS enum_estado_est;
+DROP TYPE IF EXISTS enum_operacional;
+DROP TYPE IF EXISTS enum_entrega;
+DROP TYPE IF EXISTS enum_estado;
+DROP TYPE IF EXISTS enum_metodo;
+
+--Eliminacion de tablas--
 DROP TABLE IF EXISTS pago;
 DROP TABLE IF EXISTS direccion;
 DROP TABLE IF EXISTS pedido;
@@ -32,7 +48,7 @@ INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Gerardo','Pin
 -- INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Catalina','Sanchez','5454646','Administrador','cata@deliveryfood.com');
 
 
-CREATE TYPE enum_estadoE AS ENUM('ACTIVO','INACTIVO');
+CREATE TYPE enum_estado_est AS ENUM('ACTIVO','INACTIVO');
 CREATE TYPE enum_operacional AS ENUM('S','N');
 CREATE SEQUENCE establecimiento_id_seq
     START WITH 1
@@ -42,7 +58,7 @@ CREATE SEQUENCE establecimiento_id_seq
 
 CREATE TABLE establecimiento(
     id_establecimiento INTEGER NOT NULL DEFAULT NEXTVAL('establecimiento_id_seq'),
-    estado enum_estadoE NOT NULL,  
+    estado enum_estado_est NOT NULL,  
     operacional enum_operacional NOT NULL,
     nombre VARCHAR(255) NOT NULL UNIQUE, 
     id_menu VARCHAR(50) NOT NULL,
@@ -116,7 +132,7 @@ CREATE SEQUENCE direccion_id_seq
 CREATE TABLE direccion(
     id_direccion  INTEGER NOT NULL DEFAULT NEXTVAL('direccion_id_seq'),
     id_establecimiento INTEGER,
-    descripcion VARCHAR(20) NOT NULL,
+    descripcion VARCHAR(50) NOT NULL,
     direccion VARCHAR(100) NOT NULL,    
     nombreBarrio VARCHAR(255),
     latitud   FLOAT(7) NOT NULL,

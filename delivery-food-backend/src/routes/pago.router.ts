@@ -47,7 +47,6 @@ export default routerPago;
  *           type: number
  *           example: 100
  *       required:
- *         - id_pago
  *         - id_usuario
  *         - id_establecimiento
  *         - id_pedido

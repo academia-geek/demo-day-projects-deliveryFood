@@ -4,7 +4,7 @@ import type {Config} from '@jest/types';
     return {
         clearMocks: true,
         coverageProvider: "v8",
-        moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
+        moduleFileExtensions: [ "ts", "tsx", "json", "node"],
       
         roots: ["<rootDir>"],
       

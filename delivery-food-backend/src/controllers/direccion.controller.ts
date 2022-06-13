@@ -30,7 +30,7 @@ export const updateDireccion = async (req: Request, res: Response) => {
     try {
         const id = parseInt(req.params.id);
         const { id_establecimiento, descripcion, direccion, nombreBarrio, latitud, longitud, unidad, ciudad, id_usuario } = req.body;
-        const response: QueryResult = await pool.query('UPDATE direccion SET  "id_establecimiento" = $1, "descripcion" = $2, "direccion" = $3, "nombreBarrio" = $4, "latitud" = $5, "longitud" = $6, "unidad" = $7, "ciudad" = $8, "id_usuario" = $9 WHERE id_direccion = $10', [id_establecimiento, descripcion, direccion, nombreBarrio, latitud, longitud, unidad, ciudad, id_usuario, id])
+        const response: QueryResult = await pool.query('UPDATE direccion SET  "id_establecimiento" = $1, "descripcion" = $2, "direccion" = $3, "nombrebarrio" = $4, "latitud" = $5, "longitud" = $6, "unidad" = $7, "ciudad" = $8, "id_usuario" = $9 WHERE id_direccion = $10', [id_establecimiento, descripcion, direccion, nombreBarrio, latitud, longitud, unidad, ciudad, id_usuario, id])
         return res.json({
             message: "Dirección actualizada con éxito"
         });

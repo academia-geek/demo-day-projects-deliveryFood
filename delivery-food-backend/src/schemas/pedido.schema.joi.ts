@@ -8,9 +8,9 @@ const pedidoSchema = Joi.object({
     tipoEntrega:Joi.string().valid('Domicilio','Retiro').required(),
     valorDomicilio:Joi.number().required(),
     estadoDelPedido: Joi.string().valid('Recibido','Preparando','En camino','Entregado').required(),
-    //hora:Joi.any().valid('',time),
+    hora:Joi.any().required(),
     fecha:Joi.date().less('now').required(),
-    valorTodos:Joi.number().required(),
+    valorTotal:Joi.number().required(),
     descuento:Joi.number().required(),
 })
 

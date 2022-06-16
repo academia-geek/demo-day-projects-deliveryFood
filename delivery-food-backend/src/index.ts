@@ -41,10 +41,9 @@ connectToDatabase()
         app.use('/api/pedidos', routerPedido);
         app.use('/api/direccion', routerDireccion);
 
-       const server = app.listen(port, () => {
+        app.listen(port, () => {
             console.log(`Server started at http://localhost:${port}`);
         });
-        return server;
     })
     .catch((error: Error) => {
         console.error("Database connection failed", error);

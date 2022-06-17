@@ -2,14 +2,12 @@ CREATE DATABASE deliveryfood WITH
 OWNER = 'postgres'
 ENCODING = 'UTF8';
 
-
 --Eliminacion de tablas---
 DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS pago;
 DROP TABLE IF EXISTS direccion;
 DROP TABLE IF EXISTS pedido;
 DROP TABLE IF EXISTS establecimiento;
-
 
 CREATE TYPE enum_tipo AS ENUM('Administrador','Usuario','Repartidor','Establecimiento');
 CREATE SEQUENCE usuario_id_seq
@@ -31,7 +29,6 @@ INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Armando','Per
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Gerardo','Pinzon','5454646','Repartidor','domicilios@gmail.com');
 INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ('Catalina','Sanchez','5454646','Administrador','cata@deliveryfood.com');
 
-
 CREATE TYPE enum_estadoE AS ENUM('ACTIVO','INACTIVO');
 CREATE TYPE enum_operacional AS ENUM('S','N');
 CREATE SEQUENCE establecimiento_id_seq
@@ -49,8 +46,6 @@ CREATE TABLE establecimiento(
     PRIMARY KEY (id_establecimiento)
 );
 
-
-
 CREATE TYPE enum_entrega AS ENUM('Domicilio','Retiro');
 CREATE TYPE enum_estado AS ENUM('Recibido','Preparando','En camino','Entregado');
 CREATE SEQUENCE pedido_id_seq
@@ -60,8 +55,8 @@ CREATE SEQUENCE pedido_id_seq
     NO MAXVALUE;
 
 CREATE TABLE pedido(
-    codigoOrden INTEGER NOT NULL DEFAULT NEXTVAL('pedido_id_seq'),
-    id_usuario INTEGER NOT NULL,    
+    codigoOrden BIGINT NOT NULL DEFAULT NEXTVAL('pedido_id_seq'),
+    id_usuario BIGINT NOT NULL,    
     id_itempedido VARCHAR(50) NOT NULL,
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
@@ -71,13 +66,17 @@ CREATE TABLE pedido(
     fecha DATE NOT NULL,
     valorTotal INTEGER NOT NULL,
     descuento INTEGER NOT NULL,
+    id_establecimiento BIGINT NOT NULL,
     PRIMARY KEY (codigoOrden),
     CONSTRAINT fk_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
         ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_establecimiento
+        FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
+        ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
-
 
 CREATE TYPE enum_metodo AS ENUM('Deposito','Credito','Efectivo');
 CREATE SEQUENCE pago_id_seq
@@ -105,8 +104,6 @@ CREATE TABLE pago(
     ON UPDATE CASCADE
 );
 
-
-
 CREATE SEQUENCE direccion_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -124,5 +121,5 @@ CREATE TABLE direccion(
     unidad VARCHAR(100),
     ciudad VARCHAR(100) NOT NULL,
     id_usuario INTEGER,
-    PRIMARY KEY (id_direccion)    
-);
+    PRIMARY KEY (id_direccion)
+    );

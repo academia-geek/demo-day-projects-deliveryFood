@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 import { collections } from "../../services/database.service.mongo";
 
+
 // Listar Menú por ID
 export const getmenuID = async (req: Request, res: Response) => {
     let id = new ObjectId(req.params.id);
@@ -27,16 +28,6 @@ export const deletemenuID = async (req: Request, res: Response) => {
     }
 };
 
-// Crear Menú
-export const postMenu = async (req: Request, res: Response) => {
-    try {
-        let data = req.body;
-        let {insertedId}= await collections.Menu.insertOne(data);
-        res.status(200).send(insertedId);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-};
 
 // Adicionar items de menu
 export const postItems = async (req: Request, res: Response) => {
@@ -72,8 +63,7 @@ export const editItemsMenuId = async (req: Request, res: Response) => {
         let items = menu.items;
         let objIndex = items.findIndex((obj => obj.id_plato == data.id_plato));
         data.id_plato= new ObjectId(data.id_plato);;     
-        items[objIndex] = data;
-        console.log(items);
+        items[objIndex] = data;        
         await collections.Menu.updateMany({ _id: id }, { $set: {items: items } });                                        
         res.status(200).send({message: "Items editados"});
     } catch (error) {

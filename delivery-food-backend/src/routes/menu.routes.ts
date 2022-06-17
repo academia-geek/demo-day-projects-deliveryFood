@@ -3,11 +3,11 @@ const routerMenu = Router();
 import { createValidator } from "express-joi-validation";
 import menuSchema from "../schemas/menu.schema";
 import itemsSchema from "../schemas/items.schema";
+import { decodeToken } from "../firebase/firebase.token";
 
 const validator = createValidator();
 import {
     getmenuID,
-    postMenu,
     postItems,
     deletemenuID,
     patchmenuID,
@@ -15,12 +15,11 @@ import {
     deleteItemsMenuId,
 } from "../controllers/mongo/menu.controller";
 
-routerMenu.get("/getmenu/:id", getmenuID);
-routerMenu.post("/createMenu",validator.body(menuSchema), postMenu);
-routerMenu.post("/createItems/:id",validator.body(itemsSchema), postItems);
-routerMenu.delete("/deletemenu/:id", deletemenuID);
-routerMenu.patch("/editMenu/:id",validator.body(menuSchema), patchmenuID);
-routerMenu.patch("/editItems/:id",validator.body(itemsSchema), editItemsMenuId);
-routerMenu.delete("/deleteItems/:id", deleteItemsMenuId);
+routerMenu.get("/getmenu/:id",decodeToken,getmenuID);
+routerMenu.post("/createItems/:id",validator.body(itemsSchema),decodeToken, postItems);
+routerMenu.delete("/deletemenu/:id", decodeToken,deletemenuID);
+routerMenu.patch("/editMenu/:id",validator.body(menuSchema), decodeToken,patchmenuID);
+routerMenu.patch("/editItems/:id",validator.body(itemsSchema),decodeToken,editItemsMenuId);
+routerMenu.delete("/deleteItems/:id", decodeToken,deleteItemsMenuId);
 
 export default routerMenu;

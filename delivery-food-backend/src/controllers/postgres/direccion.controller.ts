@@ -21,7 +21,7 @@ export const createDireccion = async (req: Request, res: Response) => {
             .get("https://maps.googleapis.com/maps/api/geocode/json", {
                 params: {
                     address: direccion,
-                    key: "AIzaSyCf405bhXq-7cbuFA5ZzvKlHIBtUvTaToM",
+                    key: "AIzaSyBlCaKCX56EQYIGA-bQntTu6yaez5f3Jfw",
                 },
             })
             .then(function (response: { data: { results: { geometry: { location: { lng: any; lat: any } } }[] } }) {
@@ -45,7 +45,7 @@ export const createDireccion = async (req: Request, res: Response) => {
                 ciudad,
                 id_usuario,
             ],
-        );
+        );        
         return res.status(200).json({
             message: "Dirección registrada con éxito",
         });
@@ -63,12 +63,27 @@ export const updateDireccion = async (req: Request, res: Response) => {
             descripcion,
             direccion,
             nombreBarrio,
-            latitud,
-            longitud,
             unidad,
             ciudad,
             id_usuario,
         } = req.body;
+
+        let newdirection = await axios
+        .get("https://maps.googleapis.com/maps/api/geocode/json", {
+            params: {
+                address: direccion,
+                key: "AIzaSyBlCaKCX56EQYIGA-bQntTu6yaez5f3Jfw",
+            },
+        })
+        .then(function (response: { data: { results: { geometry: { location: { lng: any; lat: any } } }[] } }) {
+            let lat = response.data.results[0].geometry.location.lat;
+            let lng = response.data.results[0].geometry.location.lng;
+            return [lat, lng];
+        })
+        .catch(function (error: any) {
+            return error;
+        });
+
         const response: QueryResult = await pool.query(
             'UPDATE direccion SET  "id_establecimiento" = $1, "descripcion" = $2, "direccion" = $3, "nombreBarrio" = $4, "latitud" = $5, "longitud" = $6, "unidad" = $7, "ciudad" = $8, "id_usuario" = $9 WHERE id_direccion = $10',
             [
@@ -76,19 +91,19 @@ export const updateDireccion = async (req: Request, res: Response) => {
                 descripcion,
                 direccion,
                 nombreBarrio,
-                latitud,
-                longitud,
+                newdirection[0],
+                newdirection[1],
                 unidad,
                 ciudad,
                 id_usuario,
                 id,
             ],
-        );
+        );        
         return res.json({
             message: "Dirección actualizada con éxito",
         });
+      
     } catch (error) {
-        console.log(error);
         return res.status(500).json("Internal Server error");
     }
 };

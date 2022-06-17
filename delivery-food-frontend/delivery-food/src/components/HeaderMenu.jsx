@@ -12,7 +12,7 @@ export const HeaderMenu = () => {
 
   return (
     <>
-      <DrawerMenu openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+      <DrawerMenu openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} closeDrawer={setOpenDrawer}/>
       <header className="menu p-5 shadow-lg flex items-center justify-between">
         {user !== null ? (
           <>

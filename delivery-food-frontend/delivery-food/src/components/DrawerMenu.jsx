@@ -30,7 +30,7 @@ const ModalUbicacion = ({ modalState, setModalState }) => {
 };
 
 export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
-  const [handleModal, setHandleModal] = useState(true);
+  const [handleModal, setHandleModal] = useState(false);
 
   const openModal = () => {
     setHandleModal(true);
@@ -76,7 +76,7 @@ export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
                 className="hover:no-underline text-white text-lg
             hover:text-[color:var(--dark-blue)] hover:bg-[color:var(--yellow)]
             hover:p-2 hover:rounded-md hover:duration-200 transition-all ease-in-out"
-                onClick={()=>setOpenDrawer(false)}
+                onClick={() => setOpenDrawer(false)}
               >
                 Ver restaurantes
               </Link>

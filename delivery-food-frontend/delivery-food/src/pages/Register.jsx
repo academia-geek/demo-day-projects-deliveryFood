@@ -12,11 +12,12 @@ const expresiones = {
 };
 
 export default function Register() {
-  const [document, setDocument] = useState({ campo: "", error: false });
+  // const [document, setDocument] = useState({ campo: "", error: false });
   const [name, setName] = useState({ campo: "", error: false });
   const [lastName, setLastName] = useState({ campo: "", error: false });
   const [email, setEmail] = useState({ campo: "", error: false });
   const [password, setPassword] = useState({ campo: "", error: false });
+  const [telefono, setTelefono] = useState({ campo: "", error: false });
 
   // const [linkEmail, setLinkEmail] = useState({ campo: "", error: false })
 
@@ -78,6 +79,15 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // enviando datos al servidor backend
+    registerUser({
+      nombre: name.campo,
+      apellido: lastName.campo,
+      email: email.campo,
+      telefono: telefono.campo,
+      tipo: "Usuario",
+    });
+
     // usando el nombre y el apellido para crear el nombre de usuario
     const arrUserName = [name.campo, lastName.campo];
 
@@ -88,15 +98,6 @@ export default function Register() {
     } else {
       throw new Error("Debe ser un array");
     }
-
-    // enviando datos al servidor backend
-    registerUser({
-      docuement: document.campo,
-      name: name.campo,
-      lastName: lastName.campo,
-      email: email.campo,
-      password: password.campo,
-    });
   };
 
   return (
@@ -127,14 +128,14 @@ export default function Register() {
             border-r-2 border-gray-300 animate__animated animate__bounceInDown"
           >
             <h3 className="text-blue-600 text-3xl">Registrate</h3>
-            <InputForm
+            {/* <InputForm
               type="number"
               name="document"
               label="Numero de documento :"
               state={document}
               setState={setDocument}
               error="El documento es requerido"
-            />
+            /> */}
             <InputForm
               type="text"
               name="name"
@@ -150,6 +151,14 @@ export default function Register() {
               state={lastName}
               setState={setLastName}
               error="El apellido es requerido"
+            />
+            <InputForm
+              type="number"
+              name="tel"
+              label="Telefono :"
+              state={telefono}
+              setState={setTelefono}
+              error="El telefono es requerido"
             />
             <InputForm
               type="email"

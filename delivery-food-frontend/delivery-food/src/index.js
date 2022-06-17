@@ -5,6 +5,7 @@ import App from "./App";
 import "aos/dist/aos.css";
 import "animate.css";
 import Modal from "react-modal";
+import "rsuite/dist/rsuite.css";
 
 Modal.setAppElement("#root");
 

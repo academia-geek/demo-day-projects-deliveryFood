@@ -26,7 +26,7 @@ export const MenuList = () => {
               key={items.id}
               className="menu-list__items flex flex-col items-center"
             >
-              <h2 className="mb-5 font-medium">{items.tipo_menu}</h2>
+              <h2 className="mb-3 font-medium">{items.tipo_menu}</h2>
               {items.items.map((it, index) => (
                 <div key={index} className="menu-list__item">
                   <img src={it.foto} alt={it.nombre} className="h-full" />

@@ -35,7 +35,7 @@ const HeaderLanding = () => {
       </h2>
       <div className="flex justify-center">
         <Link
-          to="/menu"
+          to="/viewProducts"
           className="btn-ver-productos text-center bg-[color:var(--yellow)] w-2/12 p-2 
           text-lg uppercase text-[color:var(--dark-blue)] rounded-md shadow-2xl 
           hover:bg-amber-300 hover:transition-all duration-300 hover:no-underline

@@ -12,8 +12,8 @@ export default function CardRestaurant({element}) {
       <div className='h-2/5 bg-green-300'>
         <h4>Nombre</h4>
         {/* <h4>{element.nombre}</h4> */}
-        <button  className='p-2 bg-green-600 rounded '>Ver Menú</button>
-        {/* <Link to='/' className='p-2 bg-green-600 rounded '>Ver más</Link> */}
+        {/* <button  className='p-2 bg-green-600 rounded '>Ver Menú</button> */}
+        <Link to='/' className='p-2 bg-green-600 rounded text-white'>Ver más</Link>
       </div>
     </div>
   )

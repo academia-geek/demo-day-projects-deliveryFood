@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
+import { HeaderMenu } from "../components/HeaderMenu";
+import { Footer } from "../components/Footer";
 
 const expresiones = {
   // password: /^.{4,12}$/, // 4 a 12 digitos.
@@ -65,6 +67,7 @@ export default function Login() {
 
   return (
     <div className="">
+      <HeaderMenu />
       <header className="h-20 flex shadow items-center px-6 w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -149,6 +152,7 @@ export default function Login() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

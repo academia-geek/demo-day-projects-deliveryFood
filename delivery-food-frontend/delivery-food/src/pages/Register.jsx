@@ -4,6 +4,8 @@ import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
 import { registerUser } from "../services/registerUser";
+import { Footer } from "../components/Footer";
+import { HeaderMenu } from "../components/HeaderMenu";
 
 const expresiones = {
   name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -102,23 +104,7 @@ export default function Register() {
 
   return (
     <div className="">
-      <header className="h-20 flex shadow items-center px-6 w-full bg-white">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10 cursor-pointer text-white"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          onClick={() => navigate("/")}
-        >
-          <path
-            fillRule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-            clipRule="evenodd"
-          />
-        </svg>
-        <h1 className="m-auto text-white text-2xl">Delivery Food</h1>
-      </header>
-
+      <HeaderMenu />
       <main className="py-5 px-10 bg-gray-100">
         <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
           <form
@@ -227,6 +213,7 @@ export default function Register() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

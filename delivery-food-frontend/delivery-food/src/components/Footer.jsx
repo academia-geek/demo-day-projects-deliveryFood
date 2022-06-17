@@ -4,7 +4,7 @@ import "../styles/footer.css";
 
 export const Footer = () => {
   return (
-    <footer className="mt-20 px-20 py-5 grid grid-cols-2">
+    <footer className="px-20 py-5 grid grid-cols-2">
       <div className="sobre-nosotros">
         <h2 className="text-center text-[color:var(--soft-blue)] font-bold capitalize text-2xl">
           sobre delivery food

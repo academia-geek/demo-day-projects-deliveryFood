@@ -8,6 +8,8 @@ import PublicRoutes from "../components/PublicRoutes";
 import PrivateRoutes from "../components/PrivateRoutes";
 
 import { AuthProvider } from "../auth/AuthContent";
+import Restaurants from "../pages/Restaurants";
+import ViewProducts from "../pages/ViewProducts";
 
 export default function AppRoutes() {
   return (
@@ -30,7 +32,7 @@ export default function AppRoutes() {
               </PublicRoutes>
             }
           />
-          <Route path="/menu" element={<Menu />} />
+          <Route path="/viewProducts/*" element={<ViewProducts />} />
           <Route
             path="/login"
             element={

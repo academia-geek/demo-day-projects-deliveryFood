@@ -29,7 +29,7 @@ export const Footer = () => {
               to="/"
               className="btn-unete-aqui bg-[color:var(--soft-blue)] text-white font-semibold
                p-3 capitalize transition-all duration-500 hover:bg-[color:var(--light-blue)]
-               shadow-lg hover:shadow-2xl rounded-md"
+               shadow-lg hover:shadow-2xl rounded-md hover:no-underline hover:text-white"
             >
               unete aquí
             </Link>

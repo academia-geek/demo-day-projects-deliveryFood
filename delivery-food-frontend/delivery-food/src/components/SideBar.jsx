@@ -36,7 +36,7 @@ export const SideBar = ({ username, modalState }) => {
               <span className="text-center w-full">Perfil</span>
             </NavLink>
             <NavLink
-              to="/"
+              to="/menu"
               className={({ isActive }) =>
                 isActive
                   ? "active-menu-profile w-full text-center flex items-center"

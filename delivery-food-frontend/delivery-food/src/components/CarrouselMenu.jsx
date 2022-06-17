@@ -20,9 +20,8 @@ export const CarrouselMenu = () => {
               height: "100%",
               backgroundColor: colors[i],
             }}
-          >
-            hola
-          </div>
+            className="overflow-y-hidden"
+          ></div>
         ))}
       </Carousel>
     </div>

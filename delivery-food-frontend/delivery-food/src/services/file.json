@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "tipo_menu": "Comida Rápida",
+        "items": [
+            {
+                "nombre": "hamburguesa",
+                "categoria": "comida rapida",
+                "descripcion": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
+                "foto": "https://www.eltiempo.com/files/article_content/uploads/2018/12/19/5c1ac4b71d1ca.jpeg",
+                "valor": "$5.00"
+            }
+        ]
+    },
+    {
+
+        "id": 2,
+        "tipo_menu": "Desayunos",
+        "items": [
+            {
+                "nombre": "Porridge de avena y fruta",
+                "categoria": "desayunos",
+                "descripcion": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
+                "foto": "https://estaticos.miarevista.es/media/cache/680x_thumb/uploads/images/gallery/59e727615bafe8398bddb88d/sin-titulo-1.jpg",
+                "valor": "$7.50"
+            }
+        ]
+    },
+    {
+
+        "id": 3,
+        "tipo_menu": "Postres",
+        "items": [
+            {
+                "nombre": "Tarta de chocolate",
+                "categoria": "postres",
+                "descripcion": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
+                "foto": "https://mott.pe/noticias/wp-content/uploads/2016/05/Sin-duda-probarlos-podr%C3%ADa-provocarte-una-muerte-deliciosa-pero-tranquilo-estos-postres-solo-te-alegrar%C3%A1n-la-vida-2.jpg",
+                "valor": "$2.50"
+            }
+        ]
+    },
+    {
+
+        "id": 4,
+        "tipo_menu": "Vegetariano",
+        "items": [
+            {
+                "nombre": "SOPA DE FIDEOS CASERA",
+                "categoria": "Vegetariano",
+                "descripcion": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
+                "foto": "https://www.comedera.com/wp-content/uploads/2016/10/sopa-de-fideos.jpg",
+                "valor": "$5.50"
+            }
+        ]
+    }
+]

@@ -3,10 +3,10 @@ import { useAuth } from "../../auth/AuthContent";
 import { SideBar } from "../../components/SideBar";
 import { CloudUploadIcon, CheckIcon } from "@heroicons/react/solid";
 import { fileUpload } from "../../services/fileUpload";
+import { ModalEditUser } from "../../components/ModalEditUser";
 import Swal from "sweetalert2";
 
 import "../../styles/perfilUsuario.css";
-import { ModalEditUser } from "../../components/ModalEditUser";
 
 const PerfilUsuario = () => {
   const [modalState, setModalState] = useState(false);

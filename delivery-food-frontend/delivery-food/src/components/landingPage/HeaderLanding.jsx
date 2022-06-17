@@ -13,7 +13,7 @@ const HeaderLanding = () => {
             to="/login"
             className="text-[color:var(--white)] text-lg hover:bg-[color:var(--yellow)] p-2
              hover:rounded-md hover:text-[color:var(--dark-blue)] 
-             hover:transition-all duration-300"
+             hover:transition-all duration-300 hover:no-underline"
           >
             Login
           </Link>
@@ -21,7 +21,7 @@ const HeaderLanding = () => {
             to="/register"
             className="text-[color:var(--white)] text-lg hover:bg-[color:var(--yellow)] p-2
              hover:rounded-md hover:text-[color:var(--dark-blue)]
-              hover:transition-all duration-300"
+              hover:transition-all duration-300 hover:no-underline"
           >
             Register
           </Link>
@@ -38,7 +38,8 @@ const HeaderLanding = () => {
           to="/menu"
           className="btn-ver-productos text-center bg-[color:var(--yellow)] w-2/12 p-2 
           text-lg uppercase text-[color:var(--dark-blue)] rounded-md shadow-2xl 
-          hover:bg-amber-300 hover:transition-all duration-300"
+          hover:bg-amber-300 hover:transition-all duration-300 hover:no-underline
+          hover:text-[color:var(--dark-blue)]"
         >
           ver productos
         </Link>

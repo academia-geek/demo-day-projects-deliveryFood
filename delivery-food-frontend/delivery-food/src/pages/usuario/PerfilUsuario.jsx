@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../auth/AuthContent";
 import { SideBar } from "../../components/SideBar";
 import { CloudUploadIcon, CheckIcon } from "@heroicons/react/solid";
-import { fileUpload } from "../../services/fileUpload";
+import { updateImageUser } from "../../services/storageAuth";
 import { ModalEditUser } from "../../components/ModalEditUser";
 import Swal from "sweetalert2";
 
@@ -28,13 +28,15 @@ const PerfilUsuario = () => {
   const handleImage = async ({ target }) => {
     const file = target.files[0];
     try {
-      const { secure_url } = await fileUpload(file);
-      await addImageAfterUserIsRegistered(user, secure_url);
+      const image = await updateImageUser(file);
+      await addImageAfterUserIsRegistered(user, image);
       window.location.reload(true);
     } catch (error) {
       console.log(error);
     }
   };
+
+  console.log(user.urlImage);
 
   const handleEmailVerification = async () => {
     try {

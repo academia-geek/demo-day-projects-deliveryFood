@@ -2,7 +2,7 @@ import { useState } from "react";
 import { XIcon, UploadIcon } from "@heroicons/react/solid";
 import Modal from "react-modal";
 import { updateUserProfile } from "../services/updateUserProfile.js";
-import { fileUpload } from "../services/fileUpload.js";
+import { updateImageUser } from "../services/storageAuth.js";
 
 export const ModalEditUser = ({ user, setModalState, modalState }) => {
   const [updateUser, setUpdateUser] = useState({
@@ -31,17 +31,19 @@ export const ModalEditUser = ({ user, setModalState, modalState }) => {
       loadingImg: true,
     });
     const file = target.files[0];
-    fileUpload(file).then((data) => {
+    updateImageUser(file).then((urlImg) => {
       setLoading({
         ...loading,
         loadingImg: false,
       });
       setUpdateUser({
         ...updateUser,
-        img: data.secure_url,
+        img: urlImg,
       });
     });
   };
+
+  console.log(updateUser);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

@@ -38,7 +38,7 @@ export const createPedido = async (req: Request, res: Response): Promise<Respons
             subtotal = subtotal + (item.valor * data.cantidad[i]);
         }
         let calificacion = 0;
-        let { insertedId } = await collections.Pedido.insertOne({ items: pedido });
+        let { insertedId } = await collections.Pedido.insertOne({ items: pedido });         
         const response: QueryResult = await pool.query(
             "INSERT INTO pedido (id_usuario,id_itempedido,impuestos,tipoentrega,valordomicilio,estadodelpedido,hora,fecha,valortotal,descuento,id_establecimiento,calificacion,id_repartidor) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)",
             [

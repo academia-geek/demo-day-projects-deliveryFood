@@ -6,6 +6,7 @@ import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box, List, Collapse, ListItemText, ListItemIcon, ListItemButton } from '@mui/material';
 //
 import Iconify from './Iconify';
+import { getIcon } from '../layouts/dashboard/NavConfig';
 
 // ----------------------------------------------------------------------
 
@@ -141,7 +142,6 @@ NavSection.propTypes = {
 
 export default function NavSection({ navConfig, ...other }) {
   const { pathname } = useLocation();
-  console.log(navConfig);
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
 
   return (
@@ -150,6 +150,14 @@ export default function NavSection({ navConfig, ...other }) {
         {navConfig.map((item) => (
           <NavItem key={item.title} item={item} active={match} />
         ))}
+          <NavItem 
+            item={  {
+            title: 'Salir',
+            path: '/login',
+            icon: getIcon('fluent:door-arrow-left-20-filled'),
+            }}
+            active={match} 
+          />
       </List>
     </Box>
   );

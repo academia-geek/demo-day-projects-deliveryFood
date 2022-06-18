@@ -57,7 +57,7 @@ CREATE SEQUENCE pedido_id_seq
 CREATE TABLE pedido(
     codigoOrden BIGINT NOT NULL DEFAULT NEXTVAL('pedido_id_seq'),
     id_usuario BIGINT NOT NULL,    
-    id_itempedido VARCHAR(50) NOT NULL,
+    id_itempedido VARCHAR(30) NOT NULL,
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
     valorDomicilio INTEGER NOT NULL,
@@ -67,6 +67,7 @@ CREATE TABLE pedido(
     valorTotal INTEGER NOT NULL,
     descuento INTEGER NOT NULL,
     id_establecimiento BIGINT NOT NULL,
+    id_calificacion VARCHAR (30) NOT NULL,
     PRIMARY KEY (codigoOrden),
     CONSTRAINT fk_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)

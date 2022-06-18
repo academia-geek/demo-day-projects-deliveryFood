@@ -79,7 +79,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="px-20 py-5 grid grid-cols-3 mt-40 place-content-center">
+    <footer className="px-20 py-5 grid grid-cols-3 place-content-center sm:px-0">
       <div className="logo-footer flex items-center">
         <img src={logo} alt="logo" className="w-52" />
       </div>
@@ -96,7 +96,7 @@ export const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="flex flex-col justify-center gap-2">
+      <div className="sobre-nosotros-footer flex flex-col justify-center gap-2">
         <button
           className="text-center text-white text-lg"
           onClick={openModalTerminosCondiciones}

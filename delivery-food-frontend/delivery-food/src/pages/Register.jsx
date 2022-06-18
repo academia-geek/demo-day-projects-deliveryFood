@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
@@ -23,7 +23,6 @@ export default function Register() {
 
   // const [linkEmail, setLinkEmail] = useState({ campo: "", error: false })
 
-  const navigate = useNavigate();
   const { createUser, loginWithGoogle, addUsernameWhenUserIsRegistered } =
     useAuth();
 
@@ -105,15 +104,17 @@ export default function Register() {
   return (
     <div className="">
       <HeaderMenu />
-      <main className="py-5 px-10 bg-gray-100">
-        <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
+      <main className="py-5 px-10">
+        <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white bg-slate-50">
           <form
             onSubmit={(e) => handleSubmit(e)}
             action=""
             className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20 
             border-r-2 border-gray-300 animate__animated animate__bounceInDown"
           >
-            <h3 className="text-blue-600 text-3xl">Registrate</h3>
+            <h3 className="text-[color:var(--soft-blue)] text-3xl">
+              Registrate
+            </h3>
             {/* <InputForm
               type="number"
               name="document"
@@ -166,7 +167,9 @@ export default function Register() {
             />
             <button
               type="submit"
-              className="px-10 py-5 rounded text-blue-600 text-3xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white"
+              className="px-10 py-5 rounded text-[color:var(--soft-blue)] text-3xl border-solid 
+              border-4 border-[color:var(--soft-blue)] font-bold hover:bg-[color:var(--soft-blue)] 
+              hover:text-white"
             >
               Registrarme
             </button>
@@ -188,7 +191,7 @@ export default function Register() {
               />
               <button onClick={linkEmailFn} className="px-5 py-2 rounded text-blue-600 text-xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white">Enviar</button>
             </div> */}
-            <p>O ingresa con:</p>
+            <p className="text-lg">O ingresa con:</p>
             <button
               className="flex shadow-xl px-10 py-2 rounded w-40 h-15"
               onClick={loginGoogle}
@@ -207,7 +210,10 @@ export default function Register() {
               </svg>
               <p>Google</p>
             </button>
-            <Link to="/login" className="text-blue-600 font-bold text-3xl">
+            <Link
+              to="/login"
+              className="text-[color:var(--soft-blue)] font-bold text-3xl"
+            >
               ¿Ya tienes cuenta?
             </Link>
           </div>

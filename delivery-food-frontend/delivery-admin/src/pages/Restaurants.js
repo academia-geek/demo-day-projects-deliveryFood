@@ -24,10 +24,10 @@ export default function Restaurants() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Blog
+            Restaurantes
           </Typography>
           <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New Post
+            Añadir Restaurante
           </Button>
         </Stack>
 

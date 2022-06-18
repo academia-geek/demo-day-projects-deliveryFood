@@ -4,12 +4,13 @@ import { useAuth } from "../auth/AuthContent";
 import { MenuIcon } from "@heroicons/react/solid";
 import { DrawerMenu } from "./DrawerMenu";
 
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 
 export const HeaderMenu = () => {
-  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
   const { user } = useAuth();
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -30,18 +31,13 @@ export const HeaderMenu = () => {
               placeholder="Busca la comida que quieras"
               className="h-10 text-center border-2 bg-white"
             />
-            <img
-              src={logo}
-              alt="logo"
-              className="w-52 ml-10 cursor-pointer"
-              onClick={() => navigate("/viewProducts")}
-            />
+            <img src={logo} alt="logo" className="w-52 ml-10" />
           </>
         ) : (
           <>
             <div className="flex gap-2">
               <MenuIcon
-                className="w-14 text-white"
+                className="w-14 text-white cursor-pointer"
                 onClick={() => setOpenDrawer(true)}
               />
               <img

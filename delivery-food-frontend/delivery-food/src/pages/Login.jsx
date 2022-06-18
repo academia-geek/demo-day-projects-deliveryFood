@@ -68,25 +68,6 @@ export default function Login() {
   return (
     <div className="">
       <HeaderMenu />
-      <header className="h-20 flex shadow items-center px-6 w-full">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10 cursor-pointer text-[color:var(--white)]"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          onClick={() => navigate("/")}
-        >
-          <path
-            fillRule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-            clipRule="evenodd"
-          />
-        </svg>
-        <h1 className="m-auto text-[color:var(--white)] text-2xl">
-          Delivery Food
-        </h1>
-      </header>
-
       <main className="py-5 px-10 bg-gray-100">
         <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
           <form

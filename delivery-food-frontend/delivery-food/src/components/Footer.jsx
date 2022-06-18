@@ -79,7 +79,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="px-20 py-5 grid grid-cols-3 mt-10 place-content-center">
+    <footer className="px-20 py-5 grid grid-cols-3 mt-40 place-content-center">
       <div className="logo-footer flex items-center">
         <img src={logo} alt="logo" className="w-52" />
       </div>

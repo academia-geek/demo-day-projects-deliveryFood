@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
 
 import "../../styles/landingPage.css";
+import Logo from "../Logo";
 
 const HeaderLanding = () => {
   return (
     <header className="header-landing-page p-5 shadow-lg">
       <div className="flex items-center justify-between">
-        <img src={logo} alt="logo" className="w-52 mx-10" />
+      <Logo/>
         <div className="flex gap-8 sm:gap-2">
           <Link
             to="/login"

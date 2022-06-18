@@ -7,7 +7,6 @@ import { Box, Link, Card, Grid, Avatar, Typography, CardContent } from '@mui/mat
 import { fDate } from '../../../utils/formatTime';
 import { fShortenNumber } from '../../../utils/formatNumber';
 //
-import SvgIconStyle from '../../../components/SvgIconStyle';
 import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
@@ -92,19 +91,6 @@ export default function BlogPostCard({ post, index }) {
             }),
           }}
         >
-          <SvgIconStyle
-            color="paper"
-            src="/static/icons/shape-avatar.svg"
-            sx={{
-              width: 80,
-              height: 36,
-              zIndex: 9,
-              bottom: -15,
-              position: 'absolute',
-              color: 'background.paper',
-              ...((latestPostLarge || latestPost) && { display: 'none' }),
-            }}
-          />
           <AvatarStyle
             alt={author.name}
             src={author.avatarUrl}

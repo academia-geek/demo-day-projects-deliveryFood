@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import { MenuIcon } from "@heroicons/react/solid";
 import { DrawerMenu } from "./DrawerMenu";
@@ -7,12 +7,17 @@ import { DrawerMenu } from "./DrawerMenu";
 import logo from "../assets/logo.jpeg";
 
 export const HeaderMenu = () => {
+  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
   const { user } = useAuth();
 
   return (
     <>
-      <DrawerMenu openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} closeDrawer={setOpenDrawer}/>
+      <DrawerMenu
+        openDrawer={openDrawer}
+        setOpenDrawer={setOpenDrawer}
+        closeDrawer={setOpenDrawer}
+      />
       <header className="menu p-5 shadow-lg flex items-center justify-between">
         {user !== null ? (
           <>
@@ -25,7 +30,12 @@ export const HeaderMenu = () => {
               placeholder="Busca la comida que quieras"
               className="h-10 text-center border-2 bg-white"
             />
-            <img src={logo} alt="logo" className="w-52 ml-10" />
+            <img
+              src={logo}
+              alt="logo"
+              className="w-52 ml-10 cursor-pointer"
+              onClick={() => navigate("/viewProducts")}
+            />
           </>
         ) : (
           <>
@@ -34,7 +44,12 @@ export const HeaderMenu = () => {
                 className="w-14 text-white"
                 onClick={() => setOpenDrawer(true)}
               />
-              <img src={logo} alt="logo" className="w-52 ml-10" />
+              <img
+                src={logo}
+                alt="logo"
+                className="w-52 ml-10 cursor-pointer"
+                onClick={() => navigate("/")}
+              />
             </div>
             <input
               type="search"

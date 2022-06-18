@@ -77,7 +77,7 @@ export const ModalEditUser = ({ user, setModalState, modalState }) => {
       <Modal className="h-screen" isOpen={modalState}>
         <div className="z-40 h-screen animate__animated animate__backInDown backdrop-blur-2xl">
           <div className="border-2 w-4/12 mx-auto p-5 mt-10 flex flex-col">
-            <XIcon className="w-10 h-10" onClick={closeModal} />
+            <XIcon className="w-10 h-10 cursor-pointer hover:text-red-600" onClick={closeModal} />
             <form
               action=""
               className="flex flex-col gap-2 mt-5"

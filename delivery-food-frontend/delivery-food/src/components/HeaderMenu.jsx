@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import { MenuIcon } from "@heroicons/react/solid";
 import { DrawerMenu } from "./DrawerMenu";
 
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 
 export const HeaderMenu = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const { user } = useAuth();
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -31,10 +33,10 @@ export const HeaderMenu = () => {
           <>
             <div className="flex gap-2">
               <MenuIcon
-                className="w-14 text-white"
+                className="w-14 text-white cursor-pointer"
                 onClick={() => setOpenDrawer(true)}
               />
-              <img src={logo} alt="logo" className="w-52 ml-10" />
+              <img src={logo} alt="logo" className="w-52 ml-10 cursor-pointer" onClick={()=> navigate('/')}/>
             </div>
             <input
               type="search"

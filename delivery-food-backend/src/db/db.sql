@@ -47,7 +47,7 @@ CREATE TABLE establecimiento(
 );
 
 CREATE TYPE enum_entrega AS ENUM('Domicilio','Retiro');
-CREATE TYPE enum_estado AS ENUM('En revision','Aceptado','Preparando','En camino','Entregado');
+CREATE TYPE enum_estado AS ENUM('En revisión','Aceptado','Preparando','En camino','Entregado');
 CREATE SEQUENCE pedido_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -61,7 +61,7 @@ CREATE TABLE pedido(
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
     valorDomicilio INTEGER NOT NULL,
-    estadoDelPedido enum_estado DEFAULT 'En revision',
+    estadoDelPedido enum_estado DEFAULT 'En revisión',
     hora TIME NOT NULL,
     fecha DATE NOT NULL,
     valorTotal INTEGER NOT NULL,

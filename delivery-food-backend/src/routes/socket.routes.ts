@@ -1,11 +1,11 @@
-import { Router } from "express";
-const routerPosition = Router();
+// import { Router } from "express";
+// const routerPosition = Router();
 
-import {
-   getPosition
+// import {
+//    getPosition
     
-} from "../controllers/socket";
+// } from "../controllers/socket";
 
-routerPosition.get("/position",getPosition);
+// routerPosition.get("/position",getPosition);
 
-export default routerPosition;
+// export default routerPosition;

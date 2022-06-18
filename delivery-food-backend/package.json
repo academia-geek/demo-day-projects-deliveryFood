@@ -28,6 +28,7 @@
     "license": "MIT",
     "homepage": "https://github.com/academia-geek/demo-day-projects-deliveryFood/blob/main/README.md",
     "dependencies": {
+        "@sendgrid/mail": "^7.7.0",
         "@types/axios": "^0.14.0",
         "@types/pg": "^8.6.5",
         "axios": "^0.27.2",

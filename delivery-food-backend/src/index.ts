@@ -11,7 +11,8 @@ import routerUsuario from './routes/usuarios.router';
 import routerPago from './routes/pago.router'
 import routerPedido from './routes/pedido.router';
 import routerDireccion from './routes/direccion.router';
-import routerPosition from './routes/socket.routes';
+import routerEmail from './routes/email.routes';
+// import routerPosition from './routes/socket.routes';
 
 
 const app = express();
@@ -24,7 +25,8 @@ app.use('/usuario',routerUsuario);
 app.use('/pago',routerPago);
 app.use('/pedido',routerPedido);
 app.use('/direccion',routerDireccion);
-app.use('/',routerPosition);
+app.use('/mail',routerEmail);
+// app.use('/',routerPosition);
 
 
 

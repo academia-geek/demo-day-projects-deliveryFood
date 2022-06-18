@@ -8,9 +8,9 @@ const validator = createValidator();
 import { decodeToken } from "../firebase/firebase.token";
 
 routerUsuario.get("/",decodeToken, getUsers);
-routerUsuario.post("/", validator.body(usuarioSchema),decodeToken, createUser);
-routerUsuario.put("/:id", validator.params(usuarioParamSchema), validator.body(usuarioSchema), decodeToken,updateUser);
-routerUsuario.delete("/:id", validator.params(usuarioParamSchema), decodeToken, deleteUser);
-routerUsuario.get("/:id", validator.params(usuarioParamSchema),decodeToken, getUserById);
+routerUsuario.post("/", validator.body(usuarioSchema), createUser);
+routerUsuario.put("/:id", validator.params(usuarioParamSchema), validator.body(usuarioSchema), updateUser);
+routerUsuario.delete("/:id", validator.params(usuarioParamSchema), deleteUser);
+routerUsuario.get("/:id", validator.params(usuarioParamSchema), getUserById);
 
 export default routerUsuario;

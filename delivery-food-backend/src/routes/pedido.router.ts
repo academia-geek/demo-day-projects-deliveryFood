@@ -15,7 +15,7 @@ import { decodeToken } from "../firebase/firebase.token";
 
 
 routerPedido.get("/",decodeToken, getPedido);
-routerPedido.post("/",decodeToken, createPedido);
+routerPedido.post("/",validator.body(pedidoSchema),createPedido);
 routerPedido.put("/:id", validator.params(pedidoParamSchema), validator.body(pedidoSchema), decodeToken, updatePedido);
 routerPedido.delete("/:id", validator.params(pedidoParamSchema),decodeToken, deletePedido);
 routerPedido.get("/:id", validator.params(pedidoParamSchema),decodeToken, getPedidoById);

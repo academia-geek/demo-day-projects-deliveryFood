@@ -11,46 +11,51 @@ import { AuthProvider } from "../auth/AuthContent";
 import Restaurants from "../pages/Restaurants";
 import ViewProducts from "../pages/ViewProducts";
 
+// cart Context
+import { CartProvider } from "../context/CartContext";
+
 export default function AppRoutes() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/usuario/:username"
-            element={
-              <PrivateRoutes>
-                <PerfilUsuario />
-              </PrivateRoutes>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <PublicRoutes>
-                <Home />
-              </PublicRoutes>
-            }
-          />
-          <Route path="/viewProducts/*" element={<ViewProducts />} />
-          <Route
-            path="/login"
-            element={
-              <PublicRoutes>
-                <Login />
-              </PublicRoutes>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PublicRoutes>
-                <Register />
-              </PublicRoutes>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/usuario/:username"
+              element={
+                <PrivateRoutes>
+                  <PerfilUsuario />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <PublicRoutes>
+                  <Home />
+                </PublicRoutes>
+              }
+            />
+            <Route path="/viewProducts/*" element={<ViewProducts />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoutes>
+                  <Login />
+                </PublicRoutes>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoutes>
+                  <Register />
+                </PublicRoutes>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </AuthProvider>
   );
 }

@@ -65,3 +65,25 @@ footer {
   width: 2px;
   height: 100%;
 }
+
+@media (max-width: 800px) {
+  .logo-footer {
+    grid-column: 1/4;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .logo-footer::before {
+    display: none;
+  }
+  .redes-sociales {
+    grid-column: 1/4;
+    margin-bottom: 20px;
+  }
+  .redes-sociales::before {
+    display: none;
+  }
+  .sobre-nosotros-footer {
+    grid-column: 1/4;
+    width: 100%;
+  }
+}

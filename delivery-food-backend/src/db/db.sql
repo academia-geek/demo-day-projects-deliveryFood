@@ -61,13 +61,13 @@ CREATE TABLE pedido(
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
     valorDomicilio INTEGER NOT NULL,
-    estadoDelPedido enum_estado NOT NULL,
+    estadoDelPedido enum_estado NOT NULL DEFAUL('Recibido'),
     hora TIME NOT NULL,
     fecha DATE NOT NULL,
     valorTotal INTEGER NOT NULL,
     descuento INTEGER NOT NULL,
     id_establecimiento BIGINT NOT NULL,
-    id_calificacion VARCHAR (30) NOT NULL,
+    calificacion FLOAT(2),
     PRIMARY KEY (codigoOrden),
     CONSTRAINT fk_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)

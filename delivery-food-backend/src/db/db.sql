@@ -68,6 +68,7 @@ CREATE TABLE pedido(
     descuento INTEGER NOT NULL,
     id_establecimiento BIGINT NOT NULL,
     calificacion FLOAT(2),
+    id_repartidor BIGINT,
     PRIMARY KEY (codigoOrden),
     CONSTRAINT fk_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)

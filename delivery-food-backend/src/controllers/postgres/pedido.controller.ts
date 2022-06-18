@@ -40,7 +40,7 @@ export const createPedido = async (req: Request, res: Response): Promise<Respons
         let calificacion = 0;
         let { insertedId } = await collections.Pedido.insertOne({ items: pedido });
         const response: QueryResult = await pool.query(
-            "INSERT INTO pedido (id_usuario,id_itempedido,impuestos,tipoentrega,valordomicilio,estadodelpedido,hora,fecha,valortotal,descuento,id_establecimiento,calificacion) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)",
+            "INSERT INTO pedido (id_usuario,id_itempedido,impuestos,tipoentrega,valordomicilio,estadodelpedido,hora,fecha,valortotal,descuento,id_establecimiento,calificacion,id_repartidor) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)",
             [
                 data.id_usuario,
                 insertedId,
@@ -53,7 +53,8 @@ export const createPedido = async (req: Request, res: Response): Promise<Respons
                 subtotal,
                 data.descuento,
                 data.id_establecimiento,
-                calificacion
+                calificacion,
+                data.id_repartidor
             ],
         );
         return res.status(200).json({

@@ -34,3 +34,14 @@ export const totalPedidosEntregados = async (req: Request, res: Response): Promi
         return res.status(500).json("Internal Server error");
     }
 };
+
+export const totalDomiciliariosActivos = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        let hoy = new Date();        
+        const response: QueryResult = await pool.query("SELECT COUNT (codigoorden) FROM pedido WHERE fecha = $1 AND estadodelpedido = $2" , [(hoy.toISOString()).split("T")[0], "Entregado"]);
+        return res.status(200).json(response.rows[0].count);
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json("Internal Server error");
+    }
+};

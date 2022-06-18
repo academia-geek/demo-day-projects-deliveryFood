@@ -5,6 +5,7 @@ const pedidoSchema = Joi.object({
     id_establecimiento:Joi.number().required(),
     id_menu:Joi.string().required(),
     id_platos:Joi.array().items(Joi.string()).required(),
+    id_repartidor:Joi.number(),
     cantidad:Joi.array().items(Joi.number()).required(),
     impuestos:Joi.number().required(),
     tipoEntrega:Joi.string().valid('Domicilio','Retiro').required(),

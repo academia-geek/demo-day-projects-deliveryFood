@@ -61,7 +61,7 @@ CREATE TABLE pedido(
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
     valorDomicilio INTEGER NOT NULL,
-    estadoDelPedido enum_estado NOT NULL DEFAUL('Recibido'),
+    estadoDelPedido enum_estado NOT NULL,
     hora TIME NOT NULL,
     fecha DATE NOT NULL,
     valorTotal INTEGER NOT NULL,

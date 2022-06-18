@@ -12,8 +12,9 @@ import routerPago from './routes/pago.router'
 import routerPedido from './routes/pedido.router';
 import routerDireccion from './routes/direccion.router';
 import routerEmail from './routes/email.routes';
-// import routerPosition from './routes/socket.routes';
+import routerDashboard from './routes/dashboard.routes';
 
+// import routerPosition from './routes/socket.routes';
 
 const app = express();
 const port = 8070;
@@ -26,6 +27,7 @@ app.use('/pago',routerPago);
 app.use('/pedido',routerPedido);
 app.use('/direccion',routerDireccion);
 app.use('/mail',routerEmail);
+app.use('/',routerDashboard);
 // app.use('/',routerPosition);
 
 

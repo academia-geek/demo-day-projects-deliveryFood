@@ -4,7 +4,6 @@ import { useAuth } from "../auth/AuthContent";
 import { MenuIcon } from "@heroicons/react/solid";
 import { DrawerMenu } from "./DrawerMenu";
 
-import logo from "../assets/logo.png";
 import logoWithBackground from "../assets/logo.jpeg";
 
 export const HeaderMenu = () => {
@@ -33,7 +32,7 @@ export const HeaderMenu = () => {
               className="h-10 text-center border-2 bg-white"
             />
             <img
-              src={logo}
+              src={logoWithBackground}
               alt="logo"
               className="w-52 ml-10 cursor-pointer"
               onClick={() => navigate("/viewProducts")}

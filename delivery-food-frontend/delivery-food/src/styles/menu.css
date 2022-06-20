@@ -11,7 +11,12 @@
 }
 
 .carrousel {
-  height: 82.5vh;
+  max-height: 82vh;
+}
+.carrousel img {
+  max-height: 82vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 .menu-list .menu-list__item {
@@ -41,4 +46,13 @@
   .menu-list-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.item-establecimiento {
+  transition: all ease-in-out 0.4s;
+}
+.item-establecimiento:hover {
+  cursor: pointer;
+  transform: scaleY(1.1);
+  background: var(--light-blue);
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Drawer, Modal } from "rsuite";
+import { useAuth } from "../auth/AuthContent";
 
 const ModalUbicacion = ({ modalState, setModalState }) => {
   const closeModal = () => {
@@ -30,6 +31,8 @@ const ModalUbicacion = ({ modalState, setModalState }) => {
 };
 
 export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
+  const { user } = useAuth();
+
   const [handleModal, setHandleModal] = useState(false);
 
   const openModal = () => {
@@ -55,6 +58,18 @@ export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
         <Drawer.Body>
           <div className="drawer-menu h-screen border-2 flex flex-col justify-center items-center">
             <ul className="flex flex-col gap-14 text-center">
+              {user && (
+                <>
+                  <Link
+                    to={`/usuario/${user.email.split("@")[0]}`}
+                    className="hover:no-underline text-white text-lg
+            hover:text-[color:var(--dark-blue)] hover:bg-[color:var(--yellow)]
+            hover:p-2 hover:rounded-md hover:duration-200 transition-all ease-in-out"
+                  >
+                    Ver perfil
+                  </Link>
+                </>
+              )}
               <button
                 className="hover:no-underline text-white text-lg
             hover:text-[color:var(--dark-blue)] hover:bg-[color:var(--yellow)]
@@ -64,7 +79,7 @@ export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
                 Añadir ubicación
               </button>
               <Link
-                to="/"
+                to="/viewProducts/pedido"
                 className="hover:no-underline text-white text-lg
             hover:text-[color:var(--dark-blue)] hover:bg-[color:var(--yellow)]
             hover:p-2 hover:rounded-md hover:duration-200 transition-all ease-in-out"
@@ -79,14 +94,6 @@ export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
                 onClick={() => setOpenDrawer(false)}
               >
                 Ver restaurantes
-              </Link>
-              <Link
-                to="/"
-                className="hover:no-underline text-white text-lg
-            hover:text-[color:var(--dark-blue)] hover:bg-[color:var(--yellow)]
-            hover:p-2 hover:rounded-md hover:duration-200 transition-all ease-in-out"
-              >
-                Ver cafetirias
               </Link>
             </ul>
           </div>

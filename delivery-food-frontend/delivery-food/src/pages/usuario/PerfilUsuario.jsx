@@ -36,8 +36,6 @@ const PerfilUsuario = () => {
     }
   };
 
-  console.log(user.urlImage);
-
   const handleEmailVerification = async () => {
     try {
       await sendEmailVerificationAfterUserIsRegistered();
@@ -55,7 +53,9 @@ const PerfilUsuario = () => {
 
   return (
     <div className="flex">
-      <SideBar username={user.email.split("@")[0]} modalState={modalState} />
+      {user.emailVerified ? (
+        <SideBar username={user.email.split("@")[0]} modalState={modalState} />
+      ) : null}
       <div
         className="container-user-profile w-10/12 flex flex-col items-center p-10 bg-slate-100 h-screen
        relative overflow-y-scroll"

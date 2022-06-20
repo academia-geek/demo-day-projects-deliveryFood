@@ -1,43 +1,39 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
-import { getMenu } from "../services/getMuenu";
+import { getEstablecimientos } from "../services/establecimientos";
 
 Aos.init({
   duration: 1000,
 });
 
 export const MenuList = () => {
-  const [menu, setMenu] = useState(null);
-  const navigate = useNavigate();
+  const [establecimientos, setEstablecimientos] = useState(null);
+  // const navigate = useNavigate();
 
   useEffect(() => {
-    getMenu()
-      .then((data) => setMenu(data))
+    getEstablecimientos()
+      .then((data) => setEstablecimientos(data))
       .catch((error) => console.log(error));
   }, []);
 
-  if (menu === null) return <h1>Cargando...</h1>;
+  if (establecimientos === null) return <h1>Cargando...</h1>;
 
   return (
     <div className="menu-list my-10">
-      {menu.length > 0 ? (
+      {establecimientos.length > 0 ? (
         <div
           className="menu-list-grid grid grid-cols-3 gap-5"
           data-aos="zoom-in"
         >
-          {menu.map((items) => (
+          {establecimientos.map((items) => (
             <div
               key={items.id}
-              className="menu-list__items flex flex-col items-center"
-              onClick={() => navigate(`/viewProducts/${items.id}`)}
+              className="item-establecimiento flex justify-center p-2 rounded-md shadow-lg"
             >
-              <h2 className="mb-3 font-medium">{items.tipo_menu}</h2>
-              {items.items.map((it, index) => (
-                <div key={index} className="menu-list__item">
-                  <img src={it.foto} alt={it.nombre} className="h-full" />
-                </div>
-              ))}
+              <h2 className="mb-3 font-medium text-[color:var(--dark-blue)] uppercase">
+                {items.nombre}
+              </h2>
             </div>
           ))}
         </div>

@@ -1,34 +1,8 @@
 [
-    {
-        "id": 1,
-        "tipo_menu": "Comida Rápida",
-        "items": [
-            {
-                "nombre": "hamburguesa",
-                "categoria": "comida rapida",
-                "descripcion": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-                "foto": "https://www.eltiempo.com/files/article_content/uploads/2018/12/19/5c1ac4b71d1ca.jpeg",
-                "valor": "$5.00"
-            }
-        ]
-    },
+    {"id_comidas_rapidas": "62afc0c4bc482befa3e84bbe"},
     {
 
-        "id": 2,
-        "tipo_menu": "Desayunos",
-        "items": [
-            {
-                "nombre": "Porridge de avena y fruta",
-                "categoria": "desayunos",
-                "descripcion": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-                "foto": "https://estaticos.miarevista.es/media/cache/680x_thumb/uploads/images/gallery/59e727615bafe8398bddb88d/sin-titulo-1.jpg",
-                "valor": "$7.50"
-            }
-        ]
-    },
-    {
-
-        "id": 3,
+        "id": "62afc444bc482befa3e84bbf",
         "tipo_menu": "Postres",
         "items": [
             {
@@ -42,7 +16,7 @@
     },
     {
 
-        "id": 4,
+        "id": "62b0f96804f7eb4510e9dfa1",
         "tipo_menu": "Vegetariano",
         "items": [
             {

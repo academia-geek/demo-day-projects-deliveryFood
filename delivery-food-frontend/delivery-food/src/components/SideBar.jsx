@@ -58,7 +58,7 @@ export const SideBar = ({ username, modalState }) => {
               <span className="text-center w-full">Ver Pedidos</span>
             </NavLink>
             <NavLink
-              to="/"
+              to="/viewProducts/restaurants"
               className={({ isActive }) =>
                 isActive
                   ? "active-menu-profile w-full flex items-center gap-2"

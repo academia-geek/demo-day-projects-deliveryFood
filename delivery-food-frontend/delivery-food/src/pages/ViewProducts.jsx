@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { HeaderMenu } from "../components/HeaderMenu";
 import Menu from "./Menu";
+import Pedido from "./Pedido";
 import ProductDetail from "./ProductDetail";
 import Restaurants from "./Restaurants";
 
@@ -14,6 +15,7 @@ export default function ViewProducts() {
         <Route path="/" element={<Menu />} />
         <Route path="/:productMenu" element={<ProductDetail />} />
         <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/pedido" element={<Pedido />} />
       </Routes>
       <Footer />
     </>

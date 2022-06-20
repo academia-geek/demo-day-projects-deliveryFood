@@ -1,6 +1,7 @@
 import { SearchIcon } from '@heroicons/react/solid';
 import React from 'react';
 import CardRestaurant from '../components/CardRestaurant';
+import Maps from '../components/Maps';
 import { get } from '../services/getApi';
 
 const filterCategory = [
@@ -74,13 +75,14 @@ export default function Restaurants() {
           </select>
         </div>
       </div>
-      <div className='grid gap-4 grid-cols-3'>
-        <CardRestaurant />
+      <div className=''>
+        {/* <CardRestaurant /> */}
                 {/* {
           getApi()?.map((e, i) => (
             <CardRestaurant key={i}element={e}/>
             ))
           } */}
+          <Maps/>
       </div>
     </div>
   )

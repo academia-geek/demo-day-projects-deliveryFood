@@ -1,5 +1,7 @@
 import { SearchIcon } from '@heroicons/react/solid';
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import CardRestaurant from '../components/CardRestaurant';
 import Maps from '../components/Maps';
 import { get } from '../services/getApi';
@@ -39,12 +41,20 @@ const filterOpen = [
 
 export default function Restaurants() {
 
+  const [ establecimientos, setEstablecimientos ] = useState(null)
+
   const getApi = async() => {
-    return await get('establecimientos');
+    const res = await get('establecimientos');
+    const data = res.data;
+    setEstablecimientos(data)
   };
+  useEffect(()=>{
+    getApi();
+  })
   const select = (e) => {
     console.log(e.target.value)
   }
+  
   return (
     <div>
       <div className='flex justify-around items-center text-xl mt-5'>
@@ -76,13 +86,14 @@ export default function Restaurants() {
         </div>
       </div>
       <div className=''>
-        {/* <CardRestaurant /> */}
-                {/* {
-          getApi()?.map((e, i) => (
-            <CardRestaurant key={i}element={e}/>
-            ))
-          } */}
+                {
+                  establecimientos?.map((e, i) => (
+                    <CardRestaurant key={i}element={e}/>
+                  ))
+                }
           <Maps/>
+          {/* <CardRestaurant /> */}
+          <button onClick={getApi}>hola</button>
       </div>
     </div>
   )

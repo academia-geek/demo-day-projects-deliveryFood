@@ -1,3 +1,3 @@
-const url = 'https://4793-2800-e2-1f00-54b-1946-f6f5-f564-d04a.ngrok.io/api/';
+const url = 'http://104.197.97.195/api/';
 
 export default url;

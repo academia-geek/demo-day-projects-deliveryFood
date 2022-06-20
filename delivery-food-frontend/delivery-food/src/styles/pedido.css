@@ -1,0 +1,27 @@
+.view-pedido {
+  margin-top: 20px;
+  min-height: 75vh;
+}
+
+.products-cart-added {
+  margin: 10px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.products-cart-added .product {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  box-shadow: 1px 5px 35px -3px rgba(0, 0, 0, 0.2);
+}
+
+.products-cart-added .product img {
+  max-height: 200px;
+  width: 100%;
+}
+
+.products-cart-added .product > div {
+  padding: 10px 20px;
+}

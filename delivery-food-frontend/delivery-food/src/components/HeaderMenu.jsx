@@ -5,6 +5,7 @@ import { MenuIcon } from "@heroicons/react/solid";
 import { DrawerMenu } from "./DrawerMenu";
 
 import logo from "../assets/logo.png";
+import logoWithBackground from "../assets/logo.jpeg";
 
 export const HeaderMenu = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -31,7 +32,12 @@ export const HeaderMenu = () => {
               placeholder="Busca la comida que quieras"
               className="h-10 text-center border-2 bg-white"
             />
-            <img src={logo} alt="logo" className="w-52 ml-10" />
+            <img
+              src={logo}
+              alt="logo"
+              className="w-52 ml-10 cursor-pointer"
+              onClick={() => navigate("/viewProducts")}
+            />
           </>
         ) : (
           <>
@@ -41,10 +47,10 @@ export const HeaderMenu = () => {
                 onClick={() => setOpenDrawer(true)}
               />
               <img
-                src={logo}
+                src={logoWithBackground}
                 alt="logo"
                 className="w-52 ml-10 cursor-pointer"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/viewProducts")}
               />
             </div>
             <input

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { RiShoppingCart2Line } from "react-icons/ri";
-import { useParams } from "react-router-dom";
 import { getMenu } from "../services/getMuenu";
 
 import "../styles/detailProduct.css";
@@ -10,6 +10,7 @@ const ProductDetail = () => {
   const [products, setProducts] = useState(null);
   const { pushCart, cart } = useCart();
   const { productMenu } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMenu()
@@ -37,7 +38,10 @@ const ProductDetail = () => {
         <h1 className="text-4xl text-center text-[color:var(--dark-blue)]">
           {getProduct.tipo_menu}
         </h1>
-        <span className="absolute right-0 text-3xl cursor-pointer">
+        <span
+          className="absolute right-0 text-3xl cursor-pointer"
+          onClick={() => navigate("/viewProducts/pedido")}
+        >
           {cart.length < 1 ? (
             <RiShoppingCart2Line />
           ) : (
@@ -64,7 +68,9 @@ const ProductDetail = () => {
                 rounded-md"
                 onClick={() =>
                   getElement({
+                    id: getProduct.id + 1,
                     nombre: item.nombre,
+                    descripcion: item.descripcion,
                     imagen: item.foto,
                     precio: item.valor,
                   })

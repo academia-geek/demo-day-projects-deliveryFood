@@ -11,8 +11,6 @@ export const CartProvider = ({ children }) => {
     setCart([...cart, element]);
   };
 
-  console.log(cart);
-
   return (
     <cartContext.Provider value={{ cart, pushCart }}>
       {children}

@@ -9,7 +9,7 @@ Aos.init({
 
 export const MenuList = () => {
   const [establecimientos, setEstablecimientos] = useState(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     getEstablecimientos()

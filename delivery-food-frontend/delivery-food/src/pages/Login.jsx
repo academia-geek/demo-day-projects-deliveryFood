@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContent";
 import Swal from "sweetalert2";
 import InputForm from "../components/InputForm";
@@ -14,8 +14,6 @@ const expresiones = {
 export default function Login() {
   const [email, setEmail] = useState({ campo: "", error: false });
   const [password, setPassword] = useState({ campo: "", error: false });
-
-  const navigate = useNavigate();
   const { loginWithEmailandPassword, loginWithGoogle } = useAuth();
 
   const login = async (email, password) => {
@@ -68,15 +66,17 @@ export default function Login() {
   return (
     <div className="">
       <HeaderMenu />
-      <main className="py-5 px-10 bg-gray-100">
-        <div className="flex gap-20 sm:flex-wrap shadow-xl py-5 bg-white">
+      <main className="py-5 px-10 pt-20">
+        <div className="flex gap-20 sm:flex-wrap shadow-xl bg-slate-50 py-10">
           <form
             onSubmit={(e) => handleSubmit(e)}
             action=""
-            className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-20 
+            className="sm:w-screen flex flex-col gap-3 min-w-[50%] px-16 
             border-r-2 border-gray-300 animate__animated animate__bounceInDown"
           >
-            <h3 className="text-blue-600 text-3xl">Iniciar sesión</h3>
+            <h3 className="text-[color:var(--soft-blue)] text-3xl">
+              Iniciar sesión
+            </h3>
             <InputForm
               type="email"
               name="email"
@@ -98,14 +98,16 @@ export default function Login() {
 
             <button
               type="submit"
-              className="px-10 py-5 rounded text-blue-600 text-3xl border-solid border-4 border-blue-600 font-bold hover:bg-blue-600 hover:text-white"
+              className="px-10 py-3 rounded text-[color:var(--soft-blue)] text-3xl border-solid 
+              border-4 border-[color:var(--soft-blue)] font-bold hover:bg-[color:var(--soft-blue)]
+               hover:text-white"
             >
               Ingresar
             </button>
           </form>
 
           <div className="flex flex-col items-center justify-center w-full gap-10 text-center animate__animated animate__animated animate__bounceInDown">
-            <p>O ingresa con:</p>
+            <p className="text-lg">O ingresa con:</p>
             <button
               className="flex shadow-xl px-10 py-2 rounded w-40 h-15"
               onClick={loginGoogle}
@@ -125,8 +127,11 @@ export default function Login() {
               <p>Google</p>
             </button>
             <div>
-              <p className="text-3lg">¿no tienes cuenta?</p>
-              <Link to="/register" className="text-blue-600 font-bold text-3lg">
+              <p className="text-sm">¿no tienes cuenta?</p>
+              <Link
+                to="/register"
+                className="text-[color:var(--soft-blue)] font-bold text-xl"
+              >
                 Registrate aquí
               </Link>
             </div>

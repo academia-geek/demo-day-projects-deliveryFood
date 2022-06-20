@@ -10,11 +10,15 @@ export const HeaderMenu = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const { user } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
-      <DrawerMenu openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} closeDrawer={setOpenDrawer}/>
+      <DrawerMenu
+        openDrawer={openDrawer}
+        setOpenDrawer={setOpenDrawer}
+        closeDrawer={setOpenDrawer}
+      />
       <header className="menu p-5 shadow-lg flex items-center justify-between">
         {user !== null ? (
           <>
@@ -36,7 +40,12 @@ export const HeaderMenu = () => {
                 className="w-14 text-white cursor-pointer"
                 onClick={() => setOpenDrawer(true)}
               />
-              <img src={logo} alt="logo" className="w-52 ml-10 cursor-pointer" onClick={()=> navigate('/')}/>
+              <img
+                src={logo}
+                alt="logo"
+                className="w-52 ml-10 cursor-pointer"
+                onClick={() => navigate("/")}
+              />
             </div>
             <input
               type="search"

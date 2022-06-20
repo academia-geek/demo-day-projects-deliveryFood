@@ -32,20 +32,20 @@ describe("GET /api/establecimientos/:id", () => {
         expect(response.body).arrayOfObjects;
     });
 });
-describe("POST /api/establecimientos", () => {
-    test("should return a 200 status code & an JSON object ", async () => {
-        const response = await request(app)
-            .post("/api/establecimientos")
-            .send(establecimiento)
-            .catch((err) => {
-                console.log(err);
-            });
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual({
-            message: "Establecimiento creado con éxito",
-        });
-    });
-});
+// describe("POST /api/establecimientos", () => {
+//     test("should return a 200 status code & an JSON object ", async () => {
+//         const response = await request(app)
+//             .post("/api/establecimientos")
+//             .send(establecimiento)
+//             .catch((err) => {
+//                 console.log(err);
+//             });
+//         expect(response.statusCode).toBe(200);
+//         expect(response.body).toEqual({
+//             message: "Establecimiento creado con éxito",
+//         });
+//     });
+// });
 describe("PUT /api/establecimientos/:id", () => {
     test("should return a 200 status code & an JSON object ", async () => {
         const response = await request(app)

@@ -23,6 +23,7 @@ CREATE TABLE usuario(
     apellido VARCHAR(100) NOT NULL,
     telefono BIGINT NOT NULL,
     tipo enum_tipo NOT NULL,
+    estado VARCHAR (20) NOT NULL DEFAULT 'Inactivo',
     email VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (id_usuario));
 
@@ -46,13 +47,14 @@ CREATE TABLE establecimiento(
     operacional enum_operacional NOT NULL,
     nombre VARCHAR(255) NOT NULL UNIQUE, 
     id_menu VARCHAR(50) NOT NULL,
+    foto_est VARCHAR(255),
     PRIMARY KEY (id_establecimiento)
 );
 
 
 
 CREATE TYPE enum_entrega AS ENUM('Domicilio','Retiro');
-CREATE TYPE enum_estado AS ENUM('Recibido','Preparando','En camino','Entregado');
+CREATE TYPE enum_estado AS ENUM('En revisión','Aceptado','Preparando','En camino','Entregado');
 CREATE SEQUENCE pedido_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -60,24 +62,29 @@ CREATE SEQUENCE pedido_id_seq
     NO MAXVALUE;
 
 CREATE TABLE pedido(
-    codigoOrden INTEGER NOT NULL DEFAULT NEXTVAL('pedido_id_seq'),
-    id_usuario INTEGER NOT NULL,    
+    codigoOrden BIGINT NOT NULL DEFAULT NEXTVAL('pedido_id_seq'),
+    id_usuario BIGINT NOT NULL,    
     id_itempedido VARCHAR(50) NOT NULL,
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
     valorDomicilio INTEGER NOT NULL,
-    estadoDelPedido enum_estado NOT NULL,
+    estadoDelPedido enum_estado DEFAULT 'En revisión'
     hora TIME NOT NULL,
     fecha DATE NOT NULL,
     valorTotal INTEGER NOT NULL,
     descuento INTEGER NOT NULL,
-    id_repartidor INTEGER NOT NULL,
-    id_calificacion VARCHAR NOT NULL,
+    id_establecimiento BIGINT NOT NULL,
+    id_repartidor BIGINT,
+    id_calificacion FLOAT(2),
     PRIMARY KEY (codigoOrden),
     CONSTRAINT fk_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_establecimiento
+        FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
+        ON DELETE RESTRICT,
+        ON UPDATE CASCADE 
 );
 
 
@@ -106,8 +113,6 @@ CREATE TABLE pago(
     ON DELETE RESTRICT
     ON UPDATE CASCADE
 );
-
-
 
 CREATE SEQUENCE direccion_id_seq
     START WITH 1

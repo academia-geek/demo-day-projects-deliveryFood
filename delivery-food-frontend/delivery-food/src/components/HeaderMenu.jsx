@@ -26,11 +26,6 @@ export const HeaderMenu = () => {
               className="w-14 text-white cursor-pointer"
               onClick={() => setOpenDrawer(true)}
             />
-            <input
-              type="search"
-              placeholder="Busca la comida que quieras"
-              className="h-10 text-center border-2 bg-white"
-            />
             <img
               src={logoWithBackground}
               alt="logo"
@@ -52,11 +47,6 @@ export const HeaderMenu = () => {
                 onClick={() => navigate("/viewProducts")}
               />
             </div>
-            <input
-              type="search"
-              placeholder="Busca la comida que quieras"
-              className="search-food h-10 placeholder:text-slate-300 focus:outline-none"
-            />
             <div className="flex gap-5">
               <Link
                 to="/login"

@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { RiShoppingCart2Line } from "react-icons/ri";
-import { getMenu } from "../services/getMuenu";
+import { getMenu } from "../services/menu";
 
 import "../styles/detailProduct.css";
 
 const ProductDetail = () => {
   const [products, setProducts] = useState(null);
   const { pushCart, cart } = useCart();
-  const { productMenu } = useParams();
+  const { idProduct } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,18 +25,11 @@ const ProductDetail = () => {
       </div>
     );
 
-  const getProduct = products.find((menu) => menu.id === Number(productMenu));
-
-  const getElement = (items) => {
-    pushCart(items);
-  };
-
   return (
     <div className="detail-product">
-      {products === null && <h1>loading...</h1>}
+      {/* {products === null && <h1>loading...</h1>}
       <div className="flex items-center justify-center mx-8 relative">
-        <h1 className="text-4xl text-center text-[color:var(--dark-blue)]">
-          {getProduct.tipo_menu}
+        <h1 className="text-4xl text-center text-[color:var(--dark-blue)]">          
         </h1>
         <span
           className="absolute right-0 text-3xl cursor-pointer"
@@ -81,7 +74,7 @@ const ProductDetail = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

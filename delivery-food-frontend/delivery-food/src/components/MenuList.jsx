@@ -9,7 +9,7 @@ Aos.init({
 
 export const MenuList = () => {
   const [establecimientos, setEstablecimientos] = useState(null);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getEstablecimientos()
@@ -28,8 +28,9 @@ export const MenuList = () => {
         >
           {establecimientos.map((items) => (
             <div
-              key={items.id}
+              key={items.id_establecimiento}
               className="item-establecimiento flex justify-center p-2 rounded-md shadow-lg"
+              onClick={() => navigate(`/viewProducts/menu/${items.id_menu}`)}
             >
               <h2 className="mb-3 font-medium text-[color:var(--dark-blue)] uppercase">
                 {items.nombre}

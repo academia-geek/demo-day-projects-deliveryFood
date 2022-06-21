@@ -15,6 +15,7 @@
   margin: 10px 30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .detail-product__items .items-item {

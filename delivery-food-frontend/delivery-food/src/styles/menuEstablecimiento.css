@@ -1,0 +1,46 @@
+.menu-list-establecimiento {
+  min-height: 85vh;
+}
+
+.detail-establecimiento-items {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.item-establecimiento-single {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 3px 35px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.item-establecimiento-single span.precio {
+  color: var(--white);
+  font-size: 32px;
+  bottom: 20px;
+  left: 10px;
+}
+
+.item-establecimiento-single img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.item-establecimiento-single h3 {
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+  color: var(--dark-blue);
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+.item-establecimiento-single > div {
+  height: 100%;
+}

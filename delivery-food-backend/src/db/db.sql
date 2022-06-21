@@ -21,6 +21,7 @@ CREATE TABLE usuario(
     apellido VARCHAR(100) NOT NULL,
     telefono BIGINT NOT NULL,
     tipo enum_tipo NOT NULL,
+    estado VARCHAR (20) NOT NULL DEFAULT 'Inactivo',
     email VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (id_usuario));
 
@@ -43,6 +44,7 @@ CREATE TABLE establecimiento(
     operacional enum_operacional NOT NULL,
     nombre VARCHAR(255) NOT NULL UNIQUE, 
     id_menu VARCHAR(50) NOT NULL,
+    foto_establecimiento VARCHAR(255),
     PRIMARY KEY (id_establecimiento)
 );
 

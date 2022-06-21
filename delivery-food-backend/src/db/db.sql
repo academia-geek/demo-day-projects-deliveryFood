@@ -36,7 +36,7 @@ CREATE SEQUENCE establecimiento_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
-    NO MAXVALUE;
+    NO MAXVALUE;    
 
 CREATE TABLE establecimiento(
     id_establecimiento INTEGER NOT NULL DEFAULT NEXTVAL('establecimiento_id_seq'),
@@ -44,7 +44,7 @@ CREATE TABLE establecimiento(
     operacional enum_operacional NOT NULL,
     nombre VARCHAR(255) NOT NULL UNIQUE, 
     id_menu VARCHAR(50) NOT NULL,
-    foto_establecimiento VARCHAR(255),
+    foto_est VARCHAR(255),
     PRIMARY KEY (id_establecimiento)
 );
 

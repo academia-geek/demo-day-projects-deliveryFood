@@ -33,7 +33,7 @@ export default function Restaurants() {
   };
   useEffect(()=> {
     getApi()
-  }, [])
+  }, []);
 
   return (
     <Page title="Dashboard: Blog">

@@ -16,9 +16,9 @@ export const getEstablecimiento = async (req: Request, res: Response): Promise<R
 //POST
 export const createEstablecimiento = async (req: Request, res: Response): Promise<Response> => {
     /*TODO:Servicio de crear menu de mongo */
-    const { estado, operacional, nombre, id_menu } = req.body;
+    const { estado, operacional, nombre, id_menu,foto_est } = req.body;
     try {
-        const response: QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu) VALUES ($1,$2,$3,$4)', [estado, operacional, nombre, id_menu]);
+        const response: QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu) VALUES ($1,$2,$3,$4, $5)', [estado, operacional, nombre, id_menu, foto_est]);
         return res.status(200).json({
             message: "Establecimiento creado con éxito"
         });
@@ -33,8 +33,8 @@ export const updateEstablecimiento = async (req: Request, res: Response) => {
     const id_establecimiento = parseInt(req.params.id);
     /*TODO:Servicio de actualizar menu de mongo */
     try {
-        const { estado, operacional, nombre, id_menu } = req.body;
-        const response: QueryResult = await pool.query('UPDATE establecimiento SET  "estado" = $1, "operacional" = $2, "nombre" = $3, "id_menu" = $4 WHERE id_establecimiento = $5', [estado, operacional, nombre, id_menu, id_establecimiento])
+        const { estado, operacional, nombre, id_menu, foto_est } = req.body;
+        const response: QueryResult = await pool.query('UPDATE establecimiento SET  "estado" = $1, "operacional" = $2, "nombre" = $3, "id_menu" = $4, "foto_est" = $5 WHERE id_establecimiento = $6', [estado, operacional, nombre, id_menu,foto_est, id_establecimiento])
         return res.json({
             message: "Establecimiento actualizado con éxito"
         });

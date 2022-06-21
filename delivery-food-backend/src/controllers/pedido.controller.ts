@@ -16,10 +16,10 @@ export const getPedido = async (req: Request, res: Response): Promise<Response> 
 //POST
 export const createPedido = async (req: Request, res: Response): Promise<Response> => {
     /*TODO:Servicio de crear menu de mongo */
-    const { id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento } = req.body;
+    const { id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento,id_establecimiento, id_repartidor, id_calificacion } = req.body;
     try {
-        const response: QueryResult = await pool.query('INSERT INTO pedido (id_usuario,id_itempedido,impuestos,tipoentrega,valordomicilio,estadodelpedido,hora,fecha,valortotal,descuento) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
-            [id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento]);
+        const response: QueryResult = await pool.query('INSERT INTO pedido (id_usuario,id_itempedido,impuestos,tipoentrega,valordomicilio,estadodelpedido,hora,fecha,valortotal,descuento) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',
+            [id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento,id_establecimiento, id_repartidor, id_calificacion]);
         return res.status(200).json({
             message: "Pedido creado con éxito"
         });
@@ -34,9 +34,9 @@ export const updatePedido = async (req: Request, res: Response) => {
     const id_pedido = parseInt(req.params.id);
     /*TODO:Servicio de actualizar menu de mongo */
     try {
-        const { id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento } = req.body;
-        const response: QueryResult = await pool.query('UPDATE pedido SET  "id_usuario" = $1, "id_itempedido" = $2, "impuestos" = $3, "tipoentrega" = $4, "valordomicilio" = $5 , "estadodelpedido" = $6, "hora" = $7, "fecha" = $8, "valortotal" = $9, "descuento" = $10 WHERE codigoorden = $11',
-            [id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento, id_pedido])
+        const { id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento, id_establecimiento , id_repartidor, id_calificacion } = req.body;
+        const response: QueryResult = await pool.query('UPDATE pedido SET  "id_usuario" = $1, "id_itempedido" = $2, "impuestos" = $3, "tipoEntrega" = $4, "valorDomicilio" = $5 , "estadoDelPedido" = $6, "hora" = $7, "fecha" = $8, "valorTotal" = $9, "descuento" = $10, "id_establecimiento" = $11, "id_repartidor" = $12, "id_calificacion" = $13 WHERE codigoOrden = $14',
+            [id_usuario, id_itempedido, impuestos, tipoEntrega, valorDomicilio, estadoDelPedido, hora, fecha, valorTotal, descuento, id_pedido, id_establecimiento , id_repartidor, id_calificacion])
         return res.json({
             message: "Pedido actualizado con éxito"
         });

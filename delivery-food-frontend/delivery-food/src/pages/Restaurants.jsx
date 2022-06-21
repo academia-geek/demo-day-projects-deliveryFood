@@ -86,14 +86,14 @@ export default function Restaurants() {
         </div>
       </div>
       <div className=''>
-                {
-                  establecimientos?.map((e, i) => (
-                    <CardRestaurant key={i}element={e}/>
-                  ))
-                }
-          <Maps/>
-          {/* <CardRestaurant /> */}
-          <button onClick={getApi}>hola</button>
+        <Maps/>
+        <div className='grid grid-cols-3 my-8'>
+          {
+            establecimientos?.map((e, i) => (
+              <CardRestaurant key={i} element={e}/>
+            ))
+          }
+        </div>
       </div>
     </div>
   )

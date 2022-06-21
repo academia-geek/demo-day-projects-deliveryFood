@@ -11,9 +11,10 @@
         "start": "npm run build && node dist/index.js"
     },
     "jest": {
-      "transform": {
-        "^.+\\.[t|j]sx?$": "babel-jest"
-    }},
+        "transform": {
+            "^.+\\.[t|j]sx?$": "babel-jest"
+        }
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/academia-geek/demo-day-projects-deliveryFood.git"
@@ -36,10 +37,15 @@
     "license": "MIT licence",
     "homepage": "https://github.com/academia-geek/demo-day-projects-deliveryFood/blob/main/README.md",
     "dependencies": {
+        "@types/axios": "^0.14.0",
+        "axios": "^0.27.2",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "express-joi-validation": "^5.0.1",
+        "firebase": "^9.8.3",
+        "firebase-admin": "^10.3.0",
+        "geojson": "^0.5.0",
         "joi": "^17.6.0",
         "mongodb": "^4.0.1",
         "morgan": "^1.10.0",

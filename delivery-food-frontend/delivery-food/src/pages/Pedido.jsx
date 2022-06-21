@@ -1,20 +1,26 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 import "../styles/pedido.css";
 
 const Pedido = () => {
-  const [cantidad, setcantidad] = useState(1);
   const navigate = useNavigate();
   const { cart } = useCart();
 
-  const addCantidad = () => {
-    setcantidad(cantidad + 1);
+  const addCantidad = (id) => {
+    cart.find((product) =>
+      product.id === id
+        ? { ...product, cantidad: (product.cantidad += 1) }
+        : null
+    );
   };
 
-  const substractCantidad = () => {
-    setcantidad(cantidad - 1);
+  const substractCantidad = (id) => {
+    // cart.find((product) =>
+    //   product.id === id
+    //     ? { ...product, cantidad: (product.cantidad -= 1) }
+    //     : null
+    // );
   };
 
   return (
@@ -40,29 +46,28 @@ const Pedido = () => {
           <div className="products-cart-added">
             {cart.map((product) => (
               <div key={product.id} className="product">
-                <img src={product.imagen} alt={product.nombre} />
+                <img src={product.foto} alt={product.nombre} />
                 <div>
                   <h3 className="font-bold text-xl mb-5">{product.nombre}</h3>
-                  <p>{product.descripcion}</p>
                   <div className="flex items-center justify-between">
-                    <p className="text-lg my-5">Cantidad: {cantidad}</p>
+                    <p className="text-lg my-5">Cantidad: {product.cantidad}</p>
                     <div>
                       <button
                         className="p-2 border-2 rounded-md mr-5"
-                        onClick={substractCantidad}
+                        onClick={() => substractCantidad(product.id)}
                       >
                         -
                       </button>
                       <button
                         className="p-2 border-2 rounded-md"
-                        onClick={addCantidad}
+                        onClick={() => addCantidad(product.id)}
                       >
                         +
                       </button>
                     </div>
                   </div>
                   <p className="text-xl">
-                    Total: ${product.precio.replace("$", "")}
+                    Total: ${product.precio * product.cantidad}
                   </p>
                 </div>
               </div>

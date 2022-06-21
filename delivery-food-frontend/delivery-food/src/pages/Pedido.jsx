@@ -16,11 +16,11 @@ const Pedido = () => {
   };
 
   const substractCantidad = (id) => {
-    cart.find((product) =>
-      product.id === id
-        ? { ...product, cantidad: (product.cantidad -= 1) }
-        : null
-    );
+    // cart.find((product) =>
+    //   product.id === id
+    //     ? { ...product, cantidad: (product.cantidad -= 1) }
+    //     : null
+    // );
   };
 
   return (

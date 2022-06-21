@@ -5,6 +5,7 @@ const establecimientoSchema = Joi.object({
     operacional: Joi.string().valid('S','N').required(),
     nombre: Joi.string().max(255).required(),
     id_menu: Joi.string().required(),
+    foto_est: Joi.string().max(255)
 })
 
 export default establecimientoSchema;

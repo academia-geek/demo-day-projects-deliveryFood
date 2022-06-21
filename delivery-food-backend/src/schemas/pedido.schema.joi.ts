@@ -12,6 +12,9 @@ const pedidoSchema = Joi.object({
     fecha:Joi.date().less('now').required(),
     valorTotal:Joi.number().required(),
     descuento:Joi.number().required(),
+    id_establecimiento: Joi.number().required(),
+    id_repartidor:Joi.number(),
+    id_calificacion: Joi.number(),
 })
 
 export default pedidoSchema;

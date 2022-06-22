@@ -4,7 +4,7 @@ import { useAuth } from "../auth/AuthContent";
 import { MenuIcon } from "@heroicons/react/solid";
 import { DrawerMenu } from "./DrawerMenu";
 
-import logoWithBackground from "../assets/logo.jpeg";
+import logoWithNoBackground from "../assets/logo.png";
 
 export const HeaderMenu = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -27,7 +27,7 @@ export const HeaderMenu = () => {
               onClick={() => setOpenDrawer(true)}
             />
             <img
-              src={logoWithBackground}
+              src={logoWithNoBackground}
               alt="logo"
               className="w-52 ml-10 cursor-pointer"
               onClick={() => navigate("/viewProducts")}
@@ -41,7 +41,7 @@ export const HeaderMenu = () => {
                 onClick={() => setOpenDrawer(true)}
               />
               <img
-                src={logoWithBackground}
+                src={logoWithNoBackground}
                 alt="logo"
                 className="w-52 ml-10 cursor-pointer"
                 onClick={() => navigate("/viewProducts")}

@@ -6,4 +6,3 @@ export const pool = new Pool({
     database:'deliveryfood',
     port:5432
 })
-

@@ -18,7 +18,7 @@ export const createEstablecimiento = async (req: Request, res: Response): Promis
     /*TODO:Servicio de crear menu de mongo */
     const { estado, operacional, nombre, id_menu,foto_est } = req.body;
     try {
-        const response: QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu) VALUES ($1,$2,$3,$4, $5)', [estado, operacional, nombre, id_menu, foto_est]);
+        const response: QueryResult = await pool.query('INSERT INTO establecimiento (estado,operacional,nombre,id_menu, foto_est) VALUES ($1,$2,$3,$4, $5)', [estado, operacional, nombre, id_menu, foto_est]);
         return res.status(200).json({
             message: "Establecimiento creado con éxito"
         });

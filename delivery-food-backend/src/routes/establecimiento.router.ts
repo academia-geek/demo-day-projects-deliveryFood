@@ -44,17 +44,22 @@ export default routerEstablecimiento;
  *          id_menu:
  *            type: string
  *            example: '1g24h234jk6h324j5k43h'
+ *          foto_est:
+ *            type: string
+ *            example: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
  *        required:
  *          - estado
  *          - nombre
  *          - operacional
  *          - id_menu
+ *          - foto_est
  *        example:
  *          id_establecimiento: 1 
  *          estado: ACTIVO
  *          nombre: "Establecimiento 1"
  *          operacional: S
  *          id_menu: '1g24h234jk6h324j5k43h'
+ *          foto_est: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
  * tags:
  *   - name: Establecimientos
  *     description: "Operaciones sobre establecimientos"

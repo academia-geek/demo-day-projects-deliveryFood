@@ -7,7 +7,6 @@ import itemsSchema from "../schemas/items.schema";
 const validator = createValidator();
 import {
     getmenuID,
-    postMenu,
     postItems,
     deletemenuID,
     patchmenuID,
@@ -15,7 +14,6 @@ import {
     deleteItemsMenuId,
 } from "../controllers/mongo/menu.controller";
 
-router.post("/createMenu", validator.body(menuSchema), postMenu);
 router.get("/getmenu/:id", getmenuID);
 router.post("/createItems/:id", validator.body(itemsSchema), postItems);
 router.delete("/deletemenu/:id", deletemenuID);

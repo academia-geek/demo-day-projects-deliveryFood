@@ -7,7 +7,7 @@ import establecimientoParamSchema from '../schemas/establecimiento_params.schema
 const validator = createValidator();
 
 
-import { getEstablecimiento, createEstablecimiento, updateEstablecimiento, deleteEstablecimiento, getEstablecimientoById } from '../controllers/establecimiento.controller';
+import { getEstablecimiento, createEstablecimiento, updateEstablecimiento, deleteEstablecimiento, getEstablecimientoById } from '../controllers/postgres/establecimiento.controller';
 
 routerEstablecimiento.get('/', getEstablecimiento);
 routerEstablecimiento.post('/', validator.body(establecimientoSchema), createEstablecimiento);

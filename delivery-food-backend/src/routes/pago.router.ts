@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const routerPago = Router();
 import { createValidator } from 'express-joi-validation';
-import { getPago, createPago, updatePago, deletePago, getPagoById } from '../controllers/pago.controller'
+import { getPago, createPago, updatePago, deletePago, getPagoById } from '../controllers/postgres/pago.controller'
 import pagoSchema from '../schemas/pago.schema.joi';
 import pagoParamSchema from '../schemas/pago_params.schema.joi';
 const validator = createValidator();

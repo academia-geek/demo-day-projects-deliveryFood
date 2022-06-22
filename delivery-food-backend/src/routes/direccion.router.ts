@@ -5,7 +5,7 @@ import { createValidator } from 'express-joi-validation';
 import direccionSchema from '../schemas/direccion.schema.joi';
 import direccionParamSchema from '../schemas/direccion_params.schema.joi';
 const validator = createValidator();
-import { createDireccion, deleteDireccion, getDireccion, getDireccionById, updateDireccion } from '../controllers/direccion.controller';
+import { createDireccion, deleteDireccion, getDireccion, getDireccionById, updateDireccion } from '../controllers/postgres/direccion.controller';
 import { decodeToken } from "../firebase/firebase.token";
 
 routerDireccion.get("/",decodeToken, getDireccion);

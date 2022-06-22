@@ -7,7 +7,7 @@ import usuarioParamSchema from "../schemas/usuario_params.schema.joi";
 const validator = createValidator();
 import { decodeToken } from "../firebase/firebase.token";
 
-routerUsuario.get("/",decodeToken, getUsers);
+routerUsuario.get("/",decodeToken('getUsers'), getUsers);
 routerUsuario.post("/", decodeToken, validator.body(usuarioSchema), createUser);
 routerUsuario.put("/:id", decodeToken,  validator.params(usuarioParamSchema), validator.body(usuarioSchema), updateUser);
 routerUsuario.delete("/:id", decodeToken ,validator.params(usuarioParamSchema), deleteUser);

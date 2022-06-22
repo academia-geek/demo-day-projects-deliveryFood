@@ -76,7 +76,8 @@ const Pedido = () => {
                     Total: ${product.precio * product.cantidad}
                   </p>
                   <button
-                    className="bg-red-700 text-white p-2 mt-5 hover:bg-red-800"
+                    className="bg-red-700 text-white p-2 mt-5 hover:bg-red-800
+                    rounded-md shadow-md"
                     onClick={() => deleteElement(product.id)}
                   >
                     Eliminar del carrito

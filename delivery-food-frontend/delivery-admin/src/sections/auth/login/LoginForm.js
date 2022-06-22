@@ -80,7 +80,7 @@ export default function LoginForm() {
           />
         </Stack>
 
-        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
+        <LoadingButton onClick={()=>setTimeout(()=>navigate('/dashboard'), 2000)}fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
           Iniciar Sesión 
         </LoadingButton>
       </Form>

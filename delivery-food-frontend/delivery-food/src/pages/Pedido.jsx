@@ -1,27 +1,26 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ModalPagoPedido } from "../components/ModalPagoPedido";
 import { useCart } from "../context/CartContext";
 
 import "../styles/pedido.css";
 
 const Pedido = () => {
+  const [handleModalPagar, setHandleModalPagar] = useState(false);
   const navigate = useNavigate();
-  const { cart } = useCart();
+  const { cart, addCantidad, substractCantidad, total, setTotal } = useCart();
 
-  const addCantidad = (id) => {
-    cart.find((product) =>
-      product.id === id
-        ? { ...product, cantidad: (product.cantidad += 1) }
-        : null
-    );
+  const openModalPagar = () => {
+    setHandleModalPagar(true);
   };
 
-  const substractCantidad = (id) => {
-    // cart.find((product) =>
-    //   product.id === id
-    //     ? { ...product, cantidad: (product.cantidad -= 1) }
-    //     : null
-    // );
-  };
+  useEffect(() => {
+    if (cart.length < 1) return;
+    const totalAPagar = cart
+      .map((product) => product.precio * product.cantidad)
+      .reduce((acum, current) => acum + current);
+    setTotal(totalAPagar);
+  });
 
   return (
     <div className="view-pedido">
@@ -73,7 +72,25 @@ const Pedido = () => {
               </div>
             ))}
           </div>
+          <div className="flex flex-col gap-5 items-center">
+            <h3 className="text-center text-[color:var(--dark-blue)] font-medium">
+              Total a pagar: $ {total}
+            </h3>
+            <button
+              className="bg-[color:var(--yellow)] p-2 text-[color:var(--dark-blue)]
+              w-1/6 text-lg capitalize shadow-xl rounded-sm hover:bg-amber-500"
+              onClick={openModalPagar}
+            >
+              Realizar pago
+            </button>
+          </div>
         </>
+      )}
+      {handleModalPagar && (
+        <ModalPagoPedido
+          modalState={handleModalPagar}
+          setModalState={setHandleModalPagar}
+        />
       )}
     </div>
   );

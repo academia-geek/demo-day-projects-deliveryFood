@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import { getEstablecimientos } from "../services/establecimientos";
+import { Loading } from "./Loading";
+
+import "../styles/menuEstablecimiento.css";
 
 Aos.init({
   duration: 1000,
@@ -17,7 +20,12 @@ export const MenuList = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  if (establecimientos === null) return <h1>Cargando...</h1>;
+  if (establecimientos === null)
+    return (
+      <div className="flex justify-center mt-5">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="menu-list my-10">
@@ -29,12 +37,15 @@ export const MenuList = () => {
           {establecimientos.map((items) => (
             <div
               key={items.id_establecimiento}
-              className="item-establecimiento flex justify-center p-2 rounded-md shadow-lg"
+              className="item-establecimiento flex flex-col justify-center rounded-md shadow-lg"
               onClick={() => navigate(`/viewProducts/menu/${items.id_menu}`)}
             >
-              <h2 className="mb-3 font-medium text-[color:var(--dark-blue)] uppercase">
-                {items.nombre}
-              </h2>
+              <img src={items.foto_est} alt="" />
+              <div>
+                <h2 className="mb-3 font-medium text-[color:var(--dark-blue)] uppercase">
+                  {items.nombre}
+                </h2>
+              </div>
             </div>
           ))}
         </div>

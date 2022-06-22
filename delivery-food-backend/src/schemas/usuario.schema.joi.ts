@@ -6,6 +6,7 @@ const usuarioSchema = Joi.object({
     telefono: Joi.number().required(),
     tipo: Joi.string().valid('Administrador','Usuario','Repartidor','Establecimiento').required(),
     email: Joi.string().email({minDomainSegments: 2}).required(),
+    estado: Joi.string().valid('Activo','Inactivo'),
 })
 
 export default usuarioSchema;

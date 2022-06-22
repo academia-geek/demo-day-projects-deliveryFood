@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import { pool } from '../../db/db';
 import { QueryResult } from 'pg';
+import {sendEmail} from "../../utilities/sendgrid";
+import templateIds from "../../services/templateid.const";
+import idconfirmacionConst from '../../services/idconfirmacion.const';
 
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try {
@@ -13,10 +16,17 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
     }
 };
 
-export const createUser = async (req: Request, res: Response) => {
-    try {
-        const {nombre,apellido,telefono,tipo,email} = req.body;
-        const response: QueryResult = await pool.query('INSERT INTO usuario (nombre,apellido,telefono,tipo,email) VALUES ($1, $2, $3, $4,$5)', [nombre,apellido,telefono,tipo,email]);
+export const createUser = async (req: Request, res: Response) => {  
+        const {nombre,apellido,telefono,tipo,email} = req.body;              
+        try{
+        await sendEmail(
+            email,
+                {
+                    mensaje: "Activa tu cuenta!",
+                    link_rastreo: "http://localhost:8070/updateStatus/´´"
+                },
+                idconfirmacionConst.SEND_CODE_REGISTRO,
+            );        
         return res.status(200).json({
             message:"Usuario registrado con éxito"
         });
@@ -63,5 +73,17 @@ export const getUserById = async (req: Request, res: Response): Promise<Response
     } catch (error) {
         console.log(error);
         return res.status(500).json('Internal Server error');   
+    }
+};
+
+export const updateStatus = async (req: Request, res: Response) => {
+    try {
+        const response: QueryResult = await pool.query('UPDATE usuario SET estado = $1  WHERE id_usuario = $2', ["Activo", ])
+        return res.json({
+            message:"Usuario activo"
+        });
+    }catch (error) {
+        console.log(error);
+        return res.status(500).json('Internal Server error');
     }
 };

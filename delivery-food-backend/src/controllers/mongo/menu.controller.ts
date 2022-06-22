@@ -9,10 +9,10 @@ export const getmenuID = async (req: Request, res: Response) => {
     try {
         const menu = await collections.Menu.findOne({ _id: id }, 
                                                     { projection: { _id: 0, tipo_menu: 1, items: 1 } });
-        res.status(200).send(menu);
+        return res.status(200).send(menu);
     } catch (error) {
         console.error(error.code);
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
 
@@ -21,10 +21,10 @@ export const deletemenuID = async (req: Request, res: Response) => {
     let id = new ObjectId(req.params.id);
     try {
         const menu = await collections.Menu.deleteOne({ _id: id });
-        res.status(200).send({message: "Menu eliminado correctamente"});
+        return res.status(200).send({message: "Menu eliminado correctamente"});
     } catch (error) {
         console.error(error.code);
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
 
@@ -36,9 +36,9 @@ export const postItems = async (req: Request, res: Response) => {
         data.id_plato = new ObjectId(data.id_plato);
         let id = new ObjectId(req.params.id);
         await collections.Menu.updateOne({ _id: id }, { $push: { items: data } });
-        res.status(200).send({message: "Items agregados"});
+        return res.status(200).send({message: "Items agregados"});
     } catch (error) {
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
 
@@ -48,9 +48,9 @@ export const patchmenuID = async (req: Request, res: Response) => {
     try {
         let data = req.body;
         const menu = await collections.Menu.updateOne({ _id: id }, { $set: { tipo_menu: data.tipo_menu } });
-        res.status(200).send({message: "Tipo de menú actualizado"});
+        return res.status(200).send({message: "Tipo de menú actualizado"});
     } catch (error) {
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
 
@@ -65,9 +65,9 @@ export const editItemsMenuId = async (req: Request, res: Response) => {
         data.id_plato= new ObjectId(data.id_plato);;     
         items[objIndex] = data;        
         await collections.Menu.updateMany({ _id: id }, { $set: {items: items } });                                        
-        res.status(200).send({message: "Items editados"});
+        return res.status(200).send({message: "Items editados"});
     } catch (error) {
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
 
@@ -83,8 +83,8 @@ export const deleteItemsMenuId = async (req: Request, res: Response) => {
             items.splice(index, 1); 
           }
         await collections.Menu.updateMany({ _id: id }, { $set: {items: items } });                                        
-        res.status(200).send({message: "Item eliminado"});
+        return res.status(200).send({message: "Item eliminado"});
     } catch (error) {
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };

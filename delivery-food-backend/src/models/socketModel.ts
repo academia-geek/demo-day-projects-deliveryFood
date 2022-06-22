@@ -13,6 +13,5 @@ export default  interface ClientToServerEvents {
   }
   
   export default  interface SocketData {
-    name: string;
-    age: number;
+    position: Array<number>;
   }

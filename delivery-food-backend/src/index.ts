@@ -11,13 +11,16 @@ import routerUsuario from './routes/usuarios.router';
 import routerPago from './routes/pago.router'
 import routerPedido from './routes/pedido.router';
 import routerDireccion from './routes/direccion.router';
-import routerEmail from './routes/email.routes';
 import routerDashboard from './routes/dashboard.routes';
+import http from 'http';
+import { authRouter } from "./routes/firebase.routes";
 
-// import routerPosition from './routes/socket.routes';
-
+// import routerSocket from './routes/socket.routes';
 const app = express();
 const port = 8070;
+const server = http.createServer(app);
+const io = require('socket.io')(server);
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json())
@@ -26,18 +29,28 @@ app.use('/usuario',routerUsuario);
 app.use('/pago',routerPago);
 app.use('/pedido',routerPedido);
 app.use('/direccion',routerDireccion);
-app.use('/mail',routerEmail);
 app.use('/',routerDashboard);
-// app.use('/',routerPosition);
+app.use("/", authRouter); 
 
 
+app.use(express.static("./dist/client"));
+
+// app.get("/", (req, res) => {
+//     res.sendFile(__dirname + "/client/index.html");
+//   });  
+
+// io.on('connection', (socket: { id: any; on: (arg0: string, arg1: () => void) => void; emit: (arg0: string) => void; }) => {
+//     console.log('a user connected', socket.id);
+//     socket.on('ping',() => {
+//         socket.emit('pong');
+// })});
 
 connectToDatabase()
     .then(() => {   
         app.use(morgan("dev"));     
         app.use("/", routerMenu);
         //app.use("/user", userRouter)
-        app.listen(port, () => {
+        server.listen(port, () => {
             console.log(`Server started at http://localhost:${port}`);
         });
     })

@@ -40,6 +40,11 @@ export const CartProvider = ({ children }) => {
     setCart(elementosUnicos);
   };
 
+  const deleteElement = (id) => {
+    const newElements = cart.filter((product) => product.id !== id);
+    setCart(newElements);
+  };
+
   return (
     <cartContext.Provider
       value={{
@@ -48,6 +53,7 @@ export const CartProvider = ({ children }) => {
         pushCart,
         addCantidad,
         substractCantidad,
+        deleteElement,
         total,
         setTotal,
       }}

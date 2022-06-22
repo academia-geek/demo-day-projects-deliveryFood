@@ -26,7 +26,8 @@ export const CheckoutForm = () => {
       setId(id);
 
       const { data } = await axios.post(
-        "https://backend-appguajolotas.herokuapp.com/checkout",
+        // "https://backend-appguajolotas.herokuapp.com/checkout",
+        "http://localhost:4000/checkout",
         {
           id,
           amount: total,

@@ -37,7 +37,6 @@
     "license": "MIT licence",
     "homepage": "https://github.com/academia-geek/demo-day-projects-deliveryFood/blob/main/README.md",
     "dependencies": {
-        "@types/axios": "^0.14.0",
         "axios": "^0.27.2",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
@@ -55,6 +54,7 @@
         "swagger-ui-express": "^4.4.0"
     },
     "devDependencies": {
+        "@types/axios": "^0.14.0",
         "@babel/preset-env": "^7.18.2",
         "@types/cookiejar": "^2.1.2",
         "@types/cors": "^2.8.12",

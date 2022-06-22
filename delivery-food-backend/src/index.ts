@@ -18,7 +18,6 @@ import { authRouter } from "./routes/firebase.routes";
 // import routerSocket from './routes/socket.routes';
 const app = express();
 import router from './routes/establecimiento.routers';
-import routerUsuario from './routes/usuarios.router';
 const port = 8070;
 const server = http.createServer(app);
 const io = require('socket.io')(server);

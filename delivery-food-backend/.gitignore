@@ -8,3 +8,5 @@ dist/**/*
 
 # Ignore .env file for secrets
 .env
+
+src\services

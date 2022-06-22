@@ -1,10 +1,9 @@
-import {Pool} from 'pg';
-import dotenv from 'dotenv';
-dotenv.config();
+import {Pool} from 'pg'; 
 export const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    password: '12345',
-    database: 'deliveryfood',
-    port: Number(process.env.POSTGRES_PORT)
-});
+    user:'postgres',
+    host:'localhost',
+    password:'12345',
+    database:'deliveryfood',
+    port:5432
+})
+

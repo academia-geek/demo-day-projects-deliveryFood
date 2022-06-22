@@ -4,44 +4,55 @@ import express, { urlencoded } from 'express';
 import morgan from "morgan";
 import swaggerUi from 'swagger-ui-express';
 import { connectToDatabase } from "./services/database.service.mongo";
-import cors from 'cors';
-import router from './routes/mongo.router';
-import { ObjectId } from 'mongodb';
-var bodyParser = require('body-parser')
-dotenv.config();
-
-const app = express();
-import routerEstablecimiento from './routes/establecimiento.router';
+import cors   from 'cors';
+import routerMenu from './routes/menu.routes';
+var bodyParser=require('body-parser')
+import routerEstablecimiento from './routes/establecimiento.routers';
 import routerUsuario from './routes/usuarios.router';
-import swaggerSpec from './docs/swagger-spec';
 import routerPago from './routes/pago.router'
 import routerPedido from './routes/pedido.router';
 import routerDireccion from './routes/direccion.router';
+import routerDashboard from './routes/dashboard.routes';
+import http from 'http';
+import { authRouter } from "./routes/firebase.routes";
 
-const port = process.env.PORT || 3000;
+// import routerSocket from './routes/socket.routes';
+const app = express();
+const port = 8070;
+const server = http.createServer(app);
+const io = require('socket.io')(server);
 
-// Middlewares
-app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-// Initialize swagger-jsdoc
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/establecimiento',routerEstablecimiento);
+app.use('/usuario',routerUsuario);
+app.use('/pago',routerPago);
+app.use('/pedido',routerPedido);
+app.use('/direccion',routerDireccion);
+app.use('/',routerDashboard);
+app.use("/", authRouter); 
+
+
+app.use(express.static("./dist/client"));
+
+// app.get("/", (req, res) => {
+//     res.sendFile(__dirname + "/client/index.html");
+//   });  
+
+// io.on('connection', (socket: { id: any; on: (arg0: string, arg1: () => void) => void; emit: (arg0: string) => void; }) => {
+//     console.log('a user connected', socket.id);
+//     socket.on('ping',() => {
+//         socket.emit('pong');
+// })});
 
 connectToDatabase()
-    .then(() => {
-        app.use(morgan("dev"));
-        app.use("/api/mongo", router);
-        // Routes
-        app.use('/api/establecimientos', routerEstablecimiento);
-        app.use('/api/usuarios', routerUsuario);
-        app.use('/api/pagos', routerPago);
-        app.use('/api/pedidos', routerPedido);
-        app.use('/api/direccion', routerDireccion);
-
-       const server = app.listen(port, () => {
+    .then(() => {   
+        app.use(morgan("dev"));     
+        app.use("/", routerMenu);
+        //app.use("/user", userRouter)
+        server.listen(port, () => {
             console.log(`Server started at http://localhost:${port}`);
         });
         return server;

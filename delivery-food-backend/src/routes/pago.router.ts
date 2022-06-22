@@ -5,12 +5,15 @@ import { getPago, createPago, updatePago, deletePago, getPagoById } from '../con
 import pagoSchema from '../schemas/pago.schema.joi';
 import pagoParamSchema from '../schemas/pago_params.schema.joi';
 const validator = createValidator();
+import { decodeToken } from "../firebase/firebase.token";
 
-routerPago.get('/', getPago);
-routerPago.post('/', validator.body(pagoSchema), createPago);
-routerPago.put('/:id', validator.params(pagoParamSchema), validator.body(pagoSchema), updatePago);
-routerPago.delete('/:id', validator.params(pagoParamSchema), deletePago);
-routerPago.get('/:id', validator.params(pagoParamSchema), getPagoById);
+
+routerPago.get('/',decodeToken,getPago);
+routerPago.post('/',validator.body(pagoSchema),decodeToken,createPago);
+routerPago.put('/:id',validator.params(pagoParamSchema),validator.body(pagoSchema),decodeToken,updatePago);
+routerPago.delete('/:id',validator.params(pagoParamSchema),decodeToken,deletePago);
+routerPago.get('/:id',validator.params(pagoParamSchema),decodeToken,getPagoById);
+
 
 export default routerPago;
 

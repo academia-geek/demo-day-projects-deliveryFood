@@ -6,14 +6,9 @@ export default interface Pedido {
 };
 interface detalles{
     nombre_producto: string;
+    descripcion: string;
+    foto: string;
     cantidad: number;
-    valor: number;
-    adicionales: Array<adicionales>
-    opciones: Array<string>
+    valor: number;  
+    
 }
-interface adicionales{
-    nombre: string;
-    cantidad: number;
-    valor: number;
-}
-

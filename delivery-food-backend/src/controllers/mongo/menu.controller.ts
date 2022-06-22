@@ -28,7 +28,6 @@ export const deletemenuID = async (req: Request, res: Response) => {
     }
 };
 
-
 // Adicionar items de menu
 export const postItems = async (req: Request, res: Response) => {
     try {
@@ -55,7 +54,7 @@ export const patchmenuID = async (req: Request, res: Response) => {
 };
 
 // Editar Items de Menú
-export const editItemsMenuId = async (req: Request, res: Response) => {    
+export const editItemsMenuId = async (req: Request, res: Response) => {
     try {
         let id = new ObjectId(req.params.id); // id del menú
         let data = req.body;     // id_plato y las otras propiedades de items
@@ -72,13 +71,13 @@ export const editItemsMenuId = async (req: Request, res: Response) => {
 };
 
 // Eliminar Items de Menú
-export const deleteItemsMenuId = async (req: Request, res: Response) => {    
+export const deleteItemsMenuId = async (req: Request, res: Response) => {
     try {
         let id = new ObjectId(req.params.id); // id del menú
         let data = req.body;     // id_plato y las otras propiedades de items
         const menu = await collections.Menu.findOne({ _id: id }, { projection: { _id: 0, items: 1 } });
         let items = menu.items;
-        let index = items.findIndex((obj => obj.id_plato == data.id_plato));   
+        let index = items.findIndex((obj => obj.id_plato == data.id_plato));
         if (index > -1) {
             items.splice(index, 1); 
           }

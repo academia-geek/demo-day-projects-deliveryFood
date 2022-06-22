@@ -1,10 +1,11 @@
+import { time } from "console";
 import Joi from "joi";
 
 const pedidoSchema = Joi.object({
     id_usuario:Joi.number().required(),
     id_establecimiento:Joi.number().required(),
     id_menu:Joi.string().required(),
-    id_platos:Joi.array().items(Joi.string()).required(),
+    id_itempedido:Joi.array().items(Joi.string()).required(),
     id_repartidor:Joi.number(),
     cantidad:Joi.array().items(Joi.number()).required(),
     impuestos:Joi.number().required(),

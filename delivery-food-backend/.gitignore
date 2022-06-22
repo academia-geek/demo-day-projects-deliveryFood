@@ -1,7 +1,7 @@
 .vscode/
 node_modules/
 .DS_Store
-
+.idea/**
 # Ignore built ts files
 dist/**/*
 

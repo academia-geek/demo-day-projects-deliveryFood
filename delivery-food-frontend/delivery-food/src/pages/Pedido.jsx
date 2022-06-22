@@ -8,7 +8,14 @@ import "../styles/pedido.css";
 const Pedido = () => {
   const [handleModalPagar, setHandleModalPagar] = useState(false);
   const navigate = useNavigate();
-  const { cart, addCantidad, substractCantidad, total, setTotal } = useCart();
+  const {
+    cart,
+    addCantidad,
+    substractCantidad,
+    total,
+    setTotal,
+    deleteElement,
+  } = useCart();
 
   const openModalPagar = () => {
     setHandleModalPagar(true);
@@ -68,11 +75,17 @@ const Pedido = () => {
                   <p className="text-xl">
                     Total: ${product.precio * product.cantidad}
                   </p>
+                  <button
+                    className="bg-red-700 text-white p-2 mt-5 hover:bg-red-800"
+                    onClick={() => deleteElement(product.id)}
+                  >
+                    Eliminar del carrito
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-5 items-center">
+          <div className="flex flex-col gap-5 items-center my-10">
             <h3 className="text-center text-[color:var(--dark-blue)] font-medium">
               Total a pagar: $ {total}
             </h3>

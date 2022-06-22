@@ -53,9 +53,7 @@ const PerfilUsuario = () => {
 
   return (
     <div className="flex">
-      {user.emailVerified ? (
-        <SideBar username={user.email.split("@")[0]} modalState={modalState} />
-      ) : null}
+      <SideBar username={user.email.split("@")[0]} modalState={modalState} />
       <div
         className="container-user-profile w-10/12 flex flex-col items-center p-10 bg-slate-100 h-screen
        relative overflow-y-scroll"
@@ -78,7 +76,7 @@ const PerfilUsuario = () => {
           <div className="w-full flex justify-evenly mt-10 ">
             {!user.emailVerified && (
               <div className="flex flex-col justify-center items-center p-5 rounded-md">
-                <h2 className="">No has verificado tu correo</h2>
+                <h2 className="text-2xl">Verifica tu cuenta</h2>
                 <div>
                   <button
                     className="btn-verify-account self-start flex items-center gap-2"
@@ -91,7 +89,7 @@ const PerfilUsuario = () => {
             )}
             {!user.photoURL && (
               <div className="flex flex-col justify-center items-center  p-5 rounded-md gap-2">
-                <h2 className="">No has subido una foto de perfil</h2>
+                <h2 className="text-2xl">No has subido una foto de perfil</h2>
                 <div className="relative flex justify-center">
                   <input
                     type="file"
@@ -113,7 +111,7 @@ const PerfilUsuario = () => {
             className="container-btns-ubication-edit-profile-user w-full flex 
           justify-around mt-5"
           >
-            <button>Añadir ubicacion</button>
+            {/* <button>Añadir ubicacion</button> */}
             <button onClick={showModal}>Editar Perfil</button>
           </div>
         )}

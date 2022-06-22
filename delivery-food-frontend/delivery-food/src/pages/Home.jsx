@@ -25,16 +25,16 @@ export default function Home() {
             data-aos="fade-right"
           >
             <img
-              src="https://res.cloudinary.com/dp9zv16le/image/upload/v1653931341/delivery-food/anh-nguyen-kcA-c3f_3FE-unsplash_ovzjnj.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/delivery-food-20027.appspot.com/o/menu%2Fcomida-rapida%2Fdescarga.jpg?alt=media&token=4ca53461-91c9-4680-88fd-75e16422e428"
               alt=""
               className="w-56 h-56 object-cover"
             />
             <div className="flex flex-col gap-5">
-              <h2 className="text-center">Categoria #</h2>
+              <h2 className="text-center">pizza de pepperoni</h2>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eligendi magnam quo, expedita optio eaque, rem eius fugit
-                blanditiis ab modi accusantium quaerat.
+                El pepperoni es una variedad estadounidense de salami picante
+                elaborado con cerdo curado y ternera sazonado con pimentón u
+                otro chile.
               </p>
             </div>
           </div>
@@ -44,16 +44,16 @@ export default function Home() {
             data-aos="fade-left"
           >
             <img
-              src="https://res.cloudinary.com/dp9zv16le/image/upload/v1653931340/delivery-food/chad-montano-MqT0asuoIcU-unsplash_zsws9d.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/delivery-food-20027.appspot.com/o/menu%2Fpostres%2Fpanna_cotta.jpg?alt=media&token=cb1c76ad-c5c8-400b-8f93-74d0868c3862"
               alt=""
               className="w-56 h-56 object-cover"
             />
             <div className="flex flex-col gap-5">
-              <h2 className="text-center">Categoria #</h2>
+              <h2 className="text-center">Panna Cotta</h2>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eligendi magnam quo, expedita optio eaque, rem eius fugit
-                blanditiis ab modi accusantium quaerat.
+                Postre italiano de crema moldeada, a menudo su guarnición se
+                compone de coulis de frutos del bosque, salsas de caramelo o
+                chocolate, cubierto de frutas o licores.
               </p>
             </div>
           </div>
@@ -62,16 +62,15 @@ export default function Home() {
             data-aos="fade-right"
           >
             <img
-              src="https://res.cloudinary.com/dp9zv16le/image/upload/v1653931338/delivery-food/lidye-1Shk_PkNkNw-unsplash_fcupwr.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/delivery-food-20027.appspot.com/o/menu%2Fvegetariano%2Fdescarga.jpg?alt=media&token=f39b0303-7976-45f9-9ca8-c37f24479688"
               alt=""
               className="w-56 h-56 object-cover"
             />
             <div className="flex flex-col gap-5">
-              <h2 className="text-center">Categoria #</h2>
+              <h2 className="text-center">pastas vegetarianas</h2>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eligendi magnam quo, expedita optio eaque, rem eius fugit
-                blanditiis ab modi accusantium quaerat.
+                La pasta es uno de los platos o recetas sencillas más consumidas
+                de nuestra alimentación y gastronomía
               </p>
             </div>
           </div>

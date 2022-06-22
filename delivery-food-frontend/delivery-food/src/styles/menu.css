@@ -47,12 +47,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-.item-establecimiento {
-  transition: all ease-in-out 0.4s;
-}
-.item-establecimiento:hover {
-  cursor: pointer;
-  transform: scaleY(1.1);
-  background: var(--light-blue);
-}

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import { getEstablecimientos } from "../services/establecimientos";
 
+import "../styles/menuEstablecimiento.css";
+
 Aos.init({
   duration: 1000,
 });
@@ -29,12 +31,15 @@ export const MenuList = () => {
           {establecimientos.map((items) => (
             <div
               key={items.id_establecimiento}
-              className="item-establecimiento flex justify-center p-2 rounded-md shadow-lg"
+              className="item-establecimiento flex flex-col justify-center rounded-md shadow-lg"
               onClick={() => navigate(`/viewProducts/menu/${items.id_menu}`)}
             >
-              <h2 className="mb-3 font-medium text-[color:var(--dark-blue)] uppercase">
-                {items.nombre}
-              </h2>
+              <img src={items.foto_est} alt="" />
+              <div>
+                <h2 className="mb-3 font-medium text-[color:var(--dark-blue)] uppercase">
+                  {items.nombre}
+                </h2>
+              </div>
             </div>
           ))}
         </div>

@@ -84,7 +84,7 @@ export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
             hover:text-[color:var(--dark-blue)] hover:bg-[color:var(--yellow)]
             hover:p-2 hover:rounded-md hover:duration-200 transition-all ease-in-out"
               >
-                Ver pedidos
+                Ver carrito
               </Link>
               <Link
                 to="/viewProducts/restaurants"

@@ -15,3 +15,11 @@ Esta solucion le ayudará al usuario a comprar algun producto y recibirlo en su 
 * [NodeJs](https://nodejs.org/en/) - framework usado para la creacion de srevicios del backend
 * [PostgresSQL](https://www.postgresql.org/) - Base de datos relacional
 * [MongoDB](https://www.mongodb.com/) - Base de datos no relacional
+
+## Empezando
+  
+  ### prerequisitos
+  Clonar repositorio: 
+  ```
+  git clone https://github.com/academia-geek/demo-day-projects-deliveryFood
+  ```

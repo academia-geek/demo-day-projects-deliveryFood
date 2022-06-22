@@ -1,6 +1,5 @@
 import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
@@ -20,13 +19,15 @@ import {
 } from '@mui/material';
 // components
 import Page from '../components/Page';
-import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
 // mock
 import USERLIST from '../_mock/user';
+import { get } from '../services/get';
+import deleteApi from '../services/delete';
+
 
 // ----------------------------------------------------------------------
 
@@ -58,19 +59,21 @@ function getComparator(order, orderBy) {
 }
 
 function applySortFilter(array, comparator, query) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
+  const stabilizedThis = array?.map((el, index) => [el, index]);
+  stabilizedThis?.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) return order;
     return a[1] - b[1];
   });
   if (query) {
-    return filter(array, (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    return filter(array, (_user) => _user.nombre.toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis?.map((el) => el[0]);
 }
 
 export default function User() {
+  const [ users, setUsers ] = useState(null);
+
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -91,7 +94,7 @@ export default function User() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = USERLIST.map((n) => n.name);
+      const newSelecteds = users.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -126,12 +129,35 @@ export default function User() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - users.length) : 0;
 
-  const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
+  const filteredUsers = applySortFilter(users, getComparator(order, orderBy), filterName);
 
-  const isUserNotFound = filteredUsers.length === 0;
-  console.log(USERLIST);
+  const isUserNotFound = filteredUsers?.length === 0;
+
+  const getUser = async() => {
+    try{
+      const respond = await get('usuarios');
+      const data = respond.data;
+      setUsers(data)
+    } catch (error) {
+      console.log('no funciona');
+    }
+  }
+  useEffect(()=>{
+    getUser();
+  }, [users]);
+
+  const deleteUser = async(id) => {
+    try {
+      await deleteApi(`usuarios/${id}`)
+      console.log('se eliminó el usuario');
+      getUser()
+    } catch (error) {
+      console.log('no funciona');
+    }
+  };
+
   return (
     <Page title="User">
       <Container>
@@ -154,39 +180,45 @@ export default function User() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={USERLIST.length}
+                  rowCount={users?.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, document, status, email, avatarUrl, isVerified } = row;
-                    const isItemSelected = selected.indexOf(name) !== -1;
+                  {filteredUsers?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                    const objUser = {
+                      nombre: row.nombre,
+                      telefono: row.telefono,
+                      id: row.id_usuario,
+                      email: row.email,
+                      estado: row.estado
+                    }
+                    const isItemSelected = selected.indexOf(objUser.nombre) !== -1;
 
                     return (
                       <TableRow
                         hover
-                        key={id}
+                        key={objUser.id}
                         tabIndex={-1}
                         role="checkbox"
                         selected={isItemSelected}
                         aria-checked={isItemSelected}
                       >
                         <TableCell padding="checkbox">
-                          <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
+                          <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, objUser.nombre)} />
                         </TableCell>
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={name} src={avatarUrl} />
+                            <Avatar alt={objUser.nombre} src={null} />
                             <Typography variant="subtitle2" noWrap>
-                              {name}
+                              {objUser.nombre}
                             </Typography>
                           </Stack>
                         </TableCell>
-                        <TableCell align="left">{email}</TableCell>
-                        <TableCell align="left">{document}</TableCell>
-                        <TableCell align="left">{isVerified}</TableCell>
+                        <TableCell align="left">{objUser.email}</TableCell>
+                        <TableCell align="left">{objUser.telefono}</TableCell>
+                        <TableCell align="left">{objUser.estado}</TableCell>
                         {/* <TableCell align="left">
                           <Label variant="ghost" color={(status === 'banned' && 'error') || 'success'}>
                             {sentenceCase(status)}
@@ -194,7 +226,7 @@ export default function User() {
                         </TableCell> */}
 
                         <TableCell align="right">
-                          <UserMoreMenu />
+                          <UserMoreMenu delete={()=>deleteUser(objUser.id)} />
                         </TableCell>
                       </TableRow>
                     );
@@ -222,7 +254,7 @@ export default function User() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={USERLIST.length}
+            count={users?.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

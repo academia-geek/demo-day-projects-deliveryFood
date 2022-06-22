@@ -36,7 +36,7 @@ BlogPostCard.propTypes = {
   index: PropTypes.number,
 };
 
-export default function BlogPostCard({ rest, index }) {
+export default function BlogPostCard({ rest, index, getApi }) {
   // const { cover, title, view, comment, share, author, createdAt } = rest;
   // const { estado, nombre, id_establecimiento } = rest;
   const objEstablecimiento = {
@@ -49,7 +49,13 @@ export default function BlogPostCard({ rest, index }) {
   const latestPost = index === 1 || index === 2;
 
   const deleteEstabl = async() => {
-    await deleteApi(objEstablecimiento.id)
+    try{
+      const path = `establecimientos/${objEstablecimiento.id}`;
+      await deleteApi(path);
+      getApi();
+    } catch (error) {
+      console.log('Error de peticion');
+    }
   }
 
   return (

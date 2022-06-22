@@ -54,7 +54,7 @@ export default function Restaurants() {
 
         <Grid container spacing={3}>
           {establecimientos?.map((rest, index) => (
-            <BlogPostCard key={rest.id_establecimiento} rest={rest} index={index} />
+            <BlogPostCard key={rest.id_establecimiento} rest={rest} index={index} getApi={getApi} />
           ))}
         </Grid>
       </Container>

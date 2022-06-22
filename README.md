@@ -19,7 +19,23 @@ Esta solucion le ayudará al usuario a comprar algun producto y recibirlo en su 
 ## Empezando
   
   ### prerequisitos
+  
+  * [ReactJs](https://reactjs.org/docs/getting-started.html) 
+  * [Nodejs](https://nodejs.org/en/)
+
+ ### requisitos
+ 
   Clonar repositorio: 
   ```
   git clone https://github.com/academia-geek/demo-day-projects-deliveryFood
   ```
+  
+  instalar todas las dependicias con 
+  ```
+  npm install
+  ```
+  
+  Iniciar proyecto con 
+```
+npm start
+```

@@ -3,6 +3,8 @@ import { Link as RouterLink } from 'react-router-dom';
 // material
 import { alpha, styled } from '@mui/material/styles';
 import { Link, Card, Grid, CardContent } from '@mui/material';
+import { UserMoreMenu } from '../user';
+import deleteApi from '../../../services/delete';
 
 // ----------------------------------------------------------------------
 
@@ -36,16 +38,26 @@ BlogPostCard.propTypes = {
 
 export default function BlogPostCard({ rest, index }) {
   // const { cover, title, view, comment, share, author, createdAt } = rest;
-  const { estado, nombre } = rest;
+  // const { estado, nombre, id_establecimiento } = rest;
+  const objEstablecimiento = {
+    estado: rest.estado, 
+    nombre: rest.nombre,
+    id: rest.id_establecimiento
+  }
 
   const latestPostLarge = index === 0;
   const latestPost = index === 1 || index === 2;
+
+  const deleteEstabl = async() => {
+    await deleteApi(objEstablecimiento.id)
+  }
 
   return (
     <Grid item xs={12} 
     sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}
     >
       <Card sx={{ position: 'relative' }}>
+      <UserMoreMenu delete={deleteEstabl}/>
         <CardMediaStyle
           sx={{
             ...((latestPostLarge || latestPost) && {
@@ -68,7 +80,7 @@ export default function BlogPostCard({ rest, index }) {
           }}
         >
 
-          <CoverImgStyle alt={nombre} src={'https://res.cloudinary.com/dxhgejzwc/image/upload/v1648678917/cld-sample.jpg'} />
+          <CoverImgStyle alt={objEstablecimiento.nombre} src={'https://res.cloudinary.com/dxhgejzwc/image/upload/v1648678917/cld-sample.jpg'} />
         </CardMediaStyle>
 
         <CardContent
@@ -95,7 +107,7 @@ export default function BlogPostCard({ rest, index }) {
               }),
             }}
           >
-            {nombre}
+            {objEstablecimiento.nombre}
           </TitleStyle>
 
         </CardContent>

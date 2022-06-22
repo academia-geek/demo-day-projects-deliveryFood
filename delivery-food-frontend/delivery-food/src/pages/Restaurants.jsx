@@ -67,14 +67,14 @@ export default function Restaurants() {
           <input type="text" placeholder='Buscar establecimiento...' className='outline-none' id='search'/>
         </label>
         <div>
-          <span>Categorias: </span>
+          {/* <span>Categorias: </span>
           <select name="filter-establecimientos" id="" className='border-solid border border-gray-400 mr-10 rounded' onChange={select}>
             {
               filterCategory.map((e, i) => (
                 <option key={i} value={e.value}>{e.category}</option>
               ))
             }
-          </select>
+          </select> */}
           <span>Abierto/Cerrado: </span>
           <select name="disponibles" id="" className='border-solid border border-gray-400 rounded' onChange={select}>
             {

@@ -13,7 +13,7 @@ const users = [...Array(24)].map((_, index) => ({
   avatarUrl: `/static/mock-images/avatars/avatar_${index + 1}.jpg`,
   name: faker.name.findName(),
   email: faker.company.companyName(),
-  isVerified:'hola:v',
+  isVerified:'Activo',
   status: sample(['active', 'banned']),
   document: sample([
     5,

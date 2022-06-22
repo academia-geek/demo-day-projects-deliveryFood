@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import { getEstablecimientos } from "../services/establecimientos";
+import { Loading } from "./Loading";
 
 import "../styles/menuEstablecimiento.css";
 
@@ -19,7 +20,12 @@ export const MenuList = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  if (establecimientos === null) return <h1>Cargando...</h1>;
+  if (establecimientos === null)
+    return (
+      <div className="flex justify-center mt-5">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="menu-list my-10">

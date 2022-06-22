@@ -1,19 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useCart } from "../context/CartContext";
+import { Loading } from "./Loading";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 export const CheckoutForm = () => {
   const [id, setId] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { total, cart } = useCart();
+  const { total } = useCart();
   const stripe = useStripe();
   const elements = useElements();
-
-  console.log(total);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +39,7 @@ export const CheckoutForm = () => {
           icon: "success",
           title: "Pago realizado",
           showConfirmButton: false,
-          timer: 2000,
+          timer: 3000,
         }).then(() => {
           window.location.reload(true);
         });
@@ -68,11 +65,13 @@ export const CheckoutForm = () => {
         <button
           className="mt-5 bg-[color:var(--dark-blue)] p-2 text-[color:var(--white)]
             text-lg w-full rounded-md hover:bg-slate-700"
+          disabled={loading ? true : false}
         >
           Pagar
         </button>
         {id && loading && (
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center mt-3">
+            <Loading />
             <span className="text-lg">Realizando pago...</span>
           </div>
         )}

@@ -4,14 +4,13 @@ import { createValidator } from 'express-joi-validation';
 import direccionSchema from '../schemas/direccion.schema.joi';
 import direccionParamSchema from '../schemas/direccion_params.schema.joi';
 const validator = createValidator();
-import {decodeToken} from '../firebase/manage.token';
 import { createDireccion, deleteDireccion, getDireccion, getDireccionById, updateDireccion } from '../controllers/direccion.controller';
 
-routerDireccion.get('/',decodeToken, getDireccion);
-routerDireccion.post('/',decodeToken, validator.body(direccionSchema), createDireccion);
-routerDireccion.put('/:id',decodeToken, validator.body(direccionSchema), validator.params(direccionParamSchema), updateDireccion);
-routerDireccion.delete('/:id',decodeToken, validator.params(direccionParamSchema), deleteDireccion);
-routerDireccion.get('/:id',decodeToken, validator.params(direccionParamSchema), getDireccionById);
+routerDireccion.get('/', getDireccion);
+routerDireccion.post('/', validator.body(direccionSchema), createDireccion);
+routerDireccion.put('/:id', validator.body(direccionSchema), validator.params(direccionParamSchema), updateDireccion);
+routerDireccion.delete('/:id', validator.params(direccionParamSchema), deleteDireccion);
+routerDireccion.get('/:id', validator.params(direccionParamSchema), getDireccionById);
 
 export default routerDireccion;
 

@@ -2,7 +2,8 @@ import { Request, Response } from 'express';
 import { pool } from '../db/db';
 import { QueryResult } from 'pg';
 
-export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+
+export const getUsers =  async (req: Request, res: Response): Promise<Response> => {
     try {
         console.log(req.method);
         const response: QueryResult = await

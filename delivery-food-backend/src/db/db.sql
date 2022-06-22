@@ -49,7 +49,7 @@ CREATE TABLE establecimiento(
     id_menu VARCHAR(50) NOT NULL,
     foto_est VARCHAR(255),
     PRIMARY KEY (id_establecimiento)
-);
+    );
 
 
 
@@ -68,7 +68,7 @@ CREATE TABLE pedido(
     impuestos INTEGER NOT NULL,
     tipoEntrega enum_entrega NOT NULL,
     valorDomicilio INTEGER NOT NULL,
-    estadoDelPedido enum_estado DEFAULT 'En revisión'
+    estadoDelPedido enum_estado DEFAULT 'En revisión',
     hora TIME NOT NULL,
     fecha DATE NOT NULL,
     valorTotal INTEGER NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE pedido(
         ON UPDATE CASCADE,
     CONSTRAINT fk_establecimiento
         FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
-        ON DELETE RESTRICT,
+        ON DELETE RESTRICT
         ON UPDATE CASCADE 
 );
 
@@ -98,7 +98,7 @@ CREATE SEQUENCE pago_id_seq
 CREATE TABLE pago(
     id_pago INTEGER NOT NULL DEFAULT NEXTVAL('pago_id_seq'),
     id_usuario INTEGER NOT NULL,
-    id_pedido INTEGER NOT NULL,
+    id_pedido BIGINT NOT NULL,
     id_establecimiento INTEGER,
     metodoPago enum_metodo NOT NULL,
     fecha DATE NOT NULL,
@@ -109,9 +109,9 @@ CREATE TABLE pago(
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     CONSTRAINT fk_pedido
-    FOREIGN KEY (id_pedido) REFERENCES pedido (codigoOrden)
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE
+        FOREIGN KEY (id_pedido) REFERENCES pedido (codigoOrden)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
 );
 
 CREATE SEQUENCE direccion_id_seq
@@ -133,3 +133,13 @@ CREATE TABLE direccion(
     id_usuario INTEGER,
     PRIMARY KEY (id_direccion)    
 );
+
+CREATE TABLE roles (
+    id INTEGER NOT NULL,
+    rol VARCHAR(255) NOT NULL,
+    permisos VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO roles (id,rol,permisos) VALUES (1,'Repartidor','getUsers,createUser');
+

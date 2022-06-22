@@ -5,12 +5,12 @@ import {ServiceAccount} from 'firebase-admin';
 import * as dotenv from 'dotenv';
 dotenv.config();
 const firebaseConfig = {
-    apiKey: "AIzaSyC8k1DSfWd2zuXGhFx27YIto3ulWNGzNO8",
-    authDomain: "delivery-food-20027.firebaseapp.com",
-    projectId: "delivery-food-20027",
-    storageBucket: "delivery-food-20027.appspot.com",
-    messagingSenderId: "606489646430",
-    appId: "1:606489646430:web:a6cf3a364d59281f8e6bcf"
+    apiKey: "AIzaSyCcS850zQtFKQ49MCJV3JJiHX4Rdx6zaSU",
+    authDomain: "deliveryfood-67e4e.firebaseapp.com",
+    projectId: "deliveryfood-67e4e",
+    storageBucket: "deliveryfood-67e4e.appspot.com",
+    messagingSenderId: "372310120115",
+    appId: "1:372310120115:web:b777492131b1133a6902c6"
 };
 const app = initializeApp(firebaseConfig);
 

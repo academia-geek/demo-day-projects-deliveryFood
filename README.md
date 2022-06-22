@@ -6,10 +6,12 @@ Esta solucion le ayudará al usuario a comprar algun producto y recibirlo en su 
 
 ## Construido con:
 
-* [JavaScript](https://www.javascript.com/)
-* [Typescript](https://www.typescriptlang.org/)
-* [ReactJs](https://reactjs.org/docs/getting-started.html)
-* [TailwindCSS](https://tailwindcss.com/)
-* [Firebase](https://firebase.google.com/?gclsrc=ds&gclsrc=ds&gclid=CLr-zszKwfgCFQvBHwod6DcBSA)
-* [NodeJs](https://firebase.google.com/?gclsrc=ds&gclsrc=ds&gclid=CLr-zszKwfgCFQvBHwod6DcBSA](https://nodejs.org/en/)
-* [Express](https://expressjs.com/)
+* [JavaScript](https://www.javascript.com/) - Lenguaje de progración usadp para el frontend
+* [ReactJs](https://reactjs.org/docs/getting-started.html) - Libreria para la creacion de interfaces
+* [TailwindCSS](https://tailwindcss.com/) - libreria para la creacion de estilos CSS de la vista del usuario
+* [MaterialUI](https://tailwindcss.com/) - libreria para la creacion de estilos CSS de la vista del administrador
+* [Firebase](https://firebase.google.com/?gclsrc=ds&gclsrc=ds&gclid=CLr-zszKwfgCFQvBHwod6DcBSA) - servicio usado para gestionar autenticaciones y alojamiento de imagenes
+* [Typescript](https://www.typescriptlang.org/) - Lenguaje de progración usadp para el backend
+* [NodeJs](https://nodejs.org/en/) - framework usado para la creacion de srevicios del backend
+* [PostgresSQL](https://www.postgresql.org/) - Base de datos relacional
+* [MongoDB](https://www.mongodb.com/) - Base de datos no relacional

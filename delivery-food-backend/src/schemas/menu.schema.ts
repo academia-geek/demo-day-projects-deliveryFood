@@ -23,7 +23,7 @@ const menuSchema = Joi.object().keys({
         opcion: Joi.array().items({
             nombre: Joi.string().min(1).max(50).when("opcion", { is: Joi.exist(), then: Joi.required() }),
             tipo: Joi.string().min(1).max(50).when("opcion", { is: Joi.exist(), then: Joi.required() }),
-            opcion: Joi.array().items(
+            opciones: Joi.array().items(
                 Joi.string().min(1).max(50).when("opcion", { is: Joi.exist(), then: Joi.required() }),
             ),
         }),

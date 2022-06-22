@@ -33,18 +33,18 @@ describe("GET /api/usuarios/:id", () => {
         expect(response.body).arrayOfObjects;
     });
 });
-describe("POST /api/usuarios", () => {
-    test("should return a 200 status code & an JSON object ", async () => {
-        const response = await request(app)
-            .post("/api/usuarios")
-            .send(usuario)
-            .catch((err) => {
-                console.log(err);
-            });
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toBeObject;
-    });
-});
+// describe("POST /api/usuarios", () => {
+//     test("should return a 200 status code & an JSON object ", async () => {
+//         const response = await request(app)
+//             .post("/api/usuarios")
+//             .send(usuario)
+//             .catch((err) => {
+//                 console.log(err);
+//             });
+//         expect(response.statusCode).toBe(200);
+//         expect(response.body).toBeObject;
+//     });
+// });
 describe("PUT /api/usuarios/:id", () => {
     test("should return a 200 status code & an JSON object ", async () => {
         const response = await request(app)

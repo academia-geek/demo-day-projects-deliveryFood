@@ -1,31 +1,27 @@
-db.DeliveryFood.insert(
-  
-{ tipo_menu: "Típico",
-  items:[ {
-            nombre: "Porción patacones",
-            categoria: "Entrada",
-            descripcion: "Gran porcion de patacones fritos con ahogao o guacamole",
-            foto:"https://ibb.co/X2SF4ym",
-            valor: 5000,
-            comentarios: "no poner sal a los patacones por favor",
-            opcion: [{
-                      nombre: "Escoge tú salsa",
-                      tipo: "Obligatorio",
-                      opciones: ["Guacamole","Ahogao"]
+db.DeliveryFood.insert({
+  "tipo_menu": "Típico",
+  "items":[ {
+            "nombre": "Porción patacones",
+            "categoria": "Entrada",
+            "descripcion": "Gran porcion de patacones fritos con ahogao o guacamole",
+            "foto":"https://ibb.co/X2SF4ym",
+            "valor": 5000,
+            "comentarios": "no poner sal a los patacones por favor",
+            "opcion": [{
+                      "nombre": "Escoge tú salsa",
+                      "tipo": "Obligatorio",
+                      "opciones": ["Guacamole","Ahogao"]
                     }]
           },
           {
-            nombre: "Sancocho de Gallina",
-            categoria: "Plato Fuerte",
-            descripcion: "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
-            foto:"https://ibb.co/RD6LR5T",
-            valor: 26000,
-            comentarios: "",
-            opcion: [{}]
-          },    
+            "nombre": "Sancocho de Gallina",
+            "categoria": "Plato Fuerte",
+            "descripcion": "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
+            "foto":"https://ibb.co/RD6LR5T",
+            "valor": 26000,
+            "opcion": [{}]
+          }
         ]
-}
-)
 
 { "tipo_menu": "Saludable",
   "items":[ {

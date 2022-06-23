@@ -8,16 +8,16 @@ import router from './routes/mongo.router';
 var bodyParser = require('body-parser')
 dotenv.config();
 import cors from 'cors';
-import routerMenu from './routes/menu.routes';
+import routerMenu from './routes/menu.router';
 var bodyParser = require('body-parser')
-import routerEstablecimiento from './routes/establecimiento.routers';
+import routerEstablecimiento from './routes/establecimiento.router';
 import routerUsuario from './routes/usuarios.router';
 import routerPago from './routes/pago.router'
 import routerPedido from './routes/pedido.router';
 import routerDireccion from './routes/direccion.router';
 import routerDashboard from './routes/dashboard.routes';
 import http from 'http';
-import { authRouter } from "./routes/firebase.routes";
+import { authRouter } from "./routes/firebase.router";
 import swaggerSpec from './docs/swagger-spec';
 // import routerSocket from './routes/socket.routes';
 const app = express();

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 // @mui
 import PropTypes from 'prop-types';
 import { Box, Stack, Link, Card, Button, Divider, Typography, CardHeader } from '@mui/material';
@@ -16,13 +17,14 @@ AppNewsUpdate.propTypes = {
 };
 
 export default function AppNewsUpdate({ title, subheader, list, ...other }) {
+  const navigate = useNavigate()
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
       <Scrollbar>
         <Stack spacing={3} sx={{ p: 3, pr: 0 }}>
-          {list.map((news) => (
+          {list?.map((news) => (
             <NewsItem key={news.id} news={news} />
           ))}
         </Stack>
@@ -30,7 +32,7 @@ export default function AppNewsUpdate({ title, subheader, list, ...other }) {
 
       <Divider />
 
-      <Box sx={{ p: 2, textAlign: 'right' }}>
+      <Box sx={{ p: 2, textAlign: 'right' }} onClick={()=> navigate('/dashboard/restaurants')}>
         <Button size="small" color="inherit" endIcon={<Iconify icon={'eva:arrow-ios-forward-fill'} />}>
           Ver más
         </Button>
@@ -57,7 +59,7 @@ function NewsItem({ news }) {
     <Stack direction="row" alignItems="center" spacing={2}>
       <Box component="img" alt={title} src={image} sx={{ width: 48, height: 48, borderRadius: 1.5, flexShrink: 0 }} />
 
-      <Box sx={{ minWidth: 240, flexGrow: 1 }}>
+      <Box sx={{ minWidth: 240, flexGrow: 1, cursor: 'pointer' }}>
         <Link color="inherit" variant="subtitle2" noWrap>
           {title}
         </Link>

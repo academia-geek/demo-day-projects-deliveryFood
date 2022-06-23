@@ -7,7 +7,7 @@ import { Grid, Container, Typography } from '@mui/material';
 import Page from '../components/Page';
 import BoxDate from '../components/BoxDate';
 // sections
-import { AppNewsUpdate, AppWebsiteVisits, AppConversionRates } from '../sections/@dashboard/app';
+import { AppNewsUpdate } from '../sections/@dashboard/app';
 // services
 import { get } from '../services/get';
 
@@ -22,7 +22,7 @@ export default function DashboardApp() {
   const theme = useTheme();
 
   const [usersLength, setUsersLength] = useState(0);
-  const [establecimientosLength, setEstablecimientosLength] = useState(0);
+  const [establecimientos, setEstablecimientos] = useState(null);
 
   const getUsers = async () => {
     try {
@@ -36,8 +36,8 @@ export default function DashboardApp() {
   const getEstablecimientos = async () => {
     try {
       const respond = await get('establecimientos');
-      const data = respond.data.length;
-      setEstablecimientosLength(data);
+      const data = respond.data;
+      setEstablecimientos(data);
     } catch (error) {
       console.log('no trae establecimientos');
     }
@@ -45,7 +45,7 @@ export default function DashboardApp() {
   useEffect(() => {
     getUsers();
     getEstablecimientos();
-  });
+  }, []);
 
   return (
     <Page title="Dashboard">
@@ -57,76 +57,17 @@ export default function DashboardApp() {
         <Grid container spacing={3}>
           <div style={styledData}>
             <BoxDate title={'Usuarios registrados'} data={usersLength} />
-            <BoxDate title={'Establec. disponibles'} data={establecimientosLength} />
+            <BoxDate title={'Establec. disponibles'} data={establecimientos?.length} />
           </div>
-          <Grid item xs={12} md={6} lg={12}>
-            <AppWebsiteVisits
-              title="Ventas por Categoria"
-              subheader="Año 2021"
-              chartLabels={[
-                '01/01/2003',
-                '02/01/2003',
-                '03/01/2003',
-                '04/01/2003',
-                '05/01/2003',
-                '06/01/2003',
-                '07/01/2003',
-                '08/01/2003',
-                '09/01/2003',
-                '10/01/2003',
-                '11/01/2003',
-                '12/01/2003',
-              ]}
-              chartData={[
-                {
-                  name: 'Comidas Rapidas',
-                  type: 'column',
-                  fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 12],
-                },
-                {
-                  name: 'Mercado',
-                  type: 'area',
-                  fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43, 50],
-                },
-                {
-                  name: 'Bebidas',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 30],
-                },
-              ]}
-            />
-          </Grid>
 
-          <Grid item xs={12} md={6} lg={6}>
-            <AppConversionRates
-              title="Conversion Rates"
-              subheader="(+43%) than last ye"
-              chartData={[
-                { label: 'Italy', value: 400 },
-                { label: 'Japan', value: 430 },
-                { label: 'China', value: 448 },
-                { label: 'Canada', value: 470 },
-                { label: 'France', value: 540 },
-                { label: 'Germany', value: 580 },
-                { label: 'South Korea', value: 690 },
-                { label: 'Netherlands', value: 1100 },
-                { label: 'United States', value: 1200 },
-                { label: 'United Kingdom', value: 1380 },
-              ]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={6}>
+          <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate
               title="Nuevos restaurantes"
-              list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
-                title: faker.name.jobTitle(),
-                description: faker.name.jobTitle(),
-                image: `/static/mock-images/covers/cover_${index + 1}.jpg`,
+              list={establecimientos?.map((element, index) => ({
+                id: element.id_establecimiento,
+                title: element.nombre,
+                description: element.estado,
+                image: element.foto_est,
                 postedAt: faker.date.recent(),
               }))}
             />

@@ -1,0 +1,135 @@
+db.DeliveryFood.insert({
+  "tipo_menu": "Típico",
+  "items":[ {
+            "nombre": "Porción patacones",
+            "categoria": "Entrada",
+            "descripcion": "Gran porcion de patacones fritos con ahogao o guacamole",
+            "foto":"https://ibb.co/X2SF4ym",
+            "valor": 5000,
+            "comentarios": "no poner sal a los patacones por favor",
+            "opcion": [{
+                      "nombre": "Escoge tú salsa",
+                      "tipo": "Obligatorio",
+                      "opciones": ["Guacamole","Ahogao"]
+                    }]
+          },
+          {
+            "nombre": "Sancocho de Gallina",
+            "categoria": "Plato Fuerte",
+            "descripcion": "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
+            "foto":"https://ibb.co/RD6LR5T",
+            "valor": 26000,
+            "opcion": [{}]
+          }
+        ]
+
+{ "tipo_menu": "Saludable",
+  "items":[ {
+            "nombre": "Porción de fruta picada",
+            "categoria": "Entrada",
+            "descripcion": "Gran porcion de frutas de temporada aderezadas con jugo de naraja y semillas de chia",
+            "foto":"https://ibb.co/X2SF4ym",
+            "valor": 15000,            
+            "opcion": [{
+                      "nombre": "Quieres cubiertos",
+                      "tipo": "Obligatorio",
+                      "opciones": ["Si", "No"]
+                    }]
+          },
+          {
+            "nombre": "Bowl Balance",
+            "categoria": "Plato Fuerte",
+            "descripcion": "Bowl con base de quinoa cocida con salmon al vapor y vegetales (zucchini, zanahora y pimenton",
+            "foto":"https://ibb.co/RD6LR5T",
+            "valor": 26000,          
+            "opcion": [{
+                      "nombre": "Escoge una salsa para tu proteina",
+                      "tipo": "Obligatorio",
+                      "opciones": ["Salsa Dulce de soya", "mielmostaza","Infusion balsamica"]
+                    }]
+          }    
+        ]
+}
+
+
+{
+ "tipo_menu": "Saludable",
+  "items": [
+    {
+      "nombre": "Ensalada",
+      "categoria": "Entrada",
+      "descripcion": "Gran porcion de patacones fritos con ahogao o guacamole",
+      "foto": "https://ibb.co/X2SF4ym",
+      "valor": 5000,     
+      "opcion": [
+        {
+          "nombre": "Escoge tú salsa",
+          "tipo": "Obligatorio",
+          "opciones": [
+            "Guacamole",
+            "Ahogao"
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Ensalada con protenia a elección",
+      "categoria": "Plato Fuerte",
+      "descripcion": "Ensalada con croutons y queso gouda rayado acompañado de protenia asada",
+      "foto": "https://ibb.co/RD6LR5T",
+      "valor": 26000,      
+      "opcion": [
+        {"nombre": "Escoge tu proteina",
+        "tipo": "Obligatorio",
+          "opciones": ["Carne Bovina","Pollo","Filete de Tilapia"]}]
+    }]
+}
+
+
+
+ mongo "mongodb+srv://cluster0.tvi1h.mongodb.net/DeliveryFood" --username test1 --password 12345
+
+
+ db.DeliveryFood.find(
+  { _id : ObjectId('629bd27f5a869c709b43a514') },
+  { items : { $elemMatch : { id_plato : ObjectId('629bd91998e2857d04a05eab')} } }
+).pretty();
+
+{ $and: [ {items: {$elemMatch :{id_plato : '629bd91998e2857d04a05eab'}}}, { _id : '629bd27f5a869c709b43a514' }] }
+
+
+
+
+db.DeliveryFood.insert(
+  
+{ tipo_menu: "Saludable",
+  items:[ {
+            nombre: "Ensalada",
+            categoria: "Entrada",
+            descripcion: "Gran porcion de patacones fritos con ahogao o guacamole",
+            foto:"https://ibb.co/X2SF4ym",
+            valor: 5000,
+            comentarios: "no poner sal a los patacones por favor",
+            opcion: [{
+                      nombre: "Escoge tú salsa",
+                      tipo: "Obligatorio",
+                      opciones: ["Guacamole","Ahogao"]
+                    }]
+          },
+          {
+            nombre: "Poke de salmon con quinoa",
+            categoria: "Plato Fuerte",
+            descripcion: "Incluye sopa de 400ml con papa, yuca, platano y mazorca, acompaña una porción de arroz y tajada de aguacate",
+            foto:"https://ibb.co/RD6LR5T",
+            valor: 26000,
+            comentarios: "",
+            opcion: [{}]
+          },    
+        ]
+}
+)
+
+
+{ $and: [ { _id : new ObjectId('629bd27f5a869c709b43a514') },
+                { items : { $elemMatch : { id_plato : new ObjectId('629bd92398e2857d04a05eac')}}}
+              ] }

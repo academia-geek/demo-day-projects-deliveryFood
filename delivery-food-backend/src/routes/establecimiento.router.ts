@@ -27,7 +27,7 @@ routerEstablecimiento.get("/:id", validator.params(establecimientoParamSchema), 
 
 export default routerEstablecimiento;
 /**
-  * @swagger
+ * @swagger
  * components:
  *   schemas:
  *      establecimiento:
@@ -64,7 +64,7 @@ export default routerEstablecimiento;
  *          - id_menu
  *          - foto_est
  *        example:
- *          id_establecimiento: 1 
+ *          id_establecimiento: 1
  *          estado: ACTIVO
  *          nombre: "Establecimiento 1"
  *          operacional: S
@@ -139,7 +139,7 @@ export default routerEstablecimiento;
  *                 message:
  *                   type: string
  *                   example: "Internal Server error"
- * 
+ *
  * /api/establecimientos/{id_establecimiento}:
  *   get:
  *     tags:
@@ -246,4 +246,4 @@ export default routerEstablecimiento;
  *                 message:
  *                   type: string
  *                   example: "Internal Server error"
-*/
+ */

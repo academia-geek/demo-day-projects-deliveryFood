@@ -19,15 +19,7 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
 export const createUser = async (req: Request, res: Response) => {  
         const {nombre,apellido,telefono,tipo,email} = req.body;              
         try{
-        await sendEmail(
-            email,
-                {
-                    mensaje: "Activa tu cuenta!",
-                    link_rastreo: "http://localhost:8070/updateStatus/´´"
-                },
-                idconfirmacionConst.SEND_CODE_REGISTRO,
-            );        
-        return res.status(200).json({
+            return res.status(200).json({
             message:"Usuario registrado con éxito"
         });
     } catch (error) {

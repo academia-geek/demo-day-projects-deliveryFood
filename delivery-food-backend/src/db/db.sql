@@ -69,8 +69,18 @@ CREATE TABLE pedido(
     valorTotal INTEGER NOT NULL,
     descuento INTEGER NOT NULL,
     id_establecimiento BIGINT NOT NULL,
+<<<<<<< HEAD
+<<<<<<< HEAD
     calificacion FLOAT(2),
     id_repartidor BIGINT,
+=======
+    id_repartidor BIGINT,
+    id_calificacion FLOAT(2),
+>>>>>>> 5c2341a7f84c306832760ad789ec69fc39a6e8e8
+=======
+    calificacion FLOAT(2),
+    id_repartidor BIGINT,
+>>>>>>> f6780aa3c5a7a2b296121f9bc8e637a9a4ec81e5
     PRIMARY KEY (codigoOrden),
     CONSTRAINT fk_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
@@ -78,8 +88,18 @@ CREATE TABLE pedido(
         ON UPDATE CASCADE,
     CONSTRAINT fk_establecimiento
         FOREIGN KEY (id_establecimiento) REFERENCES establecimiento (id_establecimiento)
+<<<<<<< HEAD
+<<<<<<< HEAD
         ON DELETE RESTRICT
         ON UPDATE CASCADE
+=======
+        ON DELETE RESTRICT,
+        ON UPDATE CASCADE 
+>>>>>>> 5c2341a7f84c306832760ad789ec69fc39a6e8e8
+=======
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+>>>>>>> f6780aa3c5a7a2b296121f9bc8e637a9a4ec81e5
 );
 
 CREATE TYPE enum_metodo AS ENUM('Deposito','Credito','Efectivo');
@@ -125,5 +145,15 @@ CREATE TABLE direccion(
     unidad VARCHAR(100),
     ciudad VARCHAR(100) NOT NULL,
     id_usuario INTEGER,
+<<<<<<< HEAD
+<<<<<<< HEAD
+    PRIMARY KEY (id_direccion)
+    );
+=======
     PRIMARY KEY (id_direccion)    
 );
+>>>>>>> 5c2341a7f84c306832760ad789ec69fc39a6e8e8
+=======
+    PRIMARY KEY (id_direccion)    
+);
+>>>>>>> f6780aa3c5a7a2b296121f9bc8e637a9a4ec81e5

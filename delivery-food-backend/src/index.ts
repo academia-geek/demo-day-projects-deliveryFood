@@ -15,7 +15,7 @@ import routerUsuario from './routes/usuarios.router';
 import routerPago from './routes/pago.router'
 import routerPedido from './routes/pedido.router';
 import routerDireccion from './routes/direccion.router';
-import routerDashboard from './routes/dashboard.routes';
+import routerDashboard from './routes/dashboard.router';
 import http from 'http';
 import { authRouter } from "./routes/firebase.router";
 import swaggerSpec from './docs/swagger-spec';

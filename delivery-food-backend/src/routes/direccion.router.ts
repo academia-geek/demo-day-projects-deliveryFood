@@ -20,7 +20,6 @@ routerDireccion.put("/:id", validator.body(direccionSchema), validator.params(di
 routerDireccion.delete("/:id", validator.params(direccionParamSchema), decodeToken, deleteDireccion);
 routerDireccion.get("/:id", validator.params(direccionParamSchema), decodeToken, getDireccionById);
 export default routerDireccion;
-
 /**
  * @swagger
  * components:

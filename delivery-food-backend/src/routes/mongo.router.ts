@@ -7,7 +7,6 @@ import itemsSchema from "../schemas/items.schema";
 const validator = createValidator();
 import {
     getmenuID,
-    postMenu,
     postItems,
     deletemenuID,
     patchmenuID,
@@ -15,7 +14,7 @@ import {
     deleteItemsMenuId,
 } from "../controllers/mongo/menu.controller";
 
-router.post("/createMenu", validator.body(menuSchema), postMenu);
+
 router.get("/getMenu/:id", getmenuID);
 router.post("/createItems/:id", validator.body(itemsSchema), postItems);
 router.delete("/deleteMenu/:id", deletemenuID);
@@ -154,130 +153,6 @@ export default router;
  *                       id_plato: 1
  *                 id: 1
  * 
- * /api/mongo/createMenu:
- *     post:
- *         tags:
- *             - Mongo
- *         summary: "Crear un nuevo menu"
- *         description: "Crear un nuevo menu"
- *         operationId: "createMenu"
- *         parameters:
- *             - name: body
- *               in: body
- *               description: "Menu a crear"
- *               required: true
- *               schema:
- *                   $ref: "#/components/schemas/Menu"
- *         consumes:
- *             - application/json
- *         produces:
- *             - application/json
- *         responses:
- *             200:
- *                 description: "Menu creado"
- *                 content:
- *                     application/json:
- *                         schema:
- *                             type: object
- *                             properties:
- *                                 message:
- *                                     type: string
- *                                     example: "Menu creado correctamente"
- *                                 id: 
- *                                    type: string
- *                                    example: 1
- *             500:
- *                 description: Internal Server error
- *                 content:
- *                     application/json:
- *                         schema:
- *                             type: object
- *                             properties:
- *                                 message:
- *                                     type: string
- *                                     example: "Internal Server error"
- * /api/mongo/getMenu/{id}:
- *     get:
- *         tags:
- *             - Mongo
- *         summary: "Obtener un menu"
- *         description: "Obtener un menu"
- *         operationId: "getMenuId"
- *         parameters:
- *             - name: path
- *               in: path
- *               description: "Id del menu"
- *               required: true
- *               schema:
- *                   type: string
- *                   example: 1
- *         produces:
- *             - application/json
- *         responses:
- *         200:
- *             description: "Menu obtenido"
- *             content:
- *                 application/json:
- *                     schema:
- *                         type: object
- *                         properties:
- *                             $ref: "#/components/schemas/Menu"
- *         500:
- *             description: Internal Server error
- *             content:
- *                 application/json:
- *                     schema:
- *                         type: object
- *                         properties:
- *                             message:
- *                                 type: string
- *                                 example: "Internal Server error"
- * /api/mongo/createItems/{id}:
- *     post:
- *         tags:
- *             - Mongo
- *         summary: "Crear un nuevo item"
- *         description: "Crear un nuevo item"
- *         operationId: "createItems"
- *         parameters:
- *             - name: path
- *               in: path
- *               description: "Id del menu"
- *               required: true
- *               schema:
- *                   type: string
- *                   example: 1
- *             - name: body
- *               in: body
- *               description: "Item a crear"
- *               required: true
- *               schema:
- *                   $ref: "#/components/schemas/items"
- *         consumes:
- *             - application/json
- *         produces:
- *             - application/json
- *         responses:
- *             200:
- *                 description: "Item creado"
- *                 content:
- *                     application/json:
- *                         schema:
- *                             type: object
- *                             properties:
- *                                 message:
- *                                     type: string
- *                                     example: "Items agregados"
- *             500:
- *                 description: Internal Server error
- *                 content:
- *                     application/json:
- *                         schema:
- *                             type: object
- *                             properties:
- *                                 message:
- *                                     type: string
- *                                     example: "Internal Server error"
  * /api/mongo/deleteMenu/{id}:
  *     delete:
  *         tags:

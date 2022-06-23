@@ -4,12 +4,15 @@ import { SideBar } from "../../components/SideBar";
 import { CloudUploadIcon, CheckIcon } from "@heroicons/react/solid";
 import { updateImageUser } from "../../services/storageAuth";
 import { ModalEditUser } from "../../components/ModalEditUser";
+import { getUsers } from "../../services/users";
+import { useHandleUser } from "../../context/HandleUserContext";
 import Swal from "sweetalert2";
 
 import "../../styles/perfilUsuario.css";
 
 const PerfilUsuario = () => {
   const [modalState, setModalState] = useState(false);
+  const { addId } = useHandleUser();
 
   const {
     user,
@@ -24,6 +27,12 @@ const PerfilUsuario = () => {
   useEffect(() => {
     document.title = `${user.displayName} | Delivery Food`;
   }, [user]);
+
+  useEffect(() => {
+    getUsers(user.email)
+      .then((data) => addId(data.id_usuario))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleImage = async ({ target }) => {
     const file = target.files[0];

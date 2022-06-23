@@ -42,7 +42,8 @@ export default function BlogPostCard({ rest, index, getApi }) {
   const objEstablecimiento = {
     estado: rest.estado, 
     nombre: rest.nombre,
-    id: rest.id_establecimiento
+    img: rest.foto_est,
+    id: rest.id_establecimiento,
   }
 
   const latestPostLarge = index === 0;
@@ -86,7 +87,7 @@ export default function BlogPostCard({ rest, index, getApi }) {
           }}
         >
 
-          <CoverImgStyle alt={objEstablecimiento.nombre} src={'https://res.cloudinary.com/dxhgejzwc/image/upload/v1648678917/cld-sample.jpg'} />
+          <CoverImgStyle alt={objEstablecimiento.nombre} src={objEstablecimiento.img} />
         </CardMediaStyle>
 
         <CardContent

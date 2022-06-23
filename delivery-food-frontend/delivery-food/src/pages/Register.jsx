@@ -81,13 +81,14 @@ export default function Register() {
     e.preventDefault();
 
     // enviando datos al servidor backend
-    // registerUser({
-    //   nombre: name.campo,
-    //   apellido: lastName.campo,
-    //   email: email.campo,
-    //   telefono: telefono.campo,
-    //   tipo: "Usuario",
-    // });
+    registerUser({
+      nombre: name.campo,
+      apellido: lastName.campo,
+      telefono: telefono.campo,
+      tipo: "Usuario",
+      estado: "activo",
+      email: email.campo,
+    });
 
     // usando el nombre y el apellido para crear el nombre de usuario
     const arrUserName = [name.campo, lastName.campo];

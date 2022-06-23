@@ -1,34 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Drawer, Modal } from "rsuite";
+import { Drawer } from "rsuite";
 import { useAuth } from "../auth/AuthContent";
-
-const ModalUbicacion = ({ modalState, setModalState }) => {
-  const closeModal = () => {
-    setModalState(false);
-  };
-
-  return (
-    <Modal backdrop={true} open={modalState} onClose={closeModal}>
-      <Modal.Header>
-        <p className="text-xl">Añade tu ubicación</p>
-      </Modal.Header>
-      <Modal.Body>
-        <input
-          type="text"
-          placeholder="añadir ubicacion"
-          className="border-2 border-black w-full p-2 rounded-md focus:outline-none"
-        />
-        <button
-          className="bg-[color:var(--dark-blue)] p-3 text-white mt-5 rounded-md
-         hover:bg-slate-800"
-        >
-          Añadir
-        </button>
-      </Modal.Body>
-    </Modal>
-  );
-};
+import { ModalAddUbicacion } from "./ModalAddUbicacion";
 
 export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
   const { user } = useAuth();
@@ -42,7 +16,7 @@ export const DrawerMenu = ({ openDrawer, closeDrawer, setOpenDrawer }) => {
   return (
     <>
       {handleModal && (
-        <ModalUbicacion
+        <ModalAddUbicacion
           modalState={handleModal}
           setModalState={setHandleModal}
         />

@@ -14,47 +14,52 @@ import ViewProducts from "../pages/ViewProducts";
 // cart Context
 import { CartProvider } from "../context/CartContext";
 
+// handle user context
+import { HandleUserProvider } from "../context/HandleUserContext";
+
 export default function AppRoutes() {
   return (
     <AuthProvider>
       <CartProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/usuario/:username"
-              element={
-                <PrivateRoutes>
-                  <PerfilUsuario />
-                </PrivateRoutes>
-              }
-            />
-            <Route
-              path="/"
-              element={
-                <PublicRoutes>
-                  <Home />
-                </PublicRoutes>
-              }
-            />
-            <Route path="/viewProducts/*" element={<ViewProducts />} />
-            <Route
-              path="/login"
-              element={
-                <PublicRoutes>
-                  <Login />
-                </PublicRoutes>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PublicRoutes>
-                  <Register />
-                </PublicRoutes>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
+        <HandleUserProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/usuario/:username"
+                element={
+                  <PrivateRoutes>
+                    <PerfilUsuario />
+                  </PrivateRoutes>
+                }
+              />
+              <Route
+                path="/"
+                element={
+                  <PublicRoutes>
+                    <Home />
+                  </PublicRoutes>
+                }
+              />
+              <Route path="/viewProducts/*" element={<ViewProducts />} />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoutes>
+                    <Login />
+                  </PublicRoutes>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <PublicRoutes>
+                    <Register />
+                  </PublicRoutes>
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </HandleUserProvider>
       </CartProvider>
     </AuthProvider>
   );

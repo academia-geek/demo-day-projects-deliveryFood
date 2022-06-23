@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 import post from '../services/post';
+import { uploadImage } from '../services/uploadImgRestaurant';
 
 const style = {
   position: 'absolute',
@@ -17,23 +18,34 @@ const style = {
   p: 4,
 };
 
-export default function ModalRestaurant({modalForm, setModalForm, title}) {
-  const [formModal, setFormModal] = useState({name: '', direction: ''});
+export default function ModalRestaurant({ modalForm, setModalForm, title }) {
+  const [formModal, setFormModal] = useState({ name: '', img: '' });
 
-  const formModalFn = async(e) => {
+  const formModalFn = async (e) => {
     e.preventDefault();
-    try{
+    try {
       const objNewRestaurant = {
         estado: 'ACTIVO',
         nombre: formModal.name,
         operacional: 'S',
-        id_menu: '62b0f96804f7eb4510e9dfa2'
-      }
-      await post('establecimientos', objNewRestaurant);
-      console.log('entra');
+        foto_est: formModal.img,
+        id_menu: '62b40fa8e1797bec0a552f52',
+      };
+      await post('establecimientos', objNewRestaurant)
+        .then(() => {
+          window.location.reload(true);
+        })
+        .catch((error) => console.log(error));
     } catch (error) {
       console.log('no entra');
     }
+  };
+
+  const handleFile = ({ target }) => {
+    const file = target.files[0];
+    uploadImage(file)
+      .then((image) => setFormModal({ ...formModal, img: image }))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -46,10 +58,16 @@ export default function ModalRestaurant({modalForm, setModalForm, title}) {
       >
         <Box sx={style}>
           <form action="" onSubmit={formModalFn}>
-            <TextField label="Nombre" variant="standard" onChange={(e)=>setFormModal({...formModal, name: e.target.value})}/>
-            <TextField label="Direccion" variant="standard" onChange={(e)=>setFormModal({...formModal, direction: e.target.value})}/>
+            <TextField
+              label="Nombre"
+              variant="standard"
+              onChange={(e) => setFormModal({ ...formModal, name: e.target.value })}
+            />
+            <input type="file" onChange={handleFile} />
             <br />
-            <Button type='submit' variant="contained">Aceptar</Button>
+            <Button type="submit" variant="contained">
+              Aceptar
+            </Button>
           </form>
         </Box>
       </Modal>

@@ -8,8 +8,7 @@ import {
   onAuthStateChanged,
   updateProfile,
   sendEmailVerification,
-  signOut,
-  // sendSignInLinkToEmail
+  signOut,  
 } from "firebase/auth";
 import { auth } from "../../firebase";
 

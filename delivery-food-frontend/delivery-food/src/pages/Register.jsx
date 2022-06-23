@@ -63,31 +63,18 @@ export default function Register() {
     }
   };
 
-  // const linkEmailFn = () => {
-  //   const email = linkEmail.campo;
-  //   sendLinkEmail(email).then(() => {
-  //     // The link was successfully sent. Inform the user.
-  //     // Save the email locally so you don't need to ask the user for it again
-  //     // if they open the link on the same device.
-  //     window.localStorage.setItem('emailForSignIn', email);
-  //     alert('mensaje enviado')
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // enviando datos al servidor backend
-    // registerUser({
-    //   nombre: name.campo,
-    //   apellido: lastName.campo,
-    //   email: email.campo,
-    //   telefono: telefono.campo,
-    //   tipo: "Usuario",
-    // });
+    registerUser({
+      nombre: name.campo,
+      apellido: lastName.campo,
+      telefono: telefono.campo,
+      tipo: "Usuario",
+      estado: "activo",
+      email: email.campo,
+    });
 
     // usando el nombre y el apellido para crear el nombre de usuario
     const arrUserName = [name.campo, lastName.campo];

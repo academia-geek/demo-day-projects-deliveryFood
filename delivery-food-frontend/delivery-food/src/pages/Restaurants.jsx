@@ -57,16 +57,7 @@ export default function Restaurants() {
   return (
     <div>
       <div className="flex justify-around items-center text-xl mt-5">
-        <div>
-          {/* <span>Categorias: </span>
-          <select name="filter-establecimientos" id="" className='border-solid border border-gray-400 mr-10 rounded' onChange={select}>
-            {
-              filterCategory.map((e, i) => (
-                <option key={i} value={e.value}>{e.category}</option>
-              ))
-            }
-          </select> */}
-        </div>
+        <div></div>
       </div>
       <div className="">
         <Maps />

@@ -23,8 +23,6 @@ export const HandleUserProvider = ({ children }) => {
     });
   };
 
-  console.log(userUbication);
-
   return (
     <contextHandleUser.Provider
       value={{ userUbication, addId, setCoordinates }}

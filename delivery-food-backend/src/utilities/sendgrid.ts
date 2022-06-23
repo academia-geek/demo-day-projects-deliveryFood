@@ -19,7 +19,6 @@ export const sendEmail = async (userEmails: Array<string>,params: object,templat
         console.log('Email send')
     })
     .catch(error => {
-
         console.error(error.response.body.errors)
     })
 }

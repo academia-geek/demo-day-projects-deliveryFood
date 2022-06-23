@@ -15,11 +15,11 @@ import {
     deleteItemsMenuId,
 } from "../controllers/mongo/menu.controller";
 
-routerMenu.get("/getmenu/:id",decodeToken,getmenuID);
-routerMenu.post("/createItems/:id",validator.body(itemsSchema),decodeToken, postItems);
-routerMenu.delete("/deletemenu/:id", decodeToken,deletemenuID);
-routerMenu.patch("/editMenu/:id",validator.body(menuSchema), decodeToken,patchmenuID);
-routerMenu.patch("/editItems/:id",validator.body(itemsSchema),decodeToken,editItemsMenuId);
-routerMenu.delete("/deleteItems/:id", decodeToken,deleteItemsMenuId);
+routerMenu.get("/getmenu/:id", decodeToken, getmenuID);
+routerMenu.post("/createItems/:id", validator.body(itemsSchema), decodeToken, postItems);
+routerMenu.delete("/deletemenu/:id", decodeToken, deletemenuID);
+routerMenu.patch("/editMenu/:id", validator.body(menuSchema), decodeToken, patchmenuID);
+routerMenu.patch("/editItems/:id", validator.body(itemsSchema), decodeToken, editItemsMenuId);
+routerMenu.delete("/deleteItems/:id", decodeToken, deleteItemsMenuId);
 
 export default routerMenu;

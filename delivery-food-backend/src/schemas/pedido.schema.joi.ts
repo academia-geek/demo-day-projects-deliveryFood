@@ -1,4 +1,3 @@
-import { time } from "console";
 import Joi from "joi";
 
 const pedidoSchema = Joi.object({

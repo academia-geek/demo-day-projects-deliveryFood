@@ -5,19 +5,11 @@ import { Grid, Button, Container, Stack, Typography } from '@mui/material';
 // components
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
-import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/restaurants';
+import { BlogPostCard, BlogPostsSearch } from '../sections/@dashboard/restaurants';
 // mock
 import POSTS from '../_mock/restaurants';
 import { get } from '../services/get';
 import ModalRestaurant from '../components/ModalRestaurant';
-
-// ----------------------------------------------------------------------
-
-const SORT_OPTIONS = [
-  { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
-  { value: 'oldest', label: 'Oldest' },
-];
 
 // ----------------------------------------------------------------------
 
@@ -48,8 +40,7 @@ export default function Restaurants() {
         </Stack>
 
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch posts={POSTS} />
-          <BlogPostsSort options={SORT_OPTIONS} />
+          <BlogPostsSearch est={establecimientos} setEst={setEstablecimientos} />
         </Stack>
 
         <Grid container spacing={3}>

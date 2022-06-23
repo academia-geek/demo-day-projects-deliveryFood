@@ -7,7 +7,7 @@ const HeaderLanding = () => {
   return (
     <header className="header-landing-page p-5 shadow-lg">
       <div className="flex items-center justify-between">
-      <Logo/>
+        <Logo />
         <div className="flex gap-8 sm:gap-2">
           <Link
             to="/login"
@@ -33,17 +33,7 @@ const HeaderLanding = () => {
           nuestro servicio express
         </span>
       </h2>
-      <div className="flex justify-center">
-        <Link
-          to="/viewProducts"
-          className="btn-ver-productos text-center bg-[color:var(--yellow)] w-2/12 p-2 
-          text-lg uppercase text-[color:var(--dark-blue)] rounded-md shadow-2xl 
-          hover:bg-amber-300 hover:transition-all duration-300 hover:no-underline
-          hover:text-[color:var(--dark-blue)]"
-        >
-          ver productos
-        </Link>
-      </div>
+      <div className="flex justify-center"></div>
     </header>
   );
 };

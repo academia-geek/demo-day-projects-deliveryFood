@@ -1,23 +1,33 @@
-import { Router } from 'express';
+import { Router } from "express";
 const routerEstablecimiento = Router();
 
-import { createValidator } from 'express-joi-validation';
-import establecimientoSchema from '../schemas/establecimiento.schema.joi';
-import establecimientoParamSchema from '../schemas/establecimiento_params.schema.joi';
+import { createValidator } from "express-joi-validation";
+import establecimientoSchema from "../schemas/establecimiento.schema.joi";
+import establecimientoParamSchema from "../schemas/establecimiento_params.schema.joi";
 const validator = createValidator();
 
+import {
+    getEstablecimiento,
+    createEstablecimiento,
+    updateEstablecimiento,
+    deleteEstablecimiento,
+    getEstablecimientoById,
+} from "../controllers/postgres/establecimiento.controller";
 
-import { getEstablecimiento, createEstablecimiento, updateEstablecimiento, deleteEstablecimiento, getEstablecimientoById } from '../controllers/establecimiento.controller';
-
-routerEstablecimiento.get('/', getEstablecimiento);
-routerEstablecimiento.post('/', validator.body(establecimientoSchema), createEstablecimiento);
-routerEstablecimiento.put('/:id', validator.params(establecimientoParamSchema), validator.body(establecimientoSchema), updateEstablecimiento);
-routerEstablecimiento.delete('/:id', validator.params(establecimientoParamSchema), deleteEstablecimiento);
-routerEstablecimiento.get('/:id', validator.params(establecimientoParamSchema), getEstablecimientoById);
+routerEstablecimiento.get("/", getEstablecimiento);
+routerEstablecimiento.post("/", validator.body(establecimientoSchema), createEstablecimiento);
+routerEstablecimiento.put(
+    "/:id",
+    validator.params(establecimientoParamSchema),
+    validator.body(establecimientoSchema),
+    updateEstablecimiento,
+);
+routerEstablecimiento.delete("/:id", validator.params(establecimientoParamSchema), deleteEstablecimiento);
+routerEstablecimiento.get("/:id", validator.params(establecimientoParamSchema), getEstablecimientoById);
 
 export default routerEstablecimiento;
 /**
-  * @swagger
+ * @swagger
  * components:
  *   schemas:
  *      establecimiento:
@@ -54,7 +64,7 @@ export default routerEstablecimiento;
  *          - id_menu
  *          - foto_est
  *        example:
- *          id_establecimiento: 1 
+ *          id_establecimiento: 1
  *          estado: ACTIVO
  *          nombre: "Establecimiento 1"
  *          operacional: S
@@ -129,7 +139,7 @@ export default routerEstablecimiento;
  *                 message:
  *                   type: string
  *                   example: "Internal Server error"
- * 
+ *
  * /api/establecimientos/{id_establecimiento}:
  *   get:
  *     tags:
@@ -236,4 +246,4 @@ export default routerEstablecimiento;
  *                 message:
  *                   type: string
  *                   example: "Internal Server error"
-*/
+ */

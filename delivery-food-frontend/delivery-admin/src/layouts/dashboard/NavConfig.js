@@ -17,11 +17,6 @@ const navConfig = [
     icon: getIcon('eva:people-fill'),
   },
   {
-    title: 'Productos',
-    path: '/dashboard/products',
-    icon: getIcon('ion:restaurant-sharp'),
-  },
-  {
     title: 'Restaurantes',
     path: '/dashboard/restaurants',
     icon: getIcon('dashicons:store'),

@@ -28,7 +28,6 @@ import USERLIST from '../_mock/user';
 import { get } from '../services/get';
 import deleteApi from '../services/delete';
 
-
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
@@ -72,7 +71,7 @@ function applySortFilter(array, comparator, query) {
 }
 
 export default function User() {
-  const [ users, setUsers ] = useState(null);
+  const [users, setUsers] = useState(null);
 
   const [page, setPage] = useState(0);
 
@@ -135,24 +134,24 @@ export default function User() {
 
   const isUserNotFound = filteredUsers?.length === 0;
 
-  const getUser = async() => {
-    try{
+  const getUser = async () => {
+    try {
       const respond = await get('usuarios');
       const data = respond.data;
-      setUsers(data)
+      setUsers(data);
     } catch (error) {
       console.log('no funciona');
     }
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     getUser();
   }, [users]);
 
-  const deleteUser = async(id) => {
+  const deleteUser = async (id) => {
     try {
-      await deleteApi(`usuarios/${id}`)
+      await deleteApi(`usuarios/${id}`);
       console.log('se eliminó el usuario');
-      getUser()
+      getUser();
     } catch (error) {
       console.log('no funciona');
     }
@@ -165,11 +164,7 @@ export default function User() {
           <Typography variant="h4" gutterBottom>
             Usuarios Registrados
           </Typography>
-          <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
-            Nuevo Usuario
-          </Button>
         </Stack>
-
         <Card>
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
@@ -192,8 +187,8 @@ export default function User() {
                       telefono: row.telefono,
                       id: row.id_usuario,
                       email: row.email,
-                      estado: row.estado
-                    }
+                      estado: row.estado,
+                    };
                     const isItemSelected = selected.indexOf(objUser.nombre) !== -1;
 
                     return (
@@ -226,7 +221,7 @@ export default function User() {
                         </TableCell> */}
 
                         <TableCell align="right">
-                          <UserMoreMenu delete={()=>deleteUser(objUser.id)} />
+                          <UserMoreMenu delete={() => deleteUser(objUser.id)} />
                         </TableCell>
                       </TableRow>
                     );
